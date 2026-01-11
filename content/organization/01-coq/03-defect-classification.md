@@ -39,13 +39,13 @@ Kan provides this matrix from an actual software project (3,465 defects):
 ### How to Read the Matrix
 ```mermaid
 quadrantChart
-    title Matrix Interpretation
-    x-axis Early Detection --> Late Detection
-    y-axis Late Injection --> Early Injection
-    quadrant-1 Expensive escapes
-    quadrant-2 Good: caught early
-    quadrant-3 Expected: code bugs in test
-    quadrant-4 Very expensive
+    title Origin vs Found Matrix
+    x-axis Early Found --> Late Found
+    y-axis Code Origin --> Req Origin
+    quadrant-1 Escaped design bugs
+    quadrant-2 Ideal - early catch
+    quadrant-3 Normal - code in test
+    quadrant-4 Costly - field escapes
 ```
 
 | Pattern | Location | Meaning | Action |
