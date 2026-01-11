@@ -9,6 +9,78 @@ layout: default
 
 Defect Classification Schemes provide a structured methodology for technical teams to categorize software anomalies, enabling objective feedback on development processes and identification of systemic quality gaps {% cite chillarege2000odc %} {% cite butcher2002improving %}.
 
+## Kan's Origin/Where-Found Matrix
+
+The Origin/Where-Found Matrix, introduced by Kan (2002), is the simplest defect classification scheme and provides immediate insight into V&V effectiveness {% cite kan2002metrics %}.
+
+### The Core Idea
+
+Every defect has two key properties:
+- **Origin** — Which phase injected it? (Requirements, Design, Code)
+- **Where Found** — Which activity detected it? (Inspection, Test, Field)
+
+Cross-tabulating these reveals **escape patterns** — defects that slip through multiple phases before detection, accumulating cost at each stage.
+
+### Real Project Data
+
+Kan provides this matrix from an actual software project (3,465 defects):
+
+| Origin ↓ / Found → | Req Insp | HLD Insp | LLD Insp | Code Insp | UT | IT | ST | Field | **Total** |
+|--------------------|----------|----------|----------|-----------|-----|-----|-----|-------|-----------|
+| **HLD** | 49 | 681 | — | — | — | — | — | — | 730 |
+| **LLD** | 6 | 42 | 681 | — | — | — | — | — | 729 |
+| **Code** | 12 | 28 | 114 | 941 | — | — | — | — | 1,095 |
+| **UT** | 21 | 43 | 43 | 223 | 2 | — | — | — | 332 |
+| **IT** | 20 | 41 | 61 | 261 | — | 1 | — | — | 387 |
+| **ST** | 6 | 8 | 24 | 72 | — | — | 1 | — | 111 |
+| **Field** | 6 | 16 | 16 | 40 | — | — | — | 1 | 81 |
+| **Column Total** | 122 | 859 | 939 | 1,537 | 2 | 4 | 1 | 1 | **3,465** |
+
+### How to Read the Matrix
+```mermaid
+quadrantChart
+    title Matrix Interpretation
+    x-axis Early Detection --> Late Detection
+    y-axis Late Injection --> Early Injection
+    quadrant-1 Expensive escapes
+    quadrant-2 Good: caught early
+    quadrant-3 Expected: code bugs in test
+    quadrant-4 Very expensive
+```
+
+| Pattern | Location | Meaning | Action |
+|---------|----------|---------|--------|
+| **High diagonal** | Same phase | Caught where injected | ✅ Ideal |
+| **Below diagonal** | Lower-left | Early injection, early catch | ✅ Good |
+| **Above diagonal** | Upper-right | Escaped multiple phases | ⚠️ V&V gap |
+| **High "Field" column** | Right edge | Customer found it | 💥 Expensive |
+
+### Key Insights from the Data
+
+1. **Inspections are effective:** 3,457 of 3,465 defects (99.8%) caught before testing
+2. **Field escapes exist:** 81 defects reached customers despite strong inspections
+3. **Design defects propagate:** HLD defects found in code inspection (28) indicate missed design reviews
+
+### Actionability for CoQ
+
+The matrix directly supports Cost of Quality decisions:
+
+| If you see... | It means... | Invest in... |
+|---------------|-------------|--------------|
+| High Field column | V&V not catching defects | More/earlier inspections |
+| High row total, low early columns | Injection > early removal | Prevention at that phase |
+| Defects far from diagonal | Late detection of early bugs | Shift-left activities |
+
+> **Connection to lecture:** This is the minimum classification needed to make CoQ actionable. Without knowing origin and detection phase, you can't target prevention investments.
+
+### Agile Adaptation
+
+Even with fewer formal phases, track:
+- **Origin:** Story, Design, Code
+- **Found:** PR Review, CI, QA, Production
+
+The principle remains: diagonal = good, far from diagonal = expensive.
+
 ## Orthogonal Defect Classification (ODC)
 
 ODC is a methodology developed by IBM that uses a set of non-redundant (orthogonal) attributes to span the defect information space {% cite chillarege2000odc %}. It is specifically designed to provide objective, data-based decision support for technical teams, not just management {% cite butcher2002improving %}.
@@ -104,26 +176,6 @@ LiDeC replaces fine-grained code categories with high-level characterizations an
 - ASIL-classified requirements (per ISO 26262)
 - Supplier vs. OEM responsibility tracking
 
-## Origin/Where-Found Matrix
-
-This matrix from Kan is a cross-classification tool that maps the origin phase of a defect against the detection phase {% cite kan2002metrics %}:
-
-### Matrix Structure
-
-|  | Design Review | Code Inspect | Unit Test | System Test | **Field** |
-|--|---------------|--------------|-----------|-------------|-----------|
-| **Requirements** | 5 | 2 | 1 | 3 | **8** |
-| **Design** | 10 | 5 | 3 | 7 | **4** |
-| **Code** | — | 15 | 20 | 10 | **2** |
-
-### Identifying Testing Gaps
-
-- **High diagonal** = Defects caught in same phase they were injected (proactive)
-- **High "Field" column** = V&V activities failed; defects escaped to customers
-- **Row totals > Column totals** = Early injections exceed early removals
-
-**Application:** Justifies investments in earlier inspections if Row Totals (injections) exceed Column Totals (removals) in early stages {% cite kan2002metrics %}.
-
 ## Connection to Cost of Quality
 
 Defect classification is the bridge between technical findings and the language of money used by upper management {% cite houston1999cost %}:
@@ -147,14 +199,24 @@ Raytheon data shows that systematic defect tracking supports dramatic improvemen
 
 Classification schemes prove that a defect caught in requirements ($1) is 100× cheaper than one found after release ($100+), justifying the "front-loading" of quality processes {% cite knox1993modeling %}.
 
+```mermaid
+xychart-beta
+    title "Cost to Fix Defect by Phase (1:10:100 Rule)"
+    x-axis [Requirements, Development, Post-Release]
+    y-axis "Relative Cost ($)" 0 --> 120
+    bar [1, 10, 100]
+```
+
 ## Choosing a Classification Scheme
 
-| Scheme | Best For | Overhead |
-|--------|----------|----------|
-| **ODC** | Detailed technical process feedback | High |
-| **HP Model** | Retrospective prevention focus | Medium |
-| **LiDeC** | Embedded/automotive, safety-critical | Low |
-| **Origin Matrix** | Quick gap analysis | Low |
+## Choosing a Classification Scheme
+
+| Scheme | Start Here If... | Dimensions | Overhead |
+|--------|------------------|------------|----------|
+| **Kan's Matrix** | You need quick insights with minimal process change | 2 | ⬤○○○ |
+| **ODC** | You want rigorous process feedback and have resources | 8 | ⬤⬤⬤⬤ |
+| **HP Model** | You focus on retrospectives and prevention planning | 3 | ⬤⬤○○ |
+| **LiDeC** | You work in embedded/automotive with supplier code | 4 | ⬤⬤○○ |
 
 ---
 
