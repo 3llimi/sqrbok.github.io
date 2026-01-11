@@ -165,6 +165,9 @@ flowchart TD
 
 The complaint "we don't have time to test" really means "we'd rather spend time fixing in production"—which is far more expensive.
 
+> Extended discussion on PAF model history and applications is available in
+> supplementary notes: [CoSQ Foundations](01-cosq-foundations.md)
+
 ---
 
 ## 4. The Economics of Quality
@@ -213,6 +216,9 @@ This rule illustrates the exponential cost of delayed defect detection {% cite k
 |Rework|~50%|<10%|
 
 **Result:** Fourfold reduction in rework over 8 years of process improvement.
+
+> Modern applications of quality economics in CI/CD and DevOps are explored in
+> supplementary notes: [Quality Economics in DevOps](04-quality-economics-devops.md)
 
 ### Process Maturity Impact
 
@@ -292,6 +298,9 @@ A **process signature** shows the characteristic defect profile of a development
 
 > The gap between the "injected" and "detected" curves at ship time represents **latent faults**—defects that escape to customers and become external failure costs.
 
+Mathematical models and detailed analysis of defect injection/removal are in
+supplementary notes: [Defect Injection & Removal](02-defect-injection-removal.md)
+
 ### Improvement Strategies
 
 **Three levers to reduce CoSQ:**
@@ -321,6 +330,9 @@ A **process signature** shows the characteristic defect profile of a development
 - Scenario B: Finds defects earlier (lower fix cost per defect)
 
 > **How do you choose?** Analyze the cost of each alternative AND the likelihood of achieving the assumed improvements. A 10–20% improvement is achievable; a 2× improvement is unlikely unless current processes are severely broken {% cite houston1999cost %}.
+
+For detailed analysis of code review effectiveness and ROI calculations, see
+supplementary notes: [Code Review ROI](05-code-review-roi.md)
 
 ---
 
@@ -391,7 +403,11 @@ These questions form the core of **Quality Planning**—the subject of the next 
 4. **Process improvement shifts the curve:** Don't just do more of the same; do something different
     
 5. **Measure to manage:** Without data (time reports, bug tracking, classification), you can't optimize CoQ
-    
+
+For deeper exploration of related topics, see supplementary notes:
+
+- [Technical Debt](06-technical-debt.md) — Understanding tech debt as deferred quality costs
+- [Defect Prediction with ML](07-defect-prediction-ml.md) — Using machine learning to predict defect-prone components
 
 ---
 
