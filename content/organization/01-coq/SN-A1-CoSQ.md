@@ -334,6 +334,23 @@ A **process signature** shows the characteristic defect profile of a development
 |**Bug tracking**|Defect density, escape rates, field failures|
 |**Defect classification**|Root cause patterns, prevention targets|
 
+### Defect Classification Basics
+
+To make CoQ actionable, you need to classify defects systematically. 
+At minimum, track:
+
+1. **Origin phase** — Where was the defect injected? (Requirements, Design, Code)
+2. **Detection phase** — Where was it found? (Review, Unit Test, System Test, Field)
+3. **Defect type** — What kind of defect? (Logic, Interface, Data, Timing)
+
+**Kan's Origin/Where Found Matrix** cross-tabulates origin vs detection:
+- Defects on the diagonal are caught early (low cost)
+- Defects far from diagonal escaped multiple phases (high cost)
+- Patterns reveal which phases need stronger V&V
+
+> Detailed classification schemes (ODC, HP Model) are covered in 
+> supplementary notes: [Defect Classification](03-defect-classification.md)
+
 ### The 5-Step Approach to CoQ Programs
 
 ```mermaid
