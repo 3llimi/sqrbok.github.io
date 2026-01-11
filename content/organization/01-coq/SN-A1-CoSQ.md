@@ -382,13 +382,8 @@ These questions form the core of **Quality Planning**—the subject of the next 
 
 {% bibliography --cited %}
 
-### Primary Sources
+### Other Primary Sources
 
-- Garvin, D.A. (1984). "What Does Product Quality Really Mean?" _Sloan Management Review_, 26(1), 25-43.
-- Knox, S.T. (1993). "Modeling the Cost of Software Quality." _Digital Technical Journal_, 5(4), 9-16.
-- Houston, D. & Keats, J.B. (1999). "Cost of Software Quality: A Means of Promoting Software Process Improvement." _Software Quality Professional_, 1(2), 8-16.
-- Tassey, G. (2002). "The Economic Impacts of Inadequate Infrastructure for Software Testing." NIST Planning Report 02-3.
-- Chulani, S. & Boehm, B. (1999). "Modeling Software Defect Introduction and Removal: COQUALMO." USC-CSE-99-510.
 - Campanella, J. (1999). _Principles of Quality Costs_ (3rd ed.). ASQ Quality Press.
 - Weinberg, G. (2010). _Perfect Software And Other Illusions About Testing_.
 
