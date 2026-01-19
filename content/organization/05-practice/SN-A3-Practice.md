@@ -11,7 +11,7 @@ layout: default
 These study notes explain software quality practices used by industry leaders (Google, Microsoft, Netflix, Facebook) alongside emerging AI/LLM-based approaches. Designed for MS students preparing for exams.
 
 {: .note }
-**Related Pages:** For detailed coverage, see [Google Engineering Practices](08-google-engineering-practices.md), [Microsoft Quality Practices](09-microsoft-quality-practices.md), [Site Reliability Engineering](06-site-reliability-engineering.md), [Testing Practices](04-testing-practices.md), [Quality Gates & CI/CD](10-quality-gates-cicd.md), and [Industry Case Studies](07-industry-case-studies.md).
+**Related Pages:** For detailed coverage, see [Google Engineering Practices](08-google-engineering-practices.html), [Microsoft Quality Practices](09-microsoft-quality-practices.html), [Site Reliability Engineering](06-site-reliability-engineering.html), [Testing Practices](04-testing-practices.html), [Quality Gates & CI/CD](10-quality-gates-cicd.html), and [Industry Case Studies](07-industry-case-studies.html).
 
 **Primary Sources:**
 - Software Engineering at Google {% cite winters2020swe %}
@@ -30,7 +30,7 @@ These study notes explain software quality practices used by industry leaders (G
 ## Part 1: Testing Practices
 
 {: .note }
-> **See also:** [Testing Practices](04-testing-practices.md) for shift-left/shift-right testing, [Google Engineering Practices](08-google-engineering-practices.md) for the test pyramid and flaky test management.
+> **See also:** [Testing Practices](04-testing-practices.html) for shift-left/shift-right testing, [Google Engineering Practices](08-google-engineering-practices.html) for the test pyramid and flaky test management.
 
 ### 1.1 The Test Pyramid (70/20/10)
 
@@ -510,7 +510,7 @@ The LLM saw the code returns 101, so it wrote a test expecting 101. The test pas
 ## Part 2: Code Review
 
 {: .note }
-> **See also:** [Google Engineering Practices](08-google-engineering-practices.md) for code review process and readability certification, [Industry Case Studies](07-industry-case-studies.md) for empirical data on code review at scale.
+> **See also:** [Google Engineering Practices](08-google-engineering-practices.html) for code review process and readability certification, [Industry Case Studies](07-industry-case-studies.html) for empirical data on code review at scale.
 
 ### 2.1 Traditional Code Review Process
 
@@ -688,7 +688,7 @@ The LLM saw the code returns 101, so it wrote a test expecting 101. The test pas
 ## Part 3: CI/CD & Deployment
 
 {: .note }
-> **See also:** [Quality Gates & CI/CD](10-quality-gates-cicd.md) for pipeline stages and deployment gates, [DevOps Foundations](01-devops-foundations.md) for CI/CD principles and automation.
+> **See also:** [Quality Gates & CI/CD](10-quality-gates-cicd.html) for pipeline stages and deployment gates, [DevOps Foundations](01-devops-foundations.html) for CI/CD principles and automation.
 
 ### 3.1 Build Frequency & Speed
 
@@ -1011,7 +1011,7 @@ LLM Triage -> SARIF Reports -> Deterministic Verification -> Human Review
 ## Part 4: SRE & Reliability
 
 {: .note }
-> **See also:** [Site Reliability Engineering](06-site-reliability-engineering.md) for SRE principles, SLOs, error budgets, and toil reduction.
+> **See also:** [Site Reliability Engineering](06-site-reliability-engineering.html) for SRE principles, SLOs, error budgets, and toil reduction.
 
 ### 4.1 SLIs, SLOs, and SLAs
 
@@ -1327,7 +1327,7 @@ Based on US Incident Command System (ICS). Built on "Three Cs": **Command, Contr
 ## Part 5: Quality Organization
 
 {: .note }
-> **See also:** [Microsoft Quality Practices](09-microsoft-quality-practices.md) for milestone-based development and bug bars, [Google Engineering Practices](08-google-engineering-practices.md) for testing roles and automation maturity.
+> **See also:** [Microsoft Quality Practices](09-microsoft-quality-practices.html) for milestone-based development and bug bars, [Google Engineering Practices](08-google-engineering-practices.html) for testing roles and automation maturity.
 
 ### 5.1 Testing Roles (Google vs Microsoft)
 
@@ -1527,7 +1527,7 @@ Toil is repetitive, manual work that lacks enduring value, grows linearly with s
 ## Part 6: Chaos Engineering & Resilience
 
 {: .note }
-> **See also:** [Testing Practices](04-testing-practices.md) for chaos engineering and shift-right testing, [Site Reliability Engineering](06-site-reliability-engineering.md) for resilience practices.
+> **See also:** [Testing Practices](04-testing-practices.html) for chaos engineering and shift-right testing, [Site Reliability Engineering](06-site-reliability-engineering.html) for resilience practices.
 
 ### 6.1 Definitions
 
@@ -1610,7 +1610,7 @@ Dev -> Staging -> 1% Prod -> 10% -> Full
 ## Part 7: Code Agents & Guardrails (Optional)
 
 {: .note }
-> **See also:** [Industry Case Studies](07-industry-case-studies.md) for empirical research on AI-assisted development practices.
+> **See also:** [Industry Case Studies](07-industry-case-studies.html) for empirical research on AI-assisted development practices.
 
 ### 7.1 Industry Context
 
@@ -1802,7 +1802,7 @@ import flask_auth_helper  # DOESN'T EXIST!
 
 ### Google vs Microsoft Comparison
 
-For detailed coverage, see [Google Engineering Practices](08-google-engineering-practices.md) and [Microsoft Quality Practices](09-microsoft-quality-practices.md).
+For detailed coverage, see [Google Engineering Practices](08-google-engineering-practices.html) and [Microsoft Quality Practices](09-microsoft-quality-practices.html).
 
 | Practice | Google | Microsoft |
 |----------|--------|-----------|
