@@ -1179,3 +1179,172 @@ language = {eng},
   year      = {2023},
   doi       = {10.32749/nucleodoconhecimento.com.br/computer-science/embedded-software}
 }
+
+% === SN-A3 Industry Practices - Additional References ===
+
+@book{page2008testing,
+  author    = {Page, Alan and Johnston, Ken and Rollison, Bj},
+  title     = {How We Test Software at Microsoft},
+  publisher = {Microsoft Press},
+  year      = {2008},
+  isbn      = {978-0735624252},
+  note      = {Microsoft testing practices: bug bars, milestones, SDET roles}
+}
+
+@book{beyer2018sreworkbook,
+  author    = {Beyer, Betsy and Murphy, Niall Richard and Rensin, David K. and Kawahara, Kent},
+  title     = {The Site Reliability Workbook: Practical Ways to Implement SRE},
+  publisher = {O'Reilly Media},
+  year      = {2018},
+  note      = {Practical SRE implementation}
+}
+
+% === LLM Testing and Quality ===
+
+@article{wang2023llmtesting,
+  author    = {Wang, Junjie and Huang, Yuchao and Chen, Chunyang and Liu, Zhe and Wang, Song and Wang, Qing},
+  title     = {Software Testing With Large Language Models: Survey, Landscape, and Vision},
+  journal   = {IEEE Transactions on Software Engineering},
+  year      = {2024},
+  volume    = {50},
+  number    = {4},
+  doi       = {10.1109/TSE.2024.3368208},
+  note      = {102 studies analyzed, 493 citations}
+}
+
+@article{li2025flakyguard,
+  author    = {Li, Chengpeng and Behrang, Farnaz and Shi, August and Liu, Peng},
+  title     = {{FlakyGuard}: Automatically Fixing Flaky Tests at Industry Scale},
+  journal   = {arXiv preprint arXiv:2511.14002},
+  year      = {2025},
+  doi       = {10.48550/arXiv.2511.14002},
+  note      = {47.6\% repair rate, 51.8\% developer acceptance}
+}
+
+@inproceedings{chen2024flakydoctor,
+  author    = {Chen, Yang and Jabbarvand, Reyhaneh},
+  title     = {Neurosymbolic Repair of Test Flakiness},
+  booktitle = {Proc. ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA)},
+  year      = {2024},
+  doi       = {10.1145/3650212.3680369},
+  note      = {FlakyDoctor: 57\% OD, 59\% ID repair rate}
+}
+
+@article{konstantinou2024testoracles,
+  author    = {Konstantinou, Michael and Degiovanni, Renzo and Papadakis, Mike},
+  title     = {Do {LLMs} generate test oracles that capture the actual or the expected program behaviour?},
+  journal   = {arXiv preprint arXiv:2410.21136},
+  year      = {2024},
+  doi       = {10.48550/arXiv.2410.21136},
+  note      = {Intent Gap: LLM oracles prone to capturing actual vs expected behavior}
+}
+
+@article{pizzorno2024coverup,
+  author    = {Pizzorno, Juan Altmayer and Berger, Emery},
+  title     = {{CoverUp}: Effective High Coverage Test Generation for {Python}},
+  journal   = {ACM Transactions on Software Engineering and Methodology},
+  year      = {2024},
+  doi       = {10.1145/3729398},
+  note      = {80\% median line+branch coverage vs 47\% CodaMosa}
+}
+
+@article{gu2024testart,
+  author    = {Gu, Siqi and Zhang, Quanjun and Li, Kecheng and Fang, Chunrong and Tian, Fangyuan and Zhu, Liuchuan and Zhou, Jianyi and Chen, Zhenyu},
+  title     = {{TestART}: Improving {LLM}-based Unit Testing via Co-evolution of Automated Generation and Repair Iteration},
+  journal   = {arXiv preprint arXiv:2408.03095},
+  year      = {2024},
+  doi       = {10.48550/arXiv.2408.03095},
+  note      = {18\% pass rate improvement, 20\% coverage enhancement}
+}
+
+@inproceedings{abdullin2025testwars,
+  author    = {Abdullin, Azat and Derakhshanfar, Pouria and Panichella, Annibale},
+  title     = {Test Wars: A Comparative Study of {SBST}, Symbolic Execution, and {LLM}-Based Approaches to Unit Test Generation},
+  booktitle = {Proc. IEEE International Conference on Software Testing (ICST)},
+  year      = {2025},
+  doi       = {10.1109/ICST62969.2025.10989033},
+  note      = {LLMs better mutation scores but lower coverage than SBST}
+}
+
+% === LLM Code Review ===
+
+@article{zeng2025swrbench,
+  author    = {Zeng, Zhengran and Shi, Ruikai and Han, Keke and Li, Yixin and Sun, Kaicheng and Wang, Yidong and Yu, Zhuohao and Xie, Rui and Ye, Wei and Zhang, Shibo},
+  title     = {Benchmarking and Studying the {LLM}-based Code Review},
+  journal   = {arXiv preprint arXiv:2509.01494},
+  year      = {2025},
+  doi       = {10.48550/arXiv.2509.01494},
+  note      = {SWRBench: 1000 PRs, 90\% human agreement, multi-review +43\% F1}
+}
+
+@inproceedings{zhou2024vulndetection,
+  author    = {Zhou, Xin and Zhang, Ting and Lo, David},
+  title     = {Large Language Model for Vulnerability Detection: Emerging Results and Future Directions},
+  booktitle = {Proc. IEEE/ACM International Workshop on Large Language Models for Code (LLM4Code)},
+  year      = {2024},
+  doi       = {10.1145/3639476.3639762},
+  note      = {GPT-4 outperforms state-of-the-art, 116 citations}
+}
+
+@inproceedings{cotroneo2025humanvsai,
+  author    = {Cotroneo, Domenico and Improta, Cristina and Liguori, Pietro},
+  title     = {Human-Written vs. {AI}-Generated Code: A Large-Scale Study of Defects, Vulnerabilities, and Complexity},
+  booktitle = {Proc. IEEE International Symposium on Software Reliability Engineering (ISSRE)},
+  year      = {2025},
+  doi       = {10.1109/ISSRE66568.2025.00035},
+  note      = {500k code samples, AI code +37.6\% vulnerabilities after 5 iterations}
+}
+
+% === Code Agents ===
+
+@article{ferrag2025llmtoagents,
+  author    = {Ferrag, Mohamed Amine and Tihanyi, Norbert and Debbah, M\'{e}rouane},
+  title     = {From {LLM} Reasoning to Autonomous {AI} Agents: A Comprehensive Review},
+  journal   = {arXiv preprint arXiv:2504.19678},
+  year      = {2025},
+  doi       = {10.48550/arXiv.2504.19678},
+  note      = {Taxonomy of 60 benchmarks, MCP/ACP/A2A protocols}
+}
+
+@article{wang2024agentsse,
+  author    = {Wang, Yanlin and Zhong, Wanjun and Huang, Yanxian and Shi, Ensheng and Yang, Min and Chen, Jiachi and Li, Hui and Ma, Yuchi and Wang, Qianxiang and Zheng, Zibin},
+  title     = {Agents in software engineering: survey, landscape, and vision},
+  journal   = {Automated Software Engineering},
+  year      = {2025},
+  doi       = {10.1007/s10515-025-00544-2},
+  note      = {LLM-based agents framework: perception, memory, action}
+}
+
+@misc{swebench2024,
+  author       = {{Princeton NLP} and {OpenAI}},
+  title        = {{SWE-Bench}: Software Engineering Benchmark},
+  year         = {2024},
+  howpublished = {\url{https://www.swebench.com/}},
+  note         = {Real-world GitHub issue resolution benchmark}
+}
+
+@techreport{owasp2025llmtop10,
+  author       = {{OWASP Foundation}},
+  title        = {{OWASP} Top 10 for Large Language Model Applications 2025},
+  institution  = {Open Worldwide Application Security Project},
+  year         = {2025},
+  url          = {https://genai.owasp.org/llm-top-10/},
+  note         = {LLM01-LLM10 vulnerability categories}
+}
+
+@misc{dora2025report,
+  author       = {{DORA Team}},
+  title        = {Announcing the 2025 {DORA} Report},
+  year         = {2025},
+  howpublished = {\url{https://cloud.google.com/blog/products/devops-sre/announcing-the-2025-dora-report}},
+  note         = {AI Impact on Developer Metrics: -43\% MTTR, -25\% Lead Time}
+}
+
+@article{huang2025llmasjudge,
+  author    = {Huang, Donghao and Chew, Shila and Dutkiewicz, Anna and Wang, Zhaoxia},
+  title     = {{LLM-as-a-Judge} for Scalable Test Coverage Evaluation: Accuracy, Operational Reliability, and Cost},
+  journal   = {arXiv preprint arXiv:2512.01232},
+  year      = {2025},
+  doi       = {10.48550/arXiv.2512.01232},
+  note      = {GPT-4o Mini: 78x cost reduction, best accuracy}
+}

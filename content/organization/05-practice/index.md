@@ -55,6 +55,13 @@ Pre-submit/post-submit/release gates, deployment strategies, feature flags lifec
 
 ---
 
+## Study Notes
+
+### [SN: Industry Quality Practices](SN-A3-Practice.md)
+Comprehensive study notes summarizing industry quality practices from Google, Microsoft, Netflix, and Facebook, plus emerging AI/LLM-based approaches. Includes key numbers reference card, exam preparation materials, and anti-patterns summary.
+
+---
+
 ## Key Themes
 
 1. **Automation** - Automate repetitive tasks to ensure consistency and free up human judgment

@@ -103,6 +103,9 @@ Learn from leading technology companies and proven methodologies:
 - **[PSP & TSP](05-practice/05-psp-tsp.md)** - Personal and Team Software Process
 - **[Site Reliability Engineering](05-practice/06-site-reliability-engineering.md)** - SLOs, error budgets, and toil reduction
 - **[Industry Case Studies](05-practice/07-industry-case-studies.md)** - Google, Microsoft, Facebook, Netflix
+- **[Google Engineering Practices](05-practice/08-google-engineering-practices.md)** - Test pyramid, code review, static analysis
+- **[Microsoft Quality Practices](05-practice/09-microsoft-quality-practices.md)** - Milestones, bug bars, testing roles
+- **[Quality Gates & CI/CD](05-practice/10-quality-gates-cicd.md)** - Pre-submit/post-submit/release gates
 
 ---
 
