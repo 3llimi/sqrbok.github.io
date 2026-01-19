@@ -44,6 +44,15 @@ Google's approach to running production systems: SLOs, error budgets, and toil r
 ### [Industry Case Studies](07-industry-case-studies.md)
 Quality practices at Google, Microsoft, Facebook, Netflix, and other technology leaders.
 
+### [Google Engineering Practices](08-google-engineering-practices.md)
+Test pyramid (70/20/10), code review with Readability certification, static analysis, flaky test management.
+
+### [Microsoft Quality Practices](09-microsoft-quality-practices.md)
+Milestone-based development, bug bars, testing roles (SDE/SDET), War Room ship decisions.
+
+### [Quality Gates & CI/CD](10-quality-gates-cicd.md)
+Pre-submit/post-submit/release gates, deployment strategies, feature flags lifecycle.
+
 ---
 
 ## Key Themes
