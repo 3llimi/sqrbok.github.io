@@ -435,17 +435,5 @@ For deeper exploration of related topics, see supplementary notes:
 
 ---
 
-## Connection to Other Topics
-
-|Topic|Connection|
-|---|---|
-|**A2: Quality Planning**|CoQ analysis informs QP decisions|
-|**A3: Process Improvement**|CMMI levels correlate with CoSQ reduction|
-|**A4: Tech Debt**|Tech debt = deferred internal failure costs|
-|**L1-L2: CI/CD**|Automation enables cost-effective shift-left|
-|**L9-L10: SRE**|Error budgets = acceptable external failure rate|
-
----
-
 {: .highlight }
 **Disclaimer:** AI is used for text summarization, polishing and explaining. Authors have verified all facts and claims. In case of an error, feel free to file an issue.
