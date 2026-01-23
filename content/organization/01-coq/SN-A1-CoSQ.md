@@ -5,7 +5,14 @@ nav_order: 99
 layout: default
 ---
 
-**Lecture A1** | ASA 2026 | ~5-7 min read
+# Study Notes: Cost of Quality
+
+## Purpose
+
+These study notes explain the Cost of Software Quality (CoSQ) framework. Designed for MS students preparing for exams.
+
+{: .note }
+**Related Pages:** For detailed coverage, see [CoSQ Foundations](01-cosq-foundations.md), [Defect Injection & Removal](02-defect-injection-removal.md), [Defect Classification](03-defect-classification.md), and [Quality Economics in DevOps](04-quality-economics-devops.md).
 
 ---
 
@@ -440,4 +447,5 @@ For deeper exploration of related topics, see supplementary notes:
 
 ---
 
-{: .highlight } **Disclaimer:** AI is used for text summarization, polishing and explaining. Authors have verified all facts and claims. In case of an error, feel free to file an issue.
+{: .highlight }
+**Disclaimer:** AI is used for text summarization, polishing and explaining. Authors have verified all facts and claims. In case of an error, feel free to file an issue.
