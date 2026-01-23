@@ -9,6 +9,17 @@ layout: default
 
 Technical Debt (TD) Quantification is a critical aspect of software quality management that translates technical inefficiencies into measurable effort and business risk {% cite amanatidis2020td %} {% cite bhatia2023satd %}. Current research highlights significant challenges in how debt is identified by automated tools versus how it is admitted by developers in specialized domains like Machine Learning.
 
+## What is Technical Debt?
+
+**Technical Debt** is a metaphor introduced by Ward Cunningham that compares sub-optimal code or design decisions to financial debt. When developers take shortcuts—whether intentionally for speed or unintentionally due to evolving requirements—they incur "debt" that must eventually be repaid through refactoring or rewriting. Like financial debt, TD accrues "interest" over time: the longer it remains, the more costly it becomes to maintain or extend the affected code.
+
+| Aspect | Financial Debt Analogy |
+|--------|------------------------|
+| **Principal** | Initial shortcut or compromise |
+| **Interest** | Ongoing maintenance overhead |
+| **Repayment** | Refactoring or rewriting |
+| **Default** | System becomes unmaintainable |
+
 ## The TD Tool Agreement Problem
 
 A major study by Amanatidis et al. (2020) evaluated the consistency of three leading TD assessment tools across 50 open-source projects {% cite amanatidis2020td %}:
