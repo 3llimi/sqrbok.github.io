@@ -64,6 +64,16 @@ Thought leaders who shaped quality management:
 
 ---
 
+## Study Materials
+
+### [Study Notes: Quality Models](SN-L1-QM.md)
+Comprehensive study notes covering Garvin's views, McCall's model, ISO 25010, quality requirements, and quality gurus.
+
+### [Revision Questions: Quality Models](RQ-L1-QM.md)
+Self-study and exam preparation questions covering all foundational quality topics.
+
+---
+
 ## From Foundations to Practice
 
 Understanding these foundational concepts prepares you for practical application:

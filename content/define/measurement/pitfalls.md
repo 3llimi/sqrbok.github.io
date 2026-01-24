@@ -9,9 +9,7 @@ layout: default
 
 ### **"Dilbert Gets Rich" Comic**
 
-![Dilbert gets rich](image.png)
-
-*Original source (http://dilbert.com/strips/comic/1995-11-13/)*
+![Dilbert](dilbert_nano.jpg)
 
 This comic humorously illustrates how metrics, when misunderstood or misapplied, can lead to absurd outcomes.  
 
