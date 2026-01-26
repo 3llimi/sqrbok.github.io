@@ -41,6 +41,16 @@ The human side of process improvement - overcoming resistance, sustaining change
 
 ---
 
+## Study Materials
+
+### [Study Notes](SN-A2-Proc.md)
+Comprehensive study notes covering all Process Improvement concepts for exam preparation.
+
+### [Revision Questions](RQ-A2-Proc.md)
+Self-assessment questions to test your understanding of Process Improvement concepts.
+
+---
+
 ## Key Principles
 
 1. **Culture eats process for breakfast** - Technical changes fail without cultural support

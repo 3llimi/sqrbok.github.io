@@ -78,14 +78,6 @@ Large tests (10%):
 - No tests at the base - makes debugging slow
 - Testing corner cases only at system level (impractical)
 
-**Student Checklist:**
-- [ ] Define test pyramid ratio for your project (start with 70/20/10)
-- [ ] Identify which tests should be small (isolated, mocked dependencies)
-- [ ] Identify integration points needing medium tests
-- [ ] Define critical user journeys for large/E2E tests
-- [ ] Set code coverage targets (aim for 80%+ in unit tests)
-- [ ] Ensure tests at all levels before feature is "done"
-
 **Maturity:** Starter - Essential foundation for any project
 
 ---
@@ -135,15 +127,6 @@ Large tests (10%):
 - Complexity toil (hard to debug when fails)
 - False positives (flaky tests create noise)
 
-**Student Checklist:**
-- [ ] Identify repetitive testing tasks for automation
-- [ ] Prioritize high-risk areas using risk heat map
-- [ ] Apply 80/20 rule - focus on most-used scenarios
-- [ ] Start with small (unit) tests - highest ROI
-- [ ] Integrate automation into CI pipeline (pre-merge)
-- [ ] Track maintenance cost vs execution savings
-- [ ] Reserve human testing for UX, exploratory, edge cases
-
 **Anti-patterns to Avoid:**
 - Automating for the sake of automation (consider ROI)
 - UI automation on frequently changing interfaces (brittle)
@@ -191,14 +174,6 @@ Large tests (10%):
 - **Isolation:** Identify exact change where test started failing
 - **Efficiency:** Run minimal tests without sacrificing accuracy
 - **Scale:** Handle changes to common libraries (may trigger thousands of tests)
-
-**Student Checklist:**
-- [ ] Track dependencies between code and tests
-- [ ] Implement affected test selection in CI
-- [ ] Define test priority levels (P1, P2, P3)
-- [ ] Create smoke test suite for critical paths
-- [ ] Run unit tests first, integration later
-- [ ] Use risk-based prioritization for manual testing
 
 **Maturity:** Intermediate - Requires build system integration
 
@@ -256,15 +231,6 @@ def test_weekly_report():
 - **ROI calculation:** Fix cost (hours) / Time saved per run = break-even runs
 
 > "Flaky tests create noise that leads engineers to ignore ALL test results." {% cite winters2020swe %}
-
-**Student Checklist:**
-- [ ] Identify tests with intermittent failures
-- [ ] Randomize test execution order to find order dependencies
-- [ ] Replace external dependencies with mocks/fakes
-- [ ] Quarantine flaky tests (don't let them block CI)
-- [ ] Track flaky test rate as quality metric
-- [ ] Fix or delete tests that consistently flake
-- [ ] Target <10% false positive rate
 
 **Anti-patterns to Avoid:**
 - Ignoring flaky tests (leads to ignoring ALL test failures)
@@ -329,14 +295,6 @@ def test_divide():
 **Practical Rule:**
 80% coverage is a good target. The last 20% often includes error handlers and edge cases that are expensive to test but rarely run.
 
-**Student Checklist:**
-- [ ] Set coverage targets by milestone (65% - 75% - 80%)
-- [ ] Require 80% coverage for new feature code
-- [ ] Focus on meaningful coverage, not just numbers
-- [ ] Use coverage to find untested code, not as quality measure
-- [ ] Track coverage trends over time
-- [ ] Remember: coverage finds gaps, tests find bugs
-
 **Anti-patterns to Avoid:**
 - Treating coverage as quality proof (high coverage != good tests)
 - Retrofitting tests to bad code (may exercise bugs)
@@ -387,14 +345,6 @@ A unit of information providing value through repeatability and historical refer
 - Assuming reader knowledge (missing steps)
 - Forgetting preconditions
 
-**Student Checklist:**
-- [ ] Create test plan for each major feature
-- [ ] Document test cases with all required attributes
-- [ ] Specify preconditions and expected results clearly
-- [ ] Note automation status for each test
-- [ ] Avoid jargon - write for future readers
-- [ ] Keep documentation updated as tests change
-
 **Maturity:** Starter - Can use simple templates
 
 ---
@@ -438,15 +388,6 @@ A unit of information providing value through repeatability and historical refer
 - Testing in production without proper isolation
 - Assuming staging = production
 - Using production credentials in tests
-
-**Student Checklist:**
-- [ ] Define environment strategy for each test level
-- [ ] Use mocks/fakes for unit tests
-- [ ] Create staging environment for E2E testing
-- [ ] Never use production data in test environments
-- [ ] Use separate credentials for test environments
-- [ ] Consider cloud-based short-lived environments
-- [ ] Document staging vs production differences
 
 **Maturity:** Intermediate - Requires infrastructure investment
 
@@ -495,13 +436,6 @@ The LLM saw the code returns 101, so it wrote a test expecting 101. The test pas
 **Why This Matters:** Up to **68.1%** of LLM-generated test suites may validate bugs by testing what code *does* rather than what it *should do*.
 
 **Mitigation:** Always review LLM-generated assertions against requirements, not just code.
-
-**Student Checklist:**
-- [ ] Review ALL LLM-generated test assertions manually
-- [ ] Compare assertions against specifications, not code
-- [ ] Use LLMs for test structure, verify logic yourself
-- [ ] Consider hybrid PBT for better bug detection
-- [ ] Don't trust LLM tests for critical security paths
 
 **Maturity:** Advanced - Requires careful human oversight
 
@@ -566,14 +500,6 @@ The LLM saw the code returns 101, so it wrote a test expecting 101. The test pas
 - **Config changes too** - configuration reviewed like code
 - **Quality gate** - feature not "done" until review complete
 
-**Student Checklist:**
-- [ ] Require code review before merge (branch protection)
-- [ ] Define what reviewers should check (checklist)
-- [ ] Establish style guide for consistency
-- [ ] Use static analysis to catch mechanical issues
-- [ ] Keep reviews small (easier to review thoroughly)
-- [ ] Respond to reviews promptly (<24h target)
-
 **Maturity:** Starter - Can start immediately with GitHub/GitLab
 
 ---
@@ -623,14 +549,6 @@ The LLM saw the code returns 101, so it wrote a test expecting 101. The test pas
 - **Incremental rollout** - Enforce on new code, exempt legacy until cleaned
 - **Developer feedback loop** - Let devs report "not useful" to tune tools
 
-**Student Checklist:**
-- [ ] Integrate linter/static analysis into IDE
-- [ ] Add static analysis to CI pipeline (fail build on errors)
-- [ ] Start with high-confidence checks (low false positives)
-- [ ] Enable security-focused rules (SQL injection, XSS)
-- [ ] Configure auto-fixes where available
-- [ ] Track false positive rate, tune rules if too noisy
-
 **Maturity:** Starter - Many free tools available (ESLint, Pylint, SonarQube)
 
 ---
@@ -674,13 +592,6 @@ The LLM saw the code returns 101, so it wrote a test expecting 101. The test pas
 **Critical Warning** {% cite cotroneo2025humanvsai %}:
 > Iterative AI improvements without human gates leads to **37.6% increase in vulnerabilities** after 5 iterations
 
-**Student Checklist:**
-- [ ] Use LLM for initial triage, not final decision
-- [ ] Combine LLM review with static analysis tools
-- [ ] Always have human review AI suggestions
-- [ ] Consider multi-model aggregation for critical code
-- [ ] Track AI review accuracy over time
-
 **Maturity:** Intermediate - Requires careful integration
 
 ---
@@ -723,15 +634,6 @@ The LLM saw the code returns 101, so it wrote a test expecting 101. The test pas
 | **Hermetic builds** | Specify all inputs for caching |
 | **Concurrent execution** | Cloud compute enables parallel builds |
 | **Small changes** | Smaller = faster to build, easier to roll back |
-
-**Student Checklist:**
-- [ ] Set up continuous integration (run on every push)
-- [ ] Target build completion in minutes, not hours
-- [ ] Implement dependency-based test selection
-- [ ] Keep changes small and focused
-- [ ] Cache build artifacts between runs
-- [ ] Track build time as a metric
-- [ ] Alert if build time regresses significantly
 
 **Maturity:** Starter - GitHub Actions, GitLab CI provide free CI
 
@@ -781,14 +683,6 @@ Your SLO of 99.9% is preserved while you detect and fix the bug!
 - **E**rrors - failure rate
 - **T**ickets - manual interventions
 
-**Student Checklist:**
-- [ ] Choose deployment strategy (canary recommended)
-- [ ] Define rollout stages (1% - 10% - 50% - 100%)
-- [ ] Set up monitoring for errors, latency, traffic
-- [ ] Define rollback criteria (error rate thresholds)
-- [ ] Implement feature flags for safe launches
-- [ ] Create runbook for deployment process
-
 **Maturity:** Intermediate - Requires deployment automation
 
 ---
@@ -822,15 +716,6 @@ Your SLO of 99.9% is preserved while you detect and fix the bug!
 - No binary redeploy needed
 - **Breakglass bypass** for emergencies
 - Instant rollback of specific functionality
-
-**Student Checklist:**
-- [ ] Default to rollback for production incidents
-- [ ] Keep releases small (cheaper to roll back)
-- [ ] Implement feature flags for granular rollback
-- [ ] Automate deployment so rollback is one-click
-- [ ] Test fixes before rolling forward
-- [ ] Document rollback procedures in runbook
-- [ ] Track time-to-rollback as a metric
 
 **Maturity:** Intermediate - Requires deployment automation
 
@@ -871,14 +756,6 @@ Your SLO of 99.9% is preserved while you detect and fix the bug!
 | Final Release | 80% coverage, all perf tests pass |
 | Deployment | Positive error budget required |
 
-**Student Checklist:**
-- [ ] Define pre-merge gates (code review, tests, coverage)
-- [ ] Set coverage threshold (start with 80% for new code)
-- [ ] Configure CI to block merges on test failures
-- [ ] Define milestone exit criteria
-- [ ] Create release checklist (testing, security, performance)
-- [ ] Plan canary/staged rollout for production
-
 **Maturity:** Intermediate - Requires CI/CD infrastructure
 
 ---
@@ -913,14 +790,6 @@ Separate feature launches from binary releases. Binary should show no behavior c
 - **Remove stable flags** - Consolidate logic, simplify code
 - **Tag as tech debt** - Make flag status visible
 - **Document removal criteria** - How to prove flag is no longer needed
-
-**Student Checklist:**
-- [ ] Design features to work behind flags from start
-- [ ] Use flags for all risky changes
-- [ ] Monitor flag values alongside other metrics
-- [ ] Define criteria for flag removal
-- [ ] Schedule flag cleanup (don't let them accumulate)
-- [ ] Document flag dependencies
 
 **Maturity:** Intermediate - Requires flag infrastructure
 
@@ -966,13 +835,6 @@ Separate feature launches from binary releases. Binary should show no behavior c
 | **Client apps** | Every few weeks | Chrome |
 | **Enterprise** | Months-years | Windows, Office |
 
-**Student Checklist:**
-- [ ] Choose branching strategy (trunk-based for speed, feature branches for isolation)
-- [ ] Define release channels appropriate to your product
-- [ ] Set up automated builds (daily minimum)
-- [ ] Define milestone exit criteria
-- [ ] Plan quality milestone for technical debt
-
 **Maturity:** Intermediate - Requires release infrastructure
 
 ---
@@ -997,12 +859,6 @@ LLM Triage -> SARIF Reports -> Deterministic Verification -> Human Review
 | MTTR | **-43%** |
 | Deploy Frequency | +28% |
 | Change Failure Rate | -18% |
-
-**Student Checklist:**
-- [ ] Consider LLM triage for test failures
-- [ ] Automate CVE severity assessment
-- [ ] Implement SLO-based rollback triggers
-- [ ] Track DORA metrics before/after AI adoption
 
 **Maturity:** Advanced - Requires mature DevOps foundation
 
@@ -1064,14 +920,6 @@ Example:
 | 99.99% (4 nines) | **~52 minutes** | Shared infrastructure |
 
 > "100% reliability is the wrong target - it leaves no room for change and costs more than the marginal utility it provides." {% cite beyer2016sre %}
-
-**Student Checklist:**
-- [ ] Identify 2-3 key SLIs for your service (availability, latency, errors)
-- [ ] Set realistic SLO targets (start with current performance - buffer)
-- [ ] Calculate error budget (100% - SLO)
-- [ ] Define what happens when budget exhausted
-- [ ] Get stakeholder agreement on targets
-- [ ] Monitor SLIs in dashboard
 
 **Maturity:** Intermediate - Requires monitoring infrastructure
 
@@ -1143,14 +991,6 @@ Alert thresholds:
 - Gives objective criteria: "Can we ship?" becomes "Do we have budget?"
 - Balances innovation speed with reliability
 
-**Student Checklist:**
-- [ ] Calculate error budget from SLO (100% - SLO)
-- [ ] Track actual errors against budget
-- [ ] Define error budget policy with stakeholders
-- [ ] Set up burn rate monitoring and alerts
-- [ ] Define feature freeze criteria
-- [ ] Use remaining budget strategically for innovation
-
 **Maturity:** Intermediate - Requires SLO infrastructure
 
 ---
@@ -1211,16 +1051,6 @@ Good alert: "Checkout latency > 2 seconds"
 | **Page** | 2% budget consumed in 1 hour | Immediate response |
 | **Ticket** | 10% budget consumed in 3 days | Scheduled work |
 
-**Student Checklist:**
-- [ ] Monitor the Four Golden Signals (latency, traffic, errors, saturation)
-- [ ] Track binary/config versions for correlation
-- [ ] Alert on symptoms (user impact), not causes
-- [ ] Implement burn rate alerting tied to SLOs
-- [ ] Define severity levels and response expectations
-- [ ] Store monitoring config in version control
-- [ ] Keep dashboards consistent across services
-- [ ] Suppress duplicate/cascading alerts
-
 **Maturity:** Intermediate - Requires monitoring infrastructure
 
 ---
@@ -1258,16 +1088,6 @@ Good alert: "Checkout latency > 2 seconds"
 | **Communications Lead (CL)** | Updates stakeholders |
 
 > "Every page must be treated as a bug that requires a permanent fix. If you can't find root cause, at minimum add monitoring to aid future debugging." {% cite beyer2018sreworkbook %}
-
-**Student Checklist:**
-- [ ] Define on-call rotation schedule
-- [ ] Limit shift length (max 12 hours)
-- [ ] Target <=2 incidents per shift
-- [ ] Create training roadmap for new on-call engineers
-- [ ] Establish escalation procedures and roles
-- [ ] Define handover protocol
-- [ ] Compensate out-of-hours work
-- [ ] Treat every page as a bug to fix
 
 **Maturity:** Intermediate - Requires incident management process
 
@@ -1310,15 +1130,6 @@ Based on US Incident Command System (ICS). Built on "Three Cs": **Command, Contr
 - **Blameless culture** - Learn from failure, don't assign blame
 - **Mandatory for outages** - Every user-affecting outage needs postmortem
 - **Shared openly** - Stored centrally, promotes learning
-
-**Student Checklist:**
-- [ ] Define incident severity levels (P0, P1, P2...)
-- [ ] Assign incident roles for your team
-- [ ] Create incident response runbook
-- [ ] Establish blameless postmortem template
-- [ ] Track action items with owners and deadlines
-- [ ] Share postmortems for team learning
-- [ ] Practice incident response (game days)
 
 **Maturity:** Intermediate - Requires process and culture
 
@@ -1364,13 +1175,6 @@ Based on US Incident Command System (ICS). Built on "Three Cs": **Command, Contr
 - Google SRE-to-developer ratio: <10% overall
 - SRE ratios by area: 1:5 (infrastructure) to 1:50 (consumer apps)
 
-**Student Checklist:**
-- [ ] Define who owns testing in your project
-- [ ] Establish "you build it, you break it" culture
-- [ ] Assign clear roles: who writes tests, who reviews, who maintains
-- [ ] Consider Feature Crew model for small cross-functional teams
-- [ ] Plan test infrastructure ownership (framework, CI, tools)
-
 **Maturity:** Intermediate - Requires team structure decisions
 
 ---
@@ -1414,13 +1218,6 @@ A **bug bar** is a predefined quality standard that sets the threshold for numbe
 2. Compare against bug bar thresholds
 3. Triage into "must fix" vs "should fix"
 4. War room makes final call on edge cases
-
-**Student Checklist:**
-- [ ] Define severity levels for your project
-- [ ] Set bug bar thresholds for each milestone
-- [ ] Define exit criteria (no Sev 1, coverage %, etc.)
-- [ ] Establish triage process for remaining bugs
-- [ ] Document mandatory blockers (security, legal)
 
 **Maturity:** Intermediate - Requires bug tracking discipline
 
@@ -1466,15 +1263,6 @@ Toil is repetitive, manual work that lacks enduring value, grows linearly with s
 **Complexity Toil Warning:**
 > "Automatable" doesn't always mean "should automate" - overly complex automation becomes its own form of toil when it breaks and requires debugging.
 
-**Student Checklist:**
-- [ ] Identify repetitive manual tasks (potential toil)
-- [ ] Track time spent on toil vs engineering work
-- [ ] Prioritize automation by frequency x effort
-- [ ] Set target: <50% time on toil
-- [ ] Standardize processes to "melt snowflakes"
-- [ ] Build self-service tools where possible
-- [ ] Review automation complexity (don't create new toil)
-
 **Maturity:** Starter - Can track immediately, automation builds over time
 
 ---
@@ -1512,13 +1300,6 @@ Toil is repetitive, manual work that lacks enduring value, grows linearly with s
 - Coverage automatically tracked
 - Static analysis integrated
 - Every bug gets a regression test
-
-**Student Checklist:**
-- [ ] Start at Level 1: Set up CI, classify tests
-- [ ] Progress to Level 2: Block releases with red tests
-- [ ] Add Level 3: Require tests for all changes
-- [ ] Automate gates at Level 4: Pre-submit testing
-- [ ] Aim for Level 5: Bug fix = regression test
 
 **Maturity:** Starter to Advanced - Progress incrementally through levels
 
@@ -1587,15 +1368,6 @@ Dev -> Staging -> 1% Prod -> 10% -> Full
 **Real Example (Netflix):**
 - Chaos Monkey kills instances during **business hours**
 - Teams must build for failure by default
-
-**Student Checklist:**
-- [ ] Define resilience goals (recovery time, degraded mode behavior)
-- [ ] Plan periodic failure tests (not just once)
-- [ ] Start in staging with synthetic traffic
-- [ ] Use 1% dry runs before full tests
-- [ ] Ensure cancellation mechanism exists
-- [ ] Document learnings in postmortems
-- [ ] Train team with "Wheel of Misfortune" exercises
 
 **Anti-patterns to Avoid:**
 - Testing in production without safety mechanisms
@@ -1696,13 +1468,6 @@ import flask_auth_helper  # DOESN'T EXIST!
 2. **Approval Windows:** 15 min for Tier 1 operations
 3. **Small Batches:** AI increases PR size 154% - resist this
 4. **Review Cadence:** Every 3 iterations max
-
-**Student Checklist:**
-- [ ] Define trust tier for each AI tool in use
-- [ ] Implement dependency whitelist
-- [ ] Require human review every 3 AI iterations
-- [ ] Set up circuit breakers for AI actions
-- [ ] Track AI error rate and promote/demote trust accordingly
 
 **Maturity:** Advanced - Requires mature DevOps and clear policies
 
