@@ -1,3 +1,10 @@
+---
+title: "Study Notes: Verification Methods"
+parent: Overview
+nav_order: 10
+layout: default
+---
+
 # Study Notes: Verification Methods
 
 **Course:** Software Quality and Reliability (SQR)
@@ -85,7 +92,7 @@ Verification establishes **confidence** (not proof!) that software:
 |--------------|--------|--------|
 | **Hewlett-Packard** | ROI 10:1, $21.4M/year savings | Grady & Van Slack 1994 {% cite grady1994key %} |
 | **AT&T Bell Labs** | 10× quality improvement, 14% productivity increase | Humphrey 1989 {% cite humphrey1989managing %} |
-| **Bell Northern** | 33 hours maintenance saved per defect found | Russell 1991 {% cite russell1991experience %} |
+| **Bell Northern** | 33 hours maintenance saved per defect found | Russell 1991 {% cite russell1991bell %} |
 | **Cisco** | Results match established literature | Cohen 2006 {% cite cohen2006code %} |
 
 **Why so effective?**
@@ -473,9 +480,9 @@ Verification establishes **confidence** (not proof!) that software:
 
 **Primary Sources:**
 - Software Inspection {% cite gilb1993software %}
-- Software Testing Techniques {% cite beizer1990software %}
+- Software Testing Techniques {% cite beizer2003testing %}
 - Managing the Software Process {% cite humphrey1989managing %}
-- Google Testing Practices {% cite memon2017taming %} {% cite winters2020software %}
+- Google Testing Practices {% cite memon2017testing %} {% cite winters2020swe %}
 
 **Empirical Studies:**
 - TDD at Microsoft/IBM {% cite nagappan2008tdd %}

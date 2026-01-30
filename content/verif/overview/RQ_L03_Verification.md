@@ -1,5 +1,13 @@
+---
+title: "Revision Questions: Verification Methods"
+parent: Overview
+nav_order: 100
+layout: default
+---
+
 # Verification Methods — Revision Questions
 
+**Purpose:** Self-study and exam preparation
 **Format:** Explain in your own words, give brief examples
 
 ---

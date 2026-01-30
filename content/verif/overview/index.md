@@ -144,6 +144,16 @@ The most effective V&V programs combine techniques:
 
 ---
 
+## Study Materials
+
+### [SN: Verification Methods](SN_L03_Verification.md)
+Comprehensive study notes covering V&V fundamentals, inspection techniques and ROI, static analysis (properties, Rice's theorem, tools), testing (levels, black/white box, TDD, test pyramid), and demonstration.
+
+### [RQ: Verification Methods](RQ_L03_Verification.md)
+Revision questions for self-study and exam preparation covering four verification techniques, inspection, static analysis, testing fundamentals, and defense in depth.
+
+---
+
 ## Further Exploration
 
 After understanding V&V techniques, explore:
