@@ -491,11 +491,26 @@ Verification establishes **confidence** (not proof!) that software:
 - Defect Density Benchmarks {% cite shah2012defect %}
 - Software Quality Metrics {% cite jones2017quantifying %}
 
-**SQRBOK Pages:**
-- [Verification Techniques](https://sqrbok.github.io/content/verif/overview/techniques.html)
-- [Inspection](https://sqrbok.github.io/content/verif/overview/inspection.html)
-- [Testing Levels](https://sqrbok.github.io/content/verif/overview/testing/testing_levels.html)
-- [Analysis Properties](https://sqrbok.github.io/content/verif/overview/analysis/analysis_properties.html)
+**Further Reading:**
+
+For more details on specific topics covered in these study notes:
+
+*V&V Overview*
+- [V&V Techniques](techniques.md) — Classification and when to use each approach
+
+*Inspection*
+- [Inspection](inspection.md) — Code reviews, walkthroughs, and Fagan method
+
+*Static Analysis*
+- [Analysis Definitions](analysis/analysis_definitions.md) — What is static analysis?
+- [Analysis Properties](analysis/analysis_properties.md) — Safety, liveness, and temporal properties
+- [Analysis Tools](analysis/tools.md) — Linters, type checkers, and advanced analyzers
+
+*Testing*
+- [Testing Definitions](testing/testing_definitions.md) — Fundamental testing concepts
+- [Testing Levels](testing/testing_levels.md) — Unit, integration, system, acceptance
+- [Black Box vs White Box](testing/testing_bb_wb.md) — Functional vs structural testing
+- [Testing Purpose](testing/testing_purpose.md) — Functional, performance, security testing
 
 ---
 
