@@ -21,81 +21,109 @@
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Jekyll/Rouge wraps code blocks in: div.language-XXX > div.highlight > pre.highlight > code
-  // Or simply: pre > code.language-XXX
-  // We need to handle both cases
+(function() {
+  function renderVegaLiteCharts() {
+    var vegaBlocks = [];
 
-  var vegaBlocks = [];
-
-  // Method 1: Find by wrapper div class (Jekyll/Rouge style)
-  document.querySelectorAll('.language-vega-lite, .language-vegalite').forEach(function(wrapper) {
-    var code = wrapper.querySelector('pre code') || wrapper.querySelector('code');
-    if (code) {
-      vegaBlocks.push({ code: code, wrapper: wrapper });
-    }
-  });
-
-  // Method 2: Find by code element class (standard markdown style)
-  document.querySelectorAll('pre > code.language-vega-lite, pre > code.language-vegalite').forEach(function(code) {
-    // Check if not already added via Method 1
-    var alreadyAdded = vegaBlocks.some(function(block) { return block.code === code; });
-    if (!alreadyAdded) {
-      vegaBlocks.push({ code: code, wrapper: code.parentElement });
-    }
-  });
-
-  // Method 3: Find by highlight class with vega-lite in parent
-  document.querySelectorAll('div.highlighter-rouge[class*="vega"]').forEach(function(wrapper) {
-    var code = wrapper.querySelector('code');
-    if (code) {
-      var alreadyAdded = vegaBlocks.some(function(block) { return block.code === code; });
-      if (!alreadyAdded) {
+    // Method 1: Find by wrapper div class (Jekyll/Rouge style)
+    // Jekyll generates: div.language-vega-lite.highlighter-rouge > div.highlight > pre > code
+    document.querySelectorAll('.language-vega-lite, .language-vegalite').forEach(function(wrapper) {
+      var code = wrapper.querySelector('code');
+      if (code) {
         vegaBlocks.push({ code: code, wrapper: wrapper });
       }
-    }
-  });
+    });
 
-  console.log('Vega-Lite: Found ' + vegaBlocks.length + ' chart(s) to render');
+    // Method 2: Find by code element class
+    document.querySelectorAll('code.language-vega-lite, code.language-vegalite').forEach(function(code) {
+      var alreadyAdded = vegaBlocks.some(function(block) { return block.code === code; });
+      if (!alreadyAdded) {
+        var wrapper = code.closest('.highlighter-rouge') || code.closest('.highlight') || code.parentElement;
+        vegaBlocks.push({ code: code, wrapper: wrapper });
+      }
+    });
 
-  vegaBlocks.forEach(function(block, index) {
-    try {
-      var specText = block.code.textContent.trim();
-      var spec = JSON.parse(specText);
-
-      // Create container for the chart
-      var container = document.createElement('div');
-      container.id = 'vega-chart-' + index;
-      container.className = 'vega-chart-container';
-
-      // Insert container before the wrapper and hide the code block
-      block.wrapper.parentNode.insertBefore(container, block.wrapper);
-      block.wrapper.style.display = 'none';
-
-      // Render the chart with theme detection
-      var isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
-                   (jtd && jtd.getTheme && jtd.getTheme() === 'dark') ||
-                   window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      vegaEmbed('#' + container.id, spec, {
-        theme: isDark ? 'dark' : undefined,
-        actions: {
-          export: true,
-          source: false,
-          compiled: false,
-          editor: true
+    // Method 3: Find by highlighter-rouge class containing vega
+    document.querySelectorAll('[class*="highlighter-rouge"][class*="vega"]').forEach(function(wrapper) {
+      var code = wrapper.querySelector('code');
+      if (code) {
+        var alreadyAdded = vegaBlocks.some(function(block) { return block.code === code; });
+        if (!alreadyAdded) {
+          vegaBlocks.push({ code: code, wrapper: wrapper });
         }
-      }).then(function(result) {
-        console.log('Vega-Lite: Chart ' + index + ' rendered successfully');
-      }).catch(function(error) {
-        console.error('Vega-Lite rendering error for chart ' + index + ':', error);
-        block.wrapper.style.display = 'block'; // Show code on error
-        container.innerHTML = '<p style="color: red; padding: 1rem; background: #fee;">Error rendering chart: ' + error.message + '</p>';
+      }
+    });
+
+    // Method 4: Fallback - find ALL code blocks and check if content is Vega-Lite JSON
+    if (vegaBlocks.length === 0) {
+      document.querySelectorAll('pre code, .highlight code').forEach(function(code) {
+        var text = code.textContent.trim();
+        // Check if it looks like Vega-Lite JSON (has $schema with vega)
+        if (text.startsWith('{') && text.indexOf('"$schema"') !== -1 && text.indexOf('vega') !== -1) {
+          try {
+            var parsed = JSON.parse(text);
+            if (parsed.$schema && parsed.$schema.indexOf('vega') !== -1) {
+              var wrapper = code.closest('.highlighter-rouge') || code.closest('.highlight') || code.parentElement;
+              vegaBlocks.push({ code: code, wrapper: wrapper });
+            }
+          } catch (e) {
+            // Not valid JSON, skip
+          }
+        }
       });
-    } catch (e) {
-      console.error('Vega-Lite JSON parse error for chart ' + index + ':', e);
-      console.error('Content was:', block.code.textContent.substring(0, 200));
     }
-  });
-});
+
+    console.log('Vega-Lite: Found ' + vegaBlocks.length + ' chart(s) to render');
+
+    vegaBlocks.forEach(function(block, index) {
+      try {
+        var specText = block.code.textContent.trim();
+        var spec = JSON.parse(specText);
+
+        // Create container for the chart
+        var container = document.createElement('div');
+        container.id = 'vega-chart-' + index;
+        container.className = 'vega-chart-container';
+
+        // Insert container before the wrapper and hide the code block
+        block.wrapper.parentNode.insertBefore(container, block.wrapper);
+        block.wrapper.style.display = 'none';
+
+        // Render the chart with theme detection for just-the-docs
+        var isDark = false;
+        try {
+          isDark = document.documentElement.dataset.theme === 'dark' ||
+                   (typeof jtd !== 'undefined' && jtd.getTheme && jtd.getTheme() === 'dark') ||
+                   window.matchMedia('(prefers-color-scheme: dark)').matches;
+        } catch (e) {}
+
+        vegaEmbed('#' + container.id, spec, {
+          theme: isDark ? 'dark' : undefined,
+          actions: {
+            export: true,
+            source: false,
+            compiled: false,
+            editor: true
+          }
+        }).then(function(result) {
+          console.log('Vega-Lite: Chart ' + index + ' rendered successfully');
+        }).catch(function(error) {
+          console.error('Vega-Lite rendering error for chart ' + index + ':', error);
+          block.wrapper.style.display = 'block';
+          container.innerHTML = '<p style="color: red; padding: 1rem; background: #fee; border-radius: 4px;">Error rendering chart: ' + error.message + '</p>';
+        });
+      } catch (e) {
+        console.error('Vega-Lite JSON parse error for chart ' + index + ':', e);
+      }
+    });
+  }
+
+  // Run when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderVegaLiteCharts);
+  } else {
+    // DOM already loaded (script loaded async/defer)
+    renderVegaLiteCharts();
+  }
+})();
 </script>
