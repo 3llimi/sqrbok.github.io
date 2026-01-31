@@ -25,3 +25,16 @@
   {% when "mathjax" %}
     {% include mathjax.html %}
 {% endcase %}
+
+{%- comment -%}
+  Vega-Lite chart rendering support.
+  Automatically renders ```vega-lite code blocks as interactive charts.
+  To enable on specific pages, set `vegalite: true` in front matter.
+  To enable site-wide, set `vegalite: true` in _config.yml.
+{%- endcomment -%}
+
+{% assign vegalite = page.vegalite | default: layout.vegalite | default: site.vegalite %}
+
+{% if vegalite %}
+  {% include vegalite.html %}
+{% endif %}

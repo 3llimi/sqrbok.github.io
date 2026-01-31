@@ -16,6 +16,8 @@ mermaid:
 
 math: mathjax
 
+vegalite: true
+
 
 title: SQRBOK - Handbook
 author: Andrey Sadovykh

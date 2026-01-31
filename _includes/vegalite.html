@@ -1,0 +1,61 @@
+<!-- Vega-Lite Rendering Support -->
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+<style>
+  .vega-embed {
+    width: 100%;
+    margin: 1rem 0;
+  }
+  .vega-embed .vega-actions {
+    padding-top: 0.5rem;
+  }
+  .vega-embed .vega-actions a {
+    margin-right: 0.75rem;
+    font-size: 0.75rem;
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Find all vega-lite code blocks
+  const codeBlocks = document.querySelectorAll('pre > code.language-vega-lite, pre > code.language-vegalite');
+
+  codeBlocks.forEach(function(codeBlock, index) {
+    try {
+      const spec = JSON.parse(codeBlock.textContent);
+      const pre = codeBlock.parentElement;
+
+      // Create container for the chart
+      const container = document.createElement('div');
+      container.id = 'vega-chart-' + index;
+      container.className = 'vega-chart-container';
+
+      // Insert container and hide the code block
+      pre.parentNode.insertBefore(container, pre);
+      pre.style.display = 'none';
+
+      // Render the chart with theme detection
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
+                     window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      vegaEmbed('#' + container.id, spec, {
+        theme: isDark ? 'dark' : undefined,
+        actions: {
+          export: true,
+          source: false,
+          compiled: false,
+          editor: true
+        }
+      }).catch(function(error) {
+        console.error('Vega-Lite rendering error:', error);
+        pre.style.display = 'block'; // Show code on error
+        container.innerHTML = '<p style="color: red;">Error rendering chart: ' + error.message + '</p>';
+      });
+    } catch (e) {
+      console.error('Vega-Lite JSON parse error:', e);
+    }
+  });
+});
+</script>
