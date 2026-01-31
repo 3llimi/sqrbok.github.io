@@ -15,30 +15,67 @@
     margin-right: 0.75rem;
     font-size: 0.75rem;
   }
+  .vega-chart-container {
+    overflow-x: auto;
+  }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Find all vega-lite code blocks
-  const codeBlocks = document.querySelectorAll('pre > code.language-vega-lite, pre > code.language-vegalite');
+  // Jekyll/Rouge wraps code blocks in: div.language-XXX > div.highlight > pre.highlight > code
+  // Or simply: pre > code.language-XXX
+  // We need to handle both cases
 
-  codeBlocks.forEach(function(codeBlock, index) {
+  var vegaBlocks = [];
+
+  // Method 1: Find by wrapper div class (Jekyll/Rouge style)
+  document.querySelectorAll('.language-vega-lite, .language-vegalite').forEach(function(wrapper) {
+    var code = wrapper.querySelector('pre code') || wrapper.querySelector('code');
+    if (code) {
+      vegaBlocks.push({ code: code, wrapper: wrapper });
+    }
+  });
+
+  // Method 2: Find by code element class (standard markdown style)
+  document.querySelectorAll('pre > code.language-vega-lite, pre > code.language-vegalite').forEach(function(code) {
+    // Check if not already added via Method 1
+    var alreadyAdded = vegaBlocks.some(function(block) { return block.code === code; });
+    if (!alreadyAdded) {
+      vegaBlocks.push({ code: code, wrapper: code.parentElement });
+    }
+  });
+
+  // Method 3: Find by highlight class with vega-lite in parent
+  document.querySelectorAll('div.highlighter-rouge[class*="vega"]').forEach(function(wrapper) {
+    var code = wrapper.querySelector('code');
+    if (code) {
+      var alreadyAdded = vegaBlocks.some(function(block) { return block.code === code; });
+      if (!alreadyAdded) {
+        vegaBlocks.push({ code: code, wrapper: wrapper });
+      }
+    }
+  });
+
+  console.log('Vega-Lite: Found ' + vegaBlocks.length + ' chart(s) to render');
+
+  vegaBlocks.forEach(function(block, index) {
     try {
-      const spec = JSON.parse(codeBlock.textContent);
-      const pre = codeBlock.parentElement;
+      var specText = block.code.textContent.trim();
+      var spec = JSON.parse(specText);
 
       // Create container for the chart
-      const container = document.createElement('div');
+      var container = document.createElement('div');
       container.id = 'vega-chart-' + index;
       container.className = 'vega-chart-container';
 
-      // Insert container and hide the code block
-      pre.parentNode.insertBefore(container, pre);
-      pre.style.display = 'none';
+      // Insert container before the wrapper and hide the code block
+      block.wrapper.parentNode.insertBefore(container, block.wrapper);
+      block.wrapper.style.display = 'none';
 
       // Render the chart with theme detection
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
-                     window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
+                   (jtd && jtd.getTheme && jtd.getTheme() === 'dark') ||
+                   window.matchMedia('(prefers-color-scheme: dark)').matches;
 
       vegaEmbed('#' + container.id, spec, {
         theme: isDark ? 'dark' : undefined,
@@ -48,13 +85,16 @@ document.addEventListener('DOMContentLoaded', function() {
           compiled: false,
           editor: true
         }
+      }).then(function(result) {
+        console.log('Vega-Lite: Chart ' + index + ' rendered successfully');
       }).catch(function(error) {
-        console.error('Vega-Lite rendering error:', error);
-        pre.style.display = 'block'; // Show code on error
-        container.innerHTML = '<p style="color: red;">Error rendering chart: ' + error.message + '</p>';
+        console.error('Vega-Lite rendering error for chart ' + index + ':', error);
+        block.wrapper.style.display = 'block'; // Show code on error
+        container.innerHTML = '<p style="color: red; padding: 1rem; background: #fee;">Error rendering chart: ' + error.message + '</p>';
       });
     } catch (e) {
-      console.error('Vega-Lite JSON parse error:', e);
+      console.error('Vega-Lite JSON parse error for chart ' + index + ':', e);
+      console.error('Content was:', block.code.textContent.substring(0, 200));
     }
   });
 });
