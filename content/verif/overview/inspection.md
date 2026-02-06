@@ -16,7 +16,7 @@ layout: default
 
 - [Fagan Inspection Process](../inspection/fagan-process.md) — the 6-step formal method and roles
 - [Reading Techniques](../inspection/reading-techniques.md) — PBR, checklist, and scenario-based approaches
-- [Capture-Recapture Method](../inspection/capture-recapture.md) — statistical defect estimation
+- [Defect Estimation](../inspection/capture-recapture.md) — fault injection and capture-recapture methods
 - [Effectiveness Data](../inspection/effectiveness.md) — cost/benefit evidence across studies
 
 ---

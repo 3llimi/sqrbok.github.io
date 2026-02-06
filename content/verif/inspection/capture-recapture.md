@@ -1,13 +1,89 @@
 ---
-title: Capture-Recapture Method
+title: Defect Estimation
 parent: Inspection
 nav_order: 3
 layout: default
 ---
 
-# Defect Estimation with Capture-Recapture
+# Estimating Remaining Defects
 
-How many defects remain after an inspection? The **capture-recapture method** provides a statistical approach to estimate total defect content based on the overlap between independent inspectors {% cite briand2000capture %}.
+How many defects remain after an inspection? Two statistical methods can estimate total defect content:
+
+1. **Fault Injection (Error Seeding)** — Seed known defects, measure detection rate
+2. **Capture-Recapture** — Use inspector overlap to estimate population
+
+---
+
+## Two Approaches Compared
+
+| Aspect | Fault Injection | Capture-Recapture |
+|--------|-----------------|-------------------|
+| **Method** | Seed known defects | Compare inspector overlap |
+| **Requirement** | Seeded defects must be representative | ≥4 independent inspectors |
+| **Challenge** | Creating realistic defects | Zero overlap breaks formula |
+| **Best for** | Controlled experiments | Production inspections |
+
+---
+
+## Fault Injection (Error Seeding)
+
+### Mills' Methodology (1970s)
+
+Fault injection estimates total defects by measuring how well inspectors detect **intentionally seeded** defects.
+
+**Process:**
+1. Inject **I** known defects into the artifact
+2. Run the inspection process normally
+3. Count **i** = seeded defects found
+4. Count **n** = original defects found
+5. Estimate total original defects: **N = n × (I / i)**
+
+### The Formula
+
+$$N = n \times \frac{I}{i}$$
+
+Where:
+- $N$ = estimated total original defects
+- $n$ = original defects found during inspection
+- $I$ = number of seeded (injected) defects
+- $i$ = seeded defects found during inspection
+
+### Worked Example
+
+| Metric | Value |
+|--------|-------|
+| Seeded defects injected (I) | 12 |
+| Seeded defects found (i) | 4 |
+| Original defects found (n) | 11 |
+
+$$N = 11 \times \frac{12}{4} = 11 \times 3 = 33 \text{ original defects}$$
+
+**Interpretation:** Found 11 original defects, but estimate 33 exist. Approximately **22 defects remain undetected**.
+
+### Assumptions and Limitations
+
+{: .warning }
+> Seeded defects must have **similar detectability** to real defects — this is difficult to achieve in practice.
+
+| Limitation | Impact |
+|------------|--------|
+| **Representative seeding** | Hard to create defects with same visibility as real ones |
+| **Injection overhead** | Requires effort to seed and track defects |
+| **Removal risk** | Must carefully remove all seeded defects after inspection |
+| **Gaming risk** | If inspectors know about seeding, behavior may change |
+
+### When to Use Fault Injection
+
+- Controlled experiments evaluating inspection effectiveness
+- Training exercises to calibrate inspector performance
+- Research studies comparing techniques
+- When capture-recapture not feasible (< 4 inspectors)
+
+---
+
+## Capture-Recapture Method
+
+The **capture-recapture method** provides a statistical approach to estimate total defect content based on the overlap between independent inspectors {% cite briand2000capture %}.
 
 ---
 

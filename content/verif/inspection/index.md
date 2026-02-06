@@ -68,11 +68,11 @@ How inspectors analyze artifacts during preparation:
 - Scenario-based (+35% defects)
 - **Perspective-Based Reading (+21-30%)**
 
-### [Capture-Recapture Method](capture-recapture.md)
+### [Defect Estimation](capture-recapture.md)
 
-Statistical estimation of remaining defects:
-- Lincoln-Petersen formula
-- Minimum 4 inspectors required
+Two methods to estimate remaining defects:
+- **Fault Injection**: Seed defects, measure detection rate
+- **Capture-Recapture**: Lincoln-Petersen formula, 4+ inspectors
 - Model selection (Mₕ with Jackknife)
 
 ### [Effectiveness Data](effectiveness.md)
