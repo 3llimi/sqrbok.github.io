@@ -7,50 +7,17 @@ layout: default
 
 # Inspection
 
+**Inspection** is the systematic examination of software artifacts by individuals other than the creator. It is consistently shown to be the **most cost-effective verification technique**, finding 60-90% of defects at 1/10 to 1/34 the cost of testing {% cite laitenberger2000survey %}.
+
 {: .important }
-> For comprehensive coverage of software inspection, see the dedicated **[Inspection section](../inspection/)**.
+> For full coverage, see the dedicated **[Inspection section](../inspection/)**.
 
-## Overview
+### Topics
 
-**Inspection** is the systematic scrutiny of development artifacts (code, design documents) by individuals other than the creator. It is consistently shown to be the **most cost-effective defect removal technique**, with detection rates of 60-90% {% cite laitenberger2000survey %}.
-
-### Key Benefits
-
-| Benefit | Evidence |
-|---------|----------|
-| Early defect detection | 90% of lifecycle defects found (IBM) |
-| Cost-effectiveness | 1:10 to 1:34 cost ratio vs. testing |
-| ROI | 10:1 (HP), $21.4M annual savings |
-
----
-
-## Detailed Topics
-
-The [Inspection section](../inspection/) covers:
-
-| Topic | Description |
-|-------|-------------|
-| [Fagan Inspection Process](../inspection/fagan-process.md) | The 6-step formal process and 4 roles |
-| [Reading Techniques](../inspection/reading-techniques.md) | PBR, checklist, and scenario-based approaches |
-| [Capture-Recapture Method](../inspection/capture-recapture.md) | Statistical defect estimation |
-| [Effectiveness Data](../inspection/effectiveness.md) | Cost/benefit synthesis across studies |
-
----
-
-## Technique Family
-
-> *Adapted from K. Wiegers, Peer Reviews in Software (2002) {% cite wiegers2002peer %}*
-
-```mermaid
-timeline
-    title Inspection Techniques (Most Formal → Least Formal)
-    Fagan inspections: Well-defined entry/exit conditions, non-author presentation
-    Team review: Formal meeting with stakeholders for comment/approval
-    Walkthrough: Designer leads team through product for questions/comments
-    Tool-assisted code review: Line-by-line critique with diff, annotations, commenting
-    Pair programming: Two developers share writing and reviewing in real-time
-    Ad hoc review: Unstructured, spontaneous reviews
-```
+- [Fagan Inspection Process](../inspection/fagan-process.md) — the 6-step formal method and roles
+- [Reading Techniques](../inspection/reading-techniques.md) — PBR, checklist, and scenario-based approaches
+- [Capture-Recapture Method](../inspection/capture-recapture.md) — statistical defect estimation
+- [Effectiveness Data](../inspection/effectiveness.md) — cost/benefit evidence across studies
 
 ---
 

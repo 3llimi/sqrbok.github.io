@@ -33,55 +33,13 @@ Each technique addresses specific aspects of verification, and combining them en
 
 ## 1. 🔍 **Inspection**
 
-### 📖 **What is Inspection?**
+- **Definition (INCOSE)**:
+  A verification method of **determining performance** by examining engineering documentation and the item itself using **visual means** or simple measurements.
 
-- **Definition (INCOSE)**:  
-  A verification method of **determining performance** by examining:  
-  - Engineering documentation produced during development or modification.  
-  - The item itself using **visual means** or simple measurements without precision instruments.  
+- **Definition (Practitioner's View)**:
+  The **systematic review of development artifacts** (e.g., code, design) by others to detect non-conformance and uncover defects.
 
-- **Definition (Practitioner’s View)**:  
-  The **systematic review of development artifacts** (e.g., code, design) by others to:  
-  - Ensure compliance with contractual obligations.  
-  - Detect non-conformance to standards.  
-  - Uncover defects that the creator might miss due to cognitive biases.  
-
----
-
-### 🧰 **Uses of Inspection**
-
-- Detects issues early in the process, often before testing begins.  
-- Effective for identifying:  
-  - **Faults of omission** (e.g., missing functionality).  
-  - **Design issues** (e.g., incorrect architecture).  
-  - **Style problems** (e.g., poorly formatted code).  
-
----
-
-### 🔍 **Examples of Inspection**
-
-- Reviewing source code to check for:  
-  - Proper commenting and adherence to style guidelines.  
-  - Inconsistencies or duplication in the design.  
-  - Documentation gaps or ambiguities.  
-
----
-
-### 🌟 **Benefits of Inspection**
-
-1. **Early Detection of Defects**:  
-   Reduces the cost of fixing issues later in the development cycle.  
-2. **Quantifiable Results**:  
-   - Hewlett-Packard (HP): 10:1 ROI; savings of **$21.4M annually**.  
-     *(Source: Grady & Van Slack, IEEE Software, 1994)*  
-   - AT&T Bell Labs: 10x quality improvement; **14% productivity gain**.  
-     *(Source: Watts Humphrey, Managing the Software Process, 1989)*  
-   - Bell Northern Research: **33 hours saved per defect**.  
-     *(Source: Russell, IEEE Software, 1991)*  
-   - Cisco: Practical alignment with academic findings.  
-     *(Source: J. Cohen, Code Review at Cisco Systems, 2006)*  
-3. **Team Communication**:  
-   Fosters collaboration and learning among team members.  
+> See the dedicated [Inspection section](../inspection/) for full coverage: Fagan process, reading techniques, capture-recapture, and effectiveness data.
 
 ---
 

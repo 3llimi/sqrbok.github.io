@@ -37,15 +37,17 @@ layout: default
 
 ## Inspection Techniques (Formality Spectrum)
 
+> *Adapted from K. Wiegers, Peer Reviews in Software (2002) {% cite wiegers2002peer %}*
+
 ```mermaid
 timeline
     title Inspection Techniques (Most Formal → Least Formal)
-    Fagan Inspection: 6-step process, trained moderator, 4-person team, defined roles
-    Team Review: Structured but less formal, may omit overview/follow-up
-    Walkthrough: Author-led presentation to peers
-    Tool-Assisted Code Review: Async, tool-supported (Critique, GitHub), 1-2 reviewers
-    Pair Programming: Real-time collaborative coding
-    Ad Hoc Review: Informal, spontaneous
+    Fagan inspections: Well-defined entry/exit conditions, non-author presentation
+    Team review: Formal meeting with stakeholders for comment/approval
+    Walkthrough: Designer leads team through product for questions/comments
+    Tool-assisted code review: Line-by-line critique with diff, annotations, commenting
+    Pair programming: Two developers share writing and reviewing in real-time
+    Ad hoc review: Unstructured, spontaneous reviews
 ```
 
 ---
