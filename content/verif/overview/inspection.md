@@ -1,7 +1,7 @@
 ---
 parent: Overview
 nav_order: 2
-title: Inspection
+title: Inspection Overview
 layout: default
 ---
 
