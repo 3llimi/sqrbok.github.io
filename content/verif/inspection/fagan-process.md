@@ -26,6 +26,33 @@ Michael Fagan introduced formal software inspection at IBM in 1976, establishing
 {: .important }
 > "All six steps are mandatory; skipping them leads to degraded efficiency" {% cite fagan1986advances %}
 
+```mermaid
+flowchart LR
+    subgraph prep["Preparation Phase"]
+        P1[1. Planning<br/>📋 Moderator]
+        P2[2. Overview<br/>👤 Author]
+        P3[3. Preparation<br/>👥 All]
+    end
+
+    subgraph exec["Execution Phase"]
+        P4[4. Inspection<br/>Meeting<br/>🔍 Reader leads]
+    end
+
+    subgraph fix["Correction Phase"]
+        P5[5. Rework<br/>🔧 Author]
+        P6[6. Follow-up<br/>✅ Moderator]
+    end
+
+    P1 --> P2 --> P3 --> P4 --> P5 --> P6
+
+    style P1 fill:#e3f2fd,stroke:#1976d2
+    style P2 fill:#fff3e0,stroke:#f57c00
+    style P3 fill:#f3e5f5,stroke:#7b1fa2
+    style P4 fill:#c8e6c9,stroke:#388e3c
+    style P5 fill:#fff3e0,stroke:#f57c00
+    style P6 fill:#e3f2fd,stroke:#1976d2
+```
+
 ### 1. Planning
 
 **Owner:** Moderator

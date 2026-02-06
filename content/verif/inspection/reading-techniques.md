@@ -31,9 +31,28 @@ Since preparation is where most defects are found, **how** reviewers read direct
 
 ### Effectiveness Hierarchy
 
+```mermaid
+%%{init: {'theme': 'base'}}%%
+flowchart LR
+    subgraph effectiveness["Defect Detection Effectiveness"]
+        direction LR
+        A["Ad hoc<br/>📊 Baseline"]
+        C["Checklist<br/>📊 +10-15%"]
+        S["Scenario-based<br/>📊 +35%"]
+        P["PBR<br/>📊 +21-30%"]
+    end
+
+    A -->|"+10-15%"| C
+    C -->|"+20%"| S
+    S -.->|"similar"| P
+
+    style A fill:#ffcdd2,stroke:#d32f2f
+    style C fill:#fff3e0,stroke:#f57c00
+    style S fill:#c8e6c9,stroke:#388e3c
+    style P fill:#bbdefb,stroke:#1976d2,stroke-width:3px
 ```
-PBR > Scenario-based > Checklist > Ad hoc
-```
+
+**Note:** PBR and scenario-based show similar effectiveness, but PBR produces additional useful artifacts (test plans, designs).
 
 ---
 
