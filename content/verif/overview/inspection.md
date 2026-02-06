@@ -5,81 +5,54 @@ title: Inspection
 layout: default
 ---
 
+# Inspection
 
-## 📖 **What is Inspection?**
+{: .important }
+> For comprehensive coverage of software inspection, see the dedicated **[Inspection section](../inspection/)**.
 
-### INCOSE Definition:
-> **Inspection** is a verification method that determines performance by examining:  
-> - **(a)** Engineering documentation produced during development or modification.  
-> - **(b)** The item itself using **visual means** or **simple measurements** without requiring precision instruments.
+## Overview
 
-### Practitioner’s Perspective:
-> **Inspection** is the **systematic scrutiny of development artifacts** (e.g., code, design documents) by individuals **other than the creator**. This aims to:  
-> - Meet contractual or project obligations.  
-> - Detect non-conformities with standards.  
-> - Uncover defects based on the idea that creators may overlook certain flaws in their own work.
+**Inspection** is the systematic scrutiny of development artifacts (code, design documents) by individuals other than the creator. It is consistently shown to be the **most cost-effective defect removal technique**, with detection rates of 60-90% {% cite laitenberger2000survey %}.
 
----
+### Key Benefits
 
-### 🧰 **Uses of Inspection**
-- **Complements testing**: Occurs earlier in the process and identifies issues before testing begins.  
-- Suitable for detecting:  
-  - **Faults of omission** (e.g., missing features).  
-  - **Design problems** (e.g., structural inefficiencies).  
-  - **Style issues** (e.g., improper formatting).  
+| Benefit | Evidence |
+|---------|----------|
+| Early defect detection | 90% of lifecycle defects found (IBM) |
+| Cost-effectiveness | 1:10 to 1:34 cost ratio vs. testing |
+| ROI | 10:1 (HP), $21.4M annual savings |
 
 ---
 
-### 🔍 **Examples of Inspection**
-- Reviewing source code for proper commenting and adherence to style guidelines.  
-- Identifying:  
-  - Duplications in design.  
-  - Misunderstandings or ambiguities in documentation.  
-  - Incomplete functionality.  
+## Detailed Topics
+
+The [Inspection section](../inspection/) covers:
+
+| Topic | Description |
+|-------|-------------|
+| [Fagan Inspection Process](../inspection/fagan-process.md) | The 6-step formal process and 4 roles |
+| [Reading Techniques](../inspection/reading-techniques.md) | PBR, checklist, and scenario-based approaches |
+| [Capture-Recapture Method](../inspection/capture-recapture.md) | Statistical defect estimation |
+| [Effectiveness Data](../inspection/effectiveness.md) | Cost/benefit synthesis across studies |
 
 ---
 
-## 🌟 **Benefits of Inspection**
+## Technique Family
 
-1. **Early Defect Detection**:  
-   - Reduces the cost and time required to fix issues later.  
-
-2. **Quantifiable Business Impact**:  
-   - Hewlett-Packard: **10:1 ROI**; savings of **$21.4 million/year**.  
-     *(Source: Grady & Van Slack, IEEE Software, 1994) {% cite grady2002key %}*  
-   - AT&T Bell Labs: **10x improvement in quality**; **14% productivity gain**.  
-     *(Source: Watts Humphrey, Managing the Software Process, 1989) {% cite humphrey1989managing %}*  
-   - Bell Northern Research: Average savings of **33 hours/defect**.  
-     *(Source: Russell, IEEE Software, 1991) {% cite russell1991bell %}*  
-   - Cisco: Practical outcomes aligned with academic research.  
-     *(Source: J. Cohen, Code Review at Cisco Systems, 2006) {% cite cohen2006code %}*  
-
-3. **Comprehensive Defect Discovery**:  
-   Identifies issues that may be **impossible or difficult to find** through testing alone.  
-
-4. **Enhanced Team Collaboration**:  
-   Encourages knowledge sharing and improves team communication.
-
----
-
-## 🛠️ **Family of Inspection Techniques**
-
-> *Adapted from K. Wiegers, Peer Reviews in Software: A Practical Guide (2002).{% cite wiegers2002peer %}*  
-
-Below is a timeline of inspection techniques ranging from **most formal** to **least formal**:
- 
+> *Adapted from K. Wiegers, Peer Reviews in Software (2002) {% cite wiegers2002peer %}*
 
 ```mermaid
 timeline
-
-    title Inspection Techniques (From Most Formal to Least Formal)
-    Fagan inspections: A technique with well-defined entry and exit conditions, where somebody other than the author of the artifact presents it to the participants. There are many types of inspections: Fagan’s, N-fold, Phased, Gilb’s.
-    Team review: A process or meeting during which a software product is presented to project personnel, managers, users, customers, user representatives, or other interested parties for comment or approval.
-    Walkthrough: A technique in which a designer or programmer leads members of the development team and other interested parties through a software product. Participants ask questions and make comments about possible errors, violation of development standards, and other problems.
-    Tool-assisted code review: An integral part of the coding process. One developer writes code, another developer is asked to review that code providing a line-by-line critique. Assisted by tools, e.g., diff, annotations, email, review history, online commenting.
-    Pair programming: Two developers work together at one workstation, sharing the task of writing and reviewing code in real-time.
-    Adhoc review: The least formal technique, involving unstructured and spontaneous reviews without predefined rules or documentation.
+    title Inspection Techniques (Most Formal → Least Formal)
+    Fagan inspections: Well-defined entry/exit conditions, non-author presentation
+    Team review: Formal meeting with stakeholders for comment/approval
+    Walkthrough: Designer leads team through product for questions/comments
+    Tool-assisted code review: Line-by-line critique with diff, annotations, commenting
+    Pair programming: Two developers share writing and reviewing in real-time
+    Ad hoc review: Unstructured, spontaneous reviews
 ```
+
+---
 
 ### References
 
@@ -88,4 +61,4 @@ timeline
 ---
 
 {: .highlight }
-**Disclaimer:** AI is used for text polishing and explaining. Authors have verified all facts and claims. In case of an error, feel free to file an issue.
+**Disclaimer:** AI is used for text summarization, polishing and explaining. Authors have verified all facts and claims. In case of an error, feel free to file an issue.
