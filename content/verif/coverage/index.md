@@ -77,6 +77,13 @@ Cyclomatic complexity-based testing:
 - McCabe's basis path method
 - Complexity and defects
 
+### [Data Flow Coverage](data-flow.md)
+Testing variable definitions and uses:
+- **Definition-Use (DU) pairs** - Track variable lifecycle
+- **All-Defs coverage** - At least one use per definition
+- **All-Uses coverage** - All DU pairs covered
+- **All-DU-Paths** - All paths between defs and uses
+
 ### [Combinatorial Testing](combinatorial.md)
 Testing parameter combinations:
 - **Pairwise testing** - All 2-way combinations

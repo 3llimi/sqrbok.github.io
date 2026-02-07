@@ -126,15 +126,165 @@ Coverage is necessary but insufficient to ensure software quality. Defect detect
 
 ---
 
+## Coverage Anti-Patterns: Clues, Not Commands
+
+*Reference: Brian Marick, "How to Misuse Code Coverage", 1997* {% cite marick1997coverage %}
+
+Marick identified fundamental limitations and misuses of coverage that remain relevant today.
+
+### The Fundamental Limitation
+
+> "It can only tell me how the code that exists has been exercised. It can't tell me how code that ought to exist would have been exercised." — Marick
+
+**Faults of omission**—bugs fixed by adding code that should have existed—are completely invisible to coverage tools. These include:
+- Missing error handling
+- Unchecked status returns
+- Missing boundary conditions
+- Absent exception handlers
+
+Robert Glass's research {% cite glass1981persistent %} found that faults of omission ("code not complex enough for the problem") are among the most common defects in fielded systems.
+
+### Common Misuses
+
+| Anti-Pattern | Problem |
+|--------------|---------|
+| **Designing tests FOR coverage** | Creates uniformly weak test suite; misses faults of omission |
+| **Quick tests to satisfy tool** | Treats coverage as a command, not a clue |
+| **85% as shipping gate** | People cluster at threshold and stop thinking |
+| **Ignoring low coverage** | Misses the process signal |
+
+### The Right Approach
+
+Marick's key observation:
+
+> "If a part of your test suite is weak in a way coverage can detect, it's likely also weak in a way coverage can't detect."
+
+**Healthy practices:**
+1. Design tests from **requirements first**, not from coverage goals
+2. Use coverage to find **gaps** in test design, not as the design method
+3. Treat low coverage as a **process problem**, not just a test gap
+4. Track **trends** over time, not absolute numbers
+5. Combine with **specification-based** testing
+
+### The 85% Myth
+
+Marick traced the common 85% threshold and found it essentially arbitrary—someone "pulled it out of a hat." The actual appropriate threshold depends heavily on:
+- Application criticality
+- Code complexity
+- Testing approach used
+- Risk tolerance
+
+---
+
+## Modern Empirical Findings (2014-2025)
+
+Recent research has significantly advanced our understanding of coverage-effectiveness relationships.
+
+### The Size Confounding Problem
+
+*Reference: Inozemtseva & Holmes 2014 (ICSE Landmark)* {% cite inozemtseva2014coverage %}
+
+The most important finding of the past decade:
+
+> "Coverage is NOT strongly correlated with test suite effectiveness when the size of the test suite is controlled for."
+
+| Condition | Correlation |
+|-----------|-------------|
+| Size ignored | 0.79 - 0.95 (appears strong) |
+| **Size controlled** | **~0** (essentially none) |
+
+**What this means:** The perceived correlation between coverage and fault detection is largely an artifact of test suite size. Larger suites have both higher coverage AND find more faults—but coverage isn't the cause.
+
+Lu et al. (2025) {% cite lu2025confounding %} quantified this effect:
+- Statement coverage: **69%** of observed effect explained by size
+- Branch coverage: **81.9%** explained by size
+
+### Assertions Matter More Than Coverage
+
+*Reference: Zhang & Mesbah 2015* {% cite zhang2015assertions %}
+
+| Factor | Correlation with Effectiveness |
+|--------|-------------------------------|
+| **Assertion quantity** | **0.927 - 0.973** |
+| Statement coverage (alone) | Weak when assertions controlled |
+
+> "The strong correlation often observed between test suite size and effectiveness is actually driven by the number and quality of assertions within those tests."
+
+**Practical implication:** Focus on assertion quality, not just coverage percentage. A test that executes code without checking results provides false confidence.
+
+### Data-Flow Coverage Outperforms Control-Flow
+
+*Reference: Hemmati 2015* {% cite hemmati2015coverage %}
+
+Empirical study on 274 real-world faults from Defects4J:
+
+| Criterion | Faults Detected |
+|-----------|-----------------|
+| Statement Coverage | **10%** |
+| Branch Coverage | 19% |
+| MC/DC | 19% |
+| All control-flow combined | 28% |
+| **+ Data-flow (def-use pairs)** | **85%** |
+
+**Key finding:** Statement coverage misses **90%** of real faults. Adding data-flow coverage detects an additional **79%** of faults that control-flow criteria miss entirely.
+
+See [Data-Flow Coverage](data-flow.md) for details on DU pairs and coverage criteria.
+
+### The Coincidental Correctness Problem
+
+*Reference: Masri & Abou Assi 2009* {% cite masri2009factors %}; *Abou Assi et al. 2021* {% cite abouassi2021coincidental %}
+
+**Coincidental correctness (CC)** occurs when a test executes faulty code but produces correct output anyway.
+
+| Type | Prevalence | Impact |
+|------|------------|--------|
+| Strict CC | 15.7% of tests | Fault triggered but output correct |
+| Weak CC | 56.4% of tests | Fault executed, output correct |
+
+**Why it matters:** CC tests give false confidence. They appear to validate code while actually masking hidden faults. High coverage with many CC tests is worse than lower coverage with fault-detecting tests.
+
+### Fault Type Dependency
+
+*Reference: Schwartz et al. 2018* {% cite schwartz2018faults %}
+
+Not all faults are equally detectable by coverage-based testing:
+
+| Fault Type | Detection Rate at 80%+ Coverage |
+|------------|--------------------------------|
+| Arithmetic operator replacement (AORB) | High |
+| Relational operator replacement (ROR) | High |
+| Arithmetic deletion (AODU) | **12.12%** |
+| Type cast insertion (PCI) | Very low |
+
+**Implication:** Even with high coverage, certain fault categories escape detection. Oracle strength (assertion quality) is the critical factor for these faults.
+
+### The Reliability Hierarchy
+
+*Reference: Zhang et al. 2024* {% cite zhang2024assessing %}
+
+After reviewing test effectiveness research, Zhang et al. established metric reliability:
+
+| Metric | Reliability | Risk Level |
+|--------|-------------|------------|
+| **Mutation Score** | Highest | Lowest |
+| Branch Coverage | Medium | Medium |
+| **Statement Coverage** | Lowest | **Highest** |
+
+> "Mutation score is the least risky metric for quantifying test suite effectiveness."
+
+---
+
 ## Conclusion
 
 **Code coverage is essential** for testing effectiveness but is **not a perfect measure of quality**.
 
 To improve software reliability:
 
-- Aim for **high coverage** (e.g., 85%+), but don’t stop there.
-- Use **diverse test sets**—don’t rely on one method.
-- Recognize that **100% coverage does not mean defect-free software**.
+- Aim for **high coverage** (e.g., 85%+), but don't stop there
+- Use **diverse test sets**—don't rely on one method
+- Recognize that **100% coverage does not mean defect-free software**
+- Remember coverage gives **clues**, not **commands**—don't design tests just to satisfy the tool
+- Be aware that **faults of omission** are invisible to coverage
 
 ### References
 

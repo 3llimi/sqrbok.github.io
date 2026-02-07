@@ -1591,3 +1591,125 @@ language = {eng},
   doi       = {10.48550/arXiv.2512.01232},
   note      = {GPT-4o Mini: 78x cost reduction, best accuracy}
 }
+
+% === Coverage Literature Refresh (2024) ===
+
+@misc{marick1997coverage,
+  author    = {Marick, Brian},
+  title     = {How to Misuse Code Coverage},
+  year      = {1997},
+  howpublished = {Testing Foundations},
+  url       = {http://www.exampler.com/testing-com/writings/coverage.pdf},
+  note      = {Revised 1999. Seminal paper on coverage anti-patterns: clues not commands, faults of omission}
+}
+
+@article{glass1981persistent,
+  author    = {Glass, Robert L.},
+  title     = {Persistent Software Errors},
+  journal   = {IEEE Transactions on Software Engineering},
+  volume    = {SE-7},
+  number    = {2},
+  pages     = {162--168},
+  year      = {1981},
+  month     = mar,
+  doi       = {10.1109/TSE.1981.234514},
+  publisher = {IEEE},
+  note      = {Faults of omission: "code not complex enough for the problem"}
+}
+
+@article{rapps1985dataflow,
+  author    = {Rapps, Sandra and Weyuker, Elaine J.},
+  title     = {Selecting Software Test Data Using Data Flow Information},
+  journal   = {IEEE Transactions on Software Engineering},
+  volume    = {SE-11},
+  number    = {4},
+  pages     = {367--375},
+  year      = {1985},
+  month     = apr,
+  doi       = {10.1109/TSE.1985.232226},
+  publisher = {IEEE},
+  note      = {Foundational data flow coverage paper - DU pairs and all-uses criterion}
+}
+
+% === Modern Coverage Research (2009-2025) ===
+
+@inproceedings{inozemtseva2014coverage,
+  author    = {Inozemtseva, Laura and Holmes, Reid},
+  title     = {Coverage is Not Strongly Correlated with Test Suite Effectiveness},
+  booktitle = {International Conference on Software Engineering (ICSE)},
+  year      = {2014},
+  pages     = {435--445},
+  doi       = {10.1145/2568225.2568271},
+  publisher = {ACM},
+  note      = {Landmark ICSE paper: coverage-effectiveness correlation weak when controlling for suite size}
+}
+
+@inproceedings{zhang2015assertions,
+  author    = {Zhang, Yucheng and Mesbah, Ali},
+  title     = {Assertions Are Strongly Correlated with Test Suite Effectiveness},
+  booktitle = {ESEC/FSE 2015},
+  year      = {2015},
+  doi       = {10.1145/2786805.2786858},
+  publisher = {ACM},
+  note      = {Assertions correlated with effectiveness (0.927); explains why suite size correlates}
+}
+
+@inproceedings{hemmati2015coverage,
+  author    = {Hemmati, Hadi},
+  title     = {How Effective Are Code Coverage Criteria?},
+  booktitle = {IEEE International Conference on Software Testing, Verification and Validation (ICST)},
+  year      = {2015},
+  doi       = {10.1109/ICST.2015.7102580},
+  publisher = {IEEE},
+  note      = {274 Defects4J faults; statement coverage misses 90\%; data-flow detects 79\% more}
+}
+
+@article{schwartz2018faults,
+  author    = {Schwartz, Adrian and Puckett, Daniel and Meng, Yang and Gay, Gregory},
+  title     = {Investigating Faults Missed by Test Suites Achieving High Code Coverage},
+  journal   = {Journal of Systems and Software},
+  year      = {2018},
+  doi       = {10.1016/j.jss.2018.06.024},
+  publisher = {Elsevier},
+  note      = {163,919 mutants; oracle strength critical; some operators only 12\% detected at 80\%+ coverage}
+}
+
+@inproceedings{masri2009factors,
+  author    = {Masri, Wes and Abou Assi, Rawad},
+  title     = {An Empirical Study of the Factors That Reduce the Effectiveness of Coverage-Based Fault Localization},
+  booktitle = {International Workshop on Dynamic Analysis (WODA)},
+  year      = {2009},
+  doi       = {10.1145/1555860.1555862},
+  publisher = {ACM},
+  note      = {Identifies 4 CBFL-impairing factors; CC = 15.7\%, Weak CC = 56.4\%}
+}
+
+@article{abouassi2021coincidental,
+  author    = {Abou Assi, Rawad and Masri, Wes and Trad, Chadi},
+  title     = {How detrimental is coincidental correctness to coverage-based fault detection and localization? An empirical study},
+  journal   = {Software Testing, Verification and Reliability},
+  volume    = {31},
+  number    = {8},
+  year      = {2021},
+  doi       = {10.1002/stvr.1762},
+  note      = {Empirical study: CC tests very detrimental to TSR/TCP; 100\% detection when cleansed}
+}
+
+@article{lu2025confounding,
+  author    = {Lu, Zeyu and Wang, Yang and Rong, Yi and others},
+  title     = {Understanding the potentially confounding effect of test suite size in test effectiveness evaluation},
+  journal   = {ACM Transactions on Software Engineering and Methodology},
+  year      = {2025},
+  doi       = {10.1145/3748504},
+  note      = {565 Defects4J defects; size explains 69-81\% of coverage effect; mutation score most reliable}
+}
+
+@article{zhang2024assessing,
+  author    = {Zhang, Pengyu and Wang, Yang and Liu, Xin and Lu, Zeyu and Yang, Yibiao and Li, Yanhui and Jia, Xiangyang and Chen, Lin and Bao, Lingming},
+  title     = {Assessing Effectiveness of Test Suites: What Do We Know and What Should We Do?},
+  journal   = {ACM Transactions on Software Engineering and Methodology},
+  year      = {2024},
+  doi       = {10.1145/3635713},
+  publisher = {ACM},
+  note      = {ASSENT framework; mutation score most reliable metric; statement coverage riskiest}
+}
