@@ -65,7 +65,7 @@ CT is less suited for sequential or stateful behavior, performance testing, or s
 
 ## Topics in This Section
 
-### [Foundations](foundations)
+### [Theory](foundations)
 Covering arrays, orthogonal arrays, t-way coverage, and logarithmic growth properties.
 
 ### [Practice](practice)

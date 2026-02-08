@@ -1,7 +1,7 @@
 ---
-title: Foundations
+title: Theory
 parent: Combinatorial Testing
-nav_order: 1
+nav_order: 2
 layout: default
 ---
 
