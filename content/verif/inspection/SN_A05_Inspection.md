@@ -17,7 +17,7 @@ These study notes explain how software inspection works, covering 50 years of ev
 
 **Key Research Papers:**
 - A Comprehensive Evaluation of Capture-Recapture Models {% cite briand2000capture %}
-- State-of-the-art: Software Inspections After 25 Years {% cite aurum2002state %}
+- State-of-the-art: Software Inspections After 25 Years {% cite aurum2002inspections %}
 - Characteristics of Useful Code Reviews {% cite bosu2015codereview %}
 - SWR-Bench: Evaluating LLMs in Real-World Software Review {% cite zeng2025swrbench %}
 
@@ -46,7 +46,37 @@ Michael Fagan {% cite fagan1976design %} at IBM developed the first formal inspe
 | 2018 | Sadowski | 24 lines median, 1 reviewer, <4h |
 | 2025 | Zeng SWR-Bench | LLM achieves 19% F1 (not ready) |
 
-### 1.3 The Evolution Trajectory
+### 1.3 Evolution Diagram
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px'}}}%%
+timeline
+    title 50 Years of Inspection Evolution
+    section Formal Era
+        1976 : Fagan @ IBM
+             : 6 steps, 4 roles
+             : 90% defect detection
+        1986 : Fagan Advances
+             : 93% detection rate
+             : IBM RESPOND project
+    section Reading Techniques
+        1996 : PBR (Basili)
+             : Perspective-Based Reading
+             : +21-30% improvement
+    section Lightweight Era
+        2006 : Cohen/Cisco Study
+             : 200-400 LOC optimal
+             : Lightweight practices
+        2018 : Google/Microsoft
+             : 24 lines median
+             : <4h turnaround
+    section AI Era
+        2025 : LLM Review
+             : 19% F1 score
+             : Not production ready
+```
+
+### 1.4 The Evolution Trajectory
 
 **1976: Formal Fagan**
 - 4 roles (Moderator, Author, Reader, Inspector)
@@ -84,7 +114,7 @@ Michael Fagan {% cite fagan1976design %} at IBM developed the first formal inspe
 
 ### 2.1 Types Comparison
 
-Laitenberger {% cite laitenberger2002survey %} provides a comprehensive comparison of inspection types:
+Laitenberger {% cite laitenberger2000survey %} provides a comprehensive comparison of inspection types:
 
 | Attribute | **Fagan Inspection** | **Code Review** | **Walkthrough** | **Audit** |
 |-----------|---------------------|-----------------|-----------------|-----------|
@@ -148,6 +178,31 @@ Fagan {% cite fagan1976design %} defined six structured phases:
 
 **Entry/exit criteria** at each phase ensure quality gates are enforced.
 
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A', 'clusterBkg': '#fffef0', 'clusterBorder': '#ccc'}}}%%
+flowchart LR
+    subgraph prep["Preparation Phase"]
+        P1["1. Planning<br/>Moderator"]
+        P2["2. Overview<br/>Author"]
+        P3["3. Preparation<br/>All"]
+    end
+
+    subgraph exec["Execution Phase"]
+        P4["4. Inspection<br/>Team"]
+        P5["5. Rework<br/>Author"]
+        P6["6. Follow-up<br/>Moderator"]
+    end
+
+    P1 --> P2 --> P3 --> P4 --> P5 --> P6
+
+    style P1 fill:#e3f2fd,stroke:#1976d2,color:#000
+    style P2 fill:#e3f2fd,stroke:#1976d2,color:#000
+    style P3 fill:#e3f2fd,stroke:#1976d2,color:#000
+    style P4 fill:#c8e6c9,stroke:#388e3c,color:#000
+    style P5 fill:#fff3e0,stroke:#f57c00,color:#000
+    style P6 fill:#c8e6c9,stroke:#388e3c,color:#000
+```
+
 ### 3.2 The Four Roles
 
 | Role | Responsibility |
@@ -184,7 +239,7 @@ Fagan {% cite fagan1976design %} defined six structured phases:
 
 ### 4.1 Technique Hierarchy
 
-Reading techniques range from ad hoc to highly structured approaches {% cite basili1996comparing %}:
+Reading techniques range from ad hoc to highly structured approaches {% cite basili1996empirical %}:
 
 | Technique | Description | Effectiveness |
 |-----------|-------------|---------------|
@@ -193,11 +248,29 @@ Reading techniques range from ad hoc to highly structured approaches {% cite bas
 | **Scenario-based** | Specific scenarios to execute | +35% |
 | **Perspective-Based Reading (PBR)** | Stakeholder role assignment | **+21-30%** |
 
-**Key finding:** 90-95% of defects are found during *preparation*, not in meetings {% cite aurum2002state %}.
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A', 'clusterBkg': '#fffef0', 'clusterBorder': '#ccc'}}}%%
+flowchart LR
+    A["Ad hoc<br/>Baseline"]
+    C["Checklist<br/>+10-15%"]
+    S["Scenario-based<br/>+35%"]
+    P["PBR<br/>+21-30%"]
+
+    A -->|"+10-15%"| C
+    C -->|"+20%"| S
+    S -.->|"similar"| P
+
+    style A fill:#ffcdd2,stroke:#d32f2f,color:#000
+    style C fill:#fff3e0,stroke:#f57c00,color:#000
+    style S fill:#c8e6c9,stroke:#388e3c,color:#000
+    style P fill:#bbdefb,stroke:#1976d2,stroke-width:3px,color:#000
+```
+
+**Key finding:** 90-95% of defects are found during *preparation*, not in meetings {% cite aurum2002inspections %}.
 
 ### 4.2 Perspective-Based Reading (PBR)
 
-PBR {% cite basili1996comparing %} assigns stakeholder perspectives to inspectors:
+PBR {% cite basili1996empirical %} assigns stakeholder perspectives to inspectors:
 
 | Perspective | Focus | Work Product Created |
 |-------------|-------|---------------------|
@@ -208,7 +281,7 @@ PBR {% cite basili1996comparing %} assigns stakeholder perspectives to inspector
 **Key insight:** If you can't build the work product, there's a defect in the artifact!
 
 **Research results:**
-- Shull et al. (2000) {% cite shull2000investigating %}: PBR found 35% more defects than ad hoc
+- Shull et al. (2000) {% cite shull2000perspective %}: PBR found 35% more defects than ad hoc
 - Basili et al. (1996): 21-30% improvement over checklist-based reading
 
 ### 4.3 Checklist Best Practices
@@ -239,7 +312,63 @@ Cohen {% cite cohen2006secrets %} analyzed 50 programmers reviewing 3.2 million 
 
 **Finding 1: Size Matters**
 
-Defect density drops rapidly beyond 200 LOC:
+Defect density drops rapidly beyond 200 LOC. The optimal review size is 200-400 LOC {% cite cohen2006secrets %}:
+
+```vega-lite
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Defect Density vs. Review Size",
+  "width": 400,
+  "height": 280,
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {"loc": 10, "defects": 200}, {"loc": 20, "defects": 170},
+          {"loc": 30, "defects": 145}, {"loc": 50, "defects": 110},
+          {"loc": 75, "defects": 85}, {"loc": 100, "defects": 65},
+          {"loc": 150, "defects": 45}, {"loc": 200, "defects": 35},
+          {"loc": 300, "defects": 22}, {"loc": 400, "defects": 15},
+          {"loc": 600, "defects": 8}, {"loc": 800, "defects": 5},
+          {"loc": 1000, "defects": 3}
+        ]
+      },
+      "mark": {"type": "line", "color": "#d32f2f", "strokeWidth": 3},
+      "encoding": {
+        "x": {"field": "loc", "type": "quantitative", "title": "LOC under Review", "scale": {"domain": [0, 1000]}},
+        "y": {"field": "defects", "type": "quantitative", "title": "Defects Found / KSLOC", "scale": {"domain": [0, 220]}}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"loc": 15, "defects": 200}, {"loc": 25, "defects": 165},
+          {"loc": 40, "defects": 92}, {"loc": 60, "defects": 75},
+          {"loc": 80, "defects": 55}, {"loc": 100, "defects": 100},
+          {"loc": 120, "defects": 25}, {"loc": 140, "defects": 60},
+          {"loc": 180, "defects": 55}, {"loc": 220, "defects": 15},
+          {"loc": 280, "defects": 8}, {"loc": 350, "defects": 10},
+          {"loc": 450, "defects": 8}, {"loc": 550, "defects": 0},
+          {"loc": 700, "defects": 12}, {"loc": 850, "defects": 0},
+          {"loc": 950, "defects": 3}
+        ]
+      },
+      "mark": {"type": "point", "color": "#1976d2", "size": 50, "filled": true},
+      "encoding": {
+        "x": {"field": "loc", "type": "quantitative"},
+        "y": {"field": "defects", "type": "quantitative"}
+      }
+    },
+    {
+      "data": {"values": [{"x": 200}, {"x": 400}]},
+      "mark": {"type": "rule", "color": "#388e3c", "strokeWidth": 2, "strokeDash": [5, 5]},
+      "encoding": {"x": {"field": "x", "type": "quantitative"}}
+    }
+  ]
+}
+```
+
+The green dashed lines mark the 200-400 LOC sweet spot:
 
 | LOC Reviewed | Defects/KLOC | Effectiveness |
 |--------------|--------------|---------------|
@@ -250,7 +379,42 @@ Defect density drops rapidly beyond 200 LOC:
 
 **Finding 2: Rate Matters**
 
-Optimal review rate is < 500 LOC/hour:
+Optimal review rate is < 500 LOC/hour. The red line shows the threshold — above it, reviews become "rubber stamping":
+
+```vega-lite
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Defect Density vs. Review Rate",
+  "width": 400,
+  "height": 280,
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {"rate": 50, "defects": 142}, {"rate": 100, "defects": 100},
+          {"rate": 150, "defects": 48}, {"rate": 200, "defects": 55},
+          {"rate": 250, "defects": 100}, {"rate": 300, "defects": 98},
+          {"rate": 350, "defects": 30}, {"rate": 400, "defects": 50},
+          {"rate": 450, "defects": 30}, {"rate": 550, "defects": 28},
+          {"rate": 650, "defects": 10}, {"rate": 750, "defects": 12},
+          {"rate": 850, "defects": 80}, {"rate": 950, "defects": 10},
+          {"rate": 1100, "defects": 12}, {"rate": 1300, "defects": 8}
+        ]
+      },
+      "mark": {"type": "point", "color": "#1976d2", "size": 50, "filled": true},
+      "encoding": {
+        "x": {"field": "rate", "type": "quantitative", "title": "Review Rate (LOC/hour)", "scale": {"domain": [0, 1400]}},
+        "y": {"field": "defects", "type": "quantitative", "title": "Defects Found / KSLOC", "scale": {"domain": [0, 160]}}
+      }
+    },
+    {
+      "data": {"values": [{"x": 500}]},
+      "mark": {"type": "rule", "color": "#d32f2f", "strokeWidth": 3},
+      "encoding": {"x": {"field": "x", "type": "quantitative"}}
+    }
+  ]
+}
+```
 
 | Review Rate | Defects/KLOC | Quality |
 |-------------|--------------|---------|
@@ -362,6 +526,32 @@ The capture-recapture method {% cite briand2000capture %} originates from wildli
 - "Capture sessions" = independent inspectors
 - "Marked and recaptured" = defects found by multiple inspectors
 
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A', 'clusterBkg': '#fffef0', 'clusterBorder': '#ccc'}}}%%
+flowchart TB
+    subgraph inspectors["Two Independent Inspectors"]
+        I1["Inspector 1<br/>Found: M = 12"]
+        I2["Inspector 2<br/>Found: C = 15"]
+    end
+
+    subgraph overlap["Overlap"]
+        R["Recaptured: R = 4<br/>(found by both)"]
+    end
+
+    subgraph estimate["Estimate"]
+        N["N = M × C / R<br/>= 12 × 15 / 4<br/>= 45 total defects"]
+    end
+
+    I1 --> R
+    I2 --> R
+    R --> N
+
+    style I1 fill:#bbdefb,stroke:#1976d2,color:#000
+    style I2 fill:#fff3e0,stroke:#f57c00,color:#000
+    style R fill:#c8e6c9,stroke:#388e3c,color:#000
+    style N fill:#c8e6c9,stroke:#388e3c,stroke-width:2px,color:#000
+```
+
 **Lincoln-Petersen Formula:**
 
 $$\hat{N} = \frac{M \times C}{R}$$
@@ -378,6 +568,48 @@ Where:
 - Both find 6 of the same defects
 - N = (20 × 15) / 6 = **50 estimated**
 - Found 29 unique, remaining: **21 unfound**
+
+**Defect Distribution Visualization:**
+
+```vega-lite
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 250,
+  "title": {
+    "text": "Capture-Recapture: Defect Distribution",
+    "subtitle": "N = M×C/R = 12×15/4 = 45 estimated total defects",
+    "subtitleFontSize": 14,
+    "subtitleColor": "#666"
+  },
+  "data": {
+    "values": [
+      {"category": "Inspector 1 Only", "value": 8, "group": "Found"},
+      {"category": "Both Inspectors", "value": 4, "group": "Found"},
+      {"category": "Inspector 2 Only", "value": 11, "group": "Found"},
+      {"category": "Unfound (estimated)", "value": 22, "group": "Unfound"}
+    ]
+  },
+  "mark": {"type": "bar", "cornerRadiusTopRight": 4, "cornerRadiusBottomRight": 4},
+  "encoding": {
+    "y": {"field": "category", "type": "nominal", "sort": null, "axis": {"title": null, "labelFontSize": 14}},
+    "x": {"field": "value", "type": "quantitative", "title": "Number of Defects", "axis": {"labelFontSize": 12}},
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Inspector 1 Only", "Both Inspectors", "Inspector 2 Only", "Unfound (estimated)"],
+        "range": ["#1976d2", "#388e3c", "#f57c00", "#d32f2f"]
+      },
+      "legend": null
+    }
+  },
+  "config": {
+    "font": "Tahoma, sans-serif",
+    "view": {"stroke": null}
+  }
+}
+```
 
 ### 6.4 Model Selection
 
