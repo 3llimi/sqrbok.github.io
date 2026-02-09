@@ -7,7 +7,6 @@ layout: default
 
 # Quality Planning — Revision Questions
 
-**Purpose:** Self-study and exam preparation
 **Format:** Explain in your own words, give brief examples
 
 ---
