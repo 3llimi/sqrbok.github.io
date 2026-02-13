@@ -313,14 +313,14 @@ _Reference: Beizer, B. Software Testing Techniques {% cite hopcroft2001automata 
 
 ---
 
-## More Coverage Criteria
+## Beyond Statement, Branch, and Path
 
-* **Basis Path Coverage**: Cover enough paths using only `n + 1` (where `n` is the number of predicates)
-* **Multiple Condition Coverage & MC/DC**
-* **LCSAJ Coverage** (Linear Code Sequence And Jump)
-* **Mutation Coverage**
-* **Combinatorial Coverage**
-* **Definition-Use (DU) Coverage**
+These criteria cover the foundational structural measures. For deeper coverage of specific criteria, see:
+
+- [Basis Path Testing](basis.md) — Cyclomatic complexity and independent paths
+- [Multiple Conditions & MC/DC](conditions.md) — Compound predicate coverage for safety-critical systems
+- [Data Flow Coverage](data-flow.md) — Definition-Use pairs and variable lifecycle testing
+- [Mutation Testing](mutation.md) — Measuring test effectiveness through fault injection
 
 ---
 

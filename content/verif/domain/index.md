@@ -146,7 +146,7 @@ Input domain testing complements structural (white-box) coverage:
 ## Further Reading
 
 - [Coverage Criteria](../coverage/) — White-box structural coverage
-- [Combinatorial Testing](../coverage/combinatorial.md) — Pairwise and n-way testing
+- [Combinatorial Testing](../combinatorial/) — Pairwise and n-way testing
 - [Testing Overview](../overview/testing/) — Testing fundamentals
 
 ---

@@ -58,9 +58,8 @@ Learn how to measure and achieve thorough testing:
 - **[Code Coverage](coverage/code.md)** - Statement, branch, and path coverage
 - **[Condition Coverage](coverage/conditions.md)** - Decision, condition, and MC/DC coverage
 - **[Basis Path](coverage/basis.md)** - Cyclomatic complexity and independent paths
-- **[Combinatorial Testing](coverage/combinatorial.md)** - Pairwise and n-way coverage
+- **[Data Flow](coverage/data-flow.md)** - Definition-Use pairs and variable lifecycle
 - **[Mutation Testing](coverage/mutation.md)** - Measuring test suite effectiveness
-- **[Adequacy](coverage/adequacy.md)** - When is testing sufficient?
 - **[Discussion](coverage/discussion.md)** - Trade-offs and practical considerations
 
 ---

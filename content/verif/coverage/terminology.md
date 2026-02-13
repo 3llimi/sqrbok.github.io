@@ -1,7 +1,7 @@
 ---
 title: Terminology
 parent: Coverage
-nav_order: 22
+nav_order: 1
 layout: default
 ---
 
@@ -163,51 +163,8 @@ flowchart TD
 
 ---
 
-# Data-Flow Criteria & Data-Flow Testing
-
----
-
-## Intuition
-
-* **Statements** are connected by the **flow of data**.
-* A value **defined** (computed) in one statement is **used** in another.
-* Errors often occur when a **bad value** is passed along and then used.
-
----
-
-## Definition-Use (DU) Testing
-
-1. **Identify** all Definition-Use pairs:
-
-   * **Definition (def):** A statement that assigns a value to a variable.
-   * **Use:** A statement that reads that variable’s value.
-
-2. **Design tests** so that each def–use pair is **exercised** (i.e., the program executes a path from the definition to that use).
-
-3. **Measure adequacy** by comparing:
-
-   * **Total DU pairs** in the code
-   * **DU pairs covered** by the test suite
-
----
-
-## Common Data-Flow Coverage Levels
-
-| Criterion           | Description                                                    |
-| ------------------- | -------------------------------------------------------------- |
-| **All DU Paths**    | Every path from a definition to a use of a variable is tested. |
-| **All DU Pairs**    | Every def–use pair is covered at least once.                   |
-| **All Definitions** | Each variable definition is exercised.                         |
-| **All Uses**        | Each use of a defined variable is exercised.                   |
-
-> **Note:** Data-flow testing focuses on **correctness of computation**, while data-flow **analysis** detects anomalies like using an uninitialized variable.
-
----
-
-### Why Data-Flow Testing?
-
-* Catches errors that **structural (white-box) tests** might miss—especially those involving the **interaction** of variables.
-* Complements **control-flow** criteria by ensuring not just that branches are taken, but that **data values** flow correctly through the code.
+{: .note }
+For data-flow coverage criteria (Definition-Use pairs, All-Defs, All-Uses, All-DU-Paths), see [Data Flow Coverage](data-flow.md).
 
 ---
 

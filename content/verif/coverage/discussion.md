@@ -274,17 +274,47 @@ After reviewing test effectiveness research, Zhang et al. established metric rel
 
 ---
 
+## Practical Guidelines
+
+Based on the research above, these practices help use coverage effectively:
+
+1. **Design tests from requirements first** — then measure coverage to find gaps, not the other way around
+2. **Focus on assertion quality** — a test that executes code without checking results provides false confidence (Zhang & Mesbah 2015)
+3. **Investigate uncovered code explicitly** — low coverage is a process signal worth understanding
+4. **Combine control-flow and data-flow coverage** — data-flow catches 79% of faults that control-flow misses (Hemmati 2015)
+5. **Track trends, not thresholds** — prevent regression rather than targeting arbitrary numbers
+6. **Use mutation testing for critical code** — mutation score is the most reliable effectiveness metric (Zhang et al. 2024)
+7. **Accept diminishing returns** — gains flatten after ~85-90% coverage; invest effort elsewhere
+
+---
+
+## Coverage Tool Support
+
+| Language | Tools |
+|----------|-------|
+| **Java** | JaCoCo, Cobertura, Clover |
+| **Python** | Coverage.py, pytest-cov |
+| **JavaScript** | Istanbul, NYC, c8 |
+| **C/C++** | gcov, lcov, OpenCppCoverage |
+| **C#** | dotCover, OpenCover, Coverlet |
+| **Go** | go test -cover |
+
+**Integration:** CI/CD pipelines, IDE visualization, code review reports (SonarQube, Codecov).
+
+---
+
 ## Conclusion
 
 **Code coverage is essential** for testing effectiveness but is **not a perfect measure of quality**.
 
-To improve software reliability:
+Key takeaways from the research:
 
-- Aim for **high coverage** (e.g., 85%+), but don't stop there
-- Use **diverse test sets**—don't rely on one method
-- Recognize that **100% coverage does not mean defect-free software**
-- Remember coverage gives **clues**, not **commands**—don't design tests just to satisfy the tool
-- Be aware that **faults of omission** are invisible to coverage
+- Coverage ≠ quality — **test suite size** explains most of the observed correlation (Inozemtseva & Holmes 2014)
+- **Assertion quality** matters more than coverage percentage (Zhang & Mesbah 2015)
+- **Data-flow coverage** dramatically outperforms control-flow alone (Hemmati 2015)
+- **Mutation score** is the most reliable metric for test effectiveness (Zhang et al. 2024)
+- **Faults of omission** are invisible to all coverage tools (Marick 1997)
+- Coverage gives **clues**, not **commands** — use it to find gaps, not as a design method
 
 ### References
 
