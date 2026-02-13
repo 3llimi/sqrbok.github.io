@@ -44,6 +44,63 @@ $$
 
 So ~3,000 successful tests give 95% confidence the failure rate is below 0.1% {% cite hamlet1984random %}.
 
+```vega-lite
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Confidence vs. Number of Random Tests",
+  "width": 450,
+  "height": 250,
+  "layer": [
+    {
+      "data": {
+        "sequence": {"start": 10, "stop": 5000, "step": 10, "as": "N"}
+      },
+      "transform": [{"calculate": "1 - pow(1 - 0.01, datum.N)", "as": "C"}],
+      "mark": {"type": "line", "color": "#d32f2f", "strokeWidth": 2},
+      "encoding": {
+        "x": {"field": "N", "type": "quantitative", "title": "Number of Tests (N)"},
+        "y": {"field": "C", "type": "quantitative", "title": "Confidence", "scale": {"domain": [0, 1]}},
+        "color": {"datum": "F = 0.01 (1 in 100)"}
+      }
+    },
+    {
+      "data": {
+        "sequence": {"start": 10, "stop": 5000, "step": 10, "as": "N"}
+      },
+      "transform": [{"calculate": "1 - pow(1 - 0.001, datum.N)", "as": "C"}],
+      "mark": {"type": "line", "color": "#1565c0", "strokeWidth": 2},
+      "encoding": {
+        "x": {"field": "N", "type": "quantitative"},
+        "y": {"field": "C", "type": "quantitative"},
+        "color": {"datum": "F = 0.001 (1 in 1,000)"}
+      }
+    },
+    {
+      "data": {
+        "sequence": {"start": 10, "stop": 5000, "step": 10, "as": "N"}
+      },
+      "transform": [{"calculate": "1 - pow(1 - 0.0001, datum.N)", "as": "C"}],
+      "mark": {"type": "line", "color": "#2e7d32", "strokeWidth": 2},
+      "encoding": {
+        "x": {"field": "N", "type": "quantitative"},
+        "y": {"field": "C", "type": "quantitative"},
+        "color": {"datum": "F = 0.0001 (1 in 10,000)"}
+      }
+    },
+    {
+      "data": {"values": [{"y": 0.95}]},
+      "mark": {"type": "rule", "strokeDash": [4, 4], "color": "#757575"},
+      "encoding": {"y": {"field": "y", "type": "quantitative"}}
+    }
+  ],
+  "encoding": {
+    "color": {"legend": {"title": "Failure Rate"}}
+  }
+}
+```
+
+*Dashed line = 95% confidence threshold. Rarer bugs need exponentially more tests.*
+
 This is the *only* testing method that enables such predictions. Systematic testing cannot make statistical claims because inputs are chosen by design, not by sampling {% cite hamlet1984random %}.
 
 ### Limitations

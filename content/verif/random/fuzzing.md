@@ -21,6 +21,22 @@ A fuzzer generates inputs that include **unexpected, malformed, or boundary valu
 
 ## Three Generations of Fuzzing
 
+```mermaid
+timeline
+    title Fuzzing Evolution
+    section Generation 1 — Blackbox
+        1990 : Miller — UNIX fuzz
+        2000 : Forrester — Windows NT
+        2006 : Miller — macOS
+    section Generation 2 — Whitebox
+        2008 : SAGE — symbolic + fuzz
+        2012 : KLEE — open-source SE
+    section Generation 3 — Greybox
+        2013 : AFL — coverage-guided
+        2017 : AFLGo — directed greybox
+        2019 : JQF — PBT + coverage
+```
+
 ### Generation 1: Blind Random Fuzzing (1990-2000)
 
 Miller's landmark studies established fuzzing through pure random input generation:
@@ -58,11 +74,19 @@ Modern greybox fuzzers use lightweight instrumentation to measure code coverage,
 
 **The AFL model**: American Fuzzy Lop (AFL, 2013) introduced edge-based coverage measurement combined with an evolutionary algorithm {% cite manes2019fuzzing %}:
 
-1. **Instrument** the program to record branch transitions
-2. **Select** a seed input from the queue
-3. **Mutate** (bit flips, arithmetic, block operations, dictionary tokens)
-4. **Execute** and check for new coverage
-5. **Keep** inputs that trigger new edges; discard the rest
+```mermaid
+flowchart LR
+    A["Seed Queue"] --> B["Select & Mutate"]
+    B --> C["Execute PUT"]
+    C --> D{"New coverage?"}
+    D -- "Yes" --> E["Save to queue"]
+    E --> A
+    D -- "No" --> F["Discard"]
+    F --> A
+
+    style E fill:#c8e6c9,stroke:#388e3c
+    style F fill:#ffcdd2,stroke:#c62828
+```
 
 A 1% increase in coverage correlates with 0.92% more bugs found {% cite manes2019fuzzing %}.
 

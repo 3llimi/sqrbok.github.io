@@ -159,17 +159,26 @@ PBT is used **opportunistically** in high-leverage scenarios rather than as a un
 
 ## The PBT Evolution
 
-```
-QuickCheck (2000) — random generation + shrinking + properties
-    ↓
-Hypothesis (2019) — universal byte-stream representation + automatic reduction
-    ↓
-JQF/Zest (2019) — coverage-guided + structured generation
-    ↓
-Industry adoption (2024) — opportunistic, high-leverage, time-bounded
+```mermaid
+flowchart TD
+    A["QuickCheck (2000)<br/>Random generation + shrinking + properties"] --> B["Hypothesis (2019)<br/>Universal byte-stream representation"]
+    B --> C["JQF / Zest (2019)<br/>Coverage-guided + structured generation"]
+    C --> D["Industry adoption (2024)<br/>Opportunistic, high-leverage, time-bounded"]
+
+    A -- "Solved" --> A1(("Manual oracle<br/>effort"))
+    B -- "Solved" --> B1(("Custom shrinker<br/>per type"))
+    C -- "Solved" --> C1(("Coverage<br/>blindness"))
+
+    style A fill:#e1f5fe,stroke:#0288d1
+    style B fill:#e1f5fe,stroke:#0288d1
+    style C fill:#e1f5fe,stroke:#0288d1
+    style D fill:#c8e6c9,stroke:#388e3c
+    style A1 fill:#fff3cd,stroke:#ffc107
+    style B1 fill:#fff3cd,stroke:#ffc107
+    style C1 fill:#fff3cd,stroke:#ffc107
 ```
 
-Each generation retains the core PBT idea — properties as specifications, random inputs as exploration — while addressing a key limitation: manual shrinking effort (Hypothesis), coverage blindness (JQF), and practical adoption barriers (Goldstein's industry study).
+Each generation retains the core PBT idea — properties as specifications, random inputs as exploration — while addressing a key limitation of its predecessor.
 
 ---
 

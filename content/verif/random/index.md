@@ -39,6 +39,24 @@ Generating millions of inputs is easy. Knowing whether each output is *correct* 
 | **Coverage feedback** | New code paths = interesting input | Guides exploration toward new behavior | Does not verify correctness |
 | **Differential** | Compare against reference implementation | Any divergence from reference | Shared bugs in both implementations |
 
+```mermaid
+flowchart LR
+    A["Crash Detection"] --> B["Sanitizers"]
+    B --> C["Coverage Feedback"]
+    C --> D["Contracts"]
+    D --> E["Properties"]
+    E --> F["Differential"]
+
+    style A fill:#c8e6c9,stroke:#388e3c
+    style B fill:#c8e6c9,stroke:#388e3c
+    style C fill:#fff3cd,stroke:#ffc107
+    style D fill:#fff3cd,stroke:#ffc107
+    style E fill:#ffccbc,stroke:#e64a19
+    style F fill:#ffccbc,stroke:#e64a19
+```
+
+*Left to right: more automated but less precise → more precise but requires more effort.*
+
 The evolution from crash oracles {% cite miller1990fuzz %} to sanitizer-augmented coverage {% cite manes2019fuzzing %} to specification-based properties {% cite claessen2000quickcheck %} represents a trade-off between **automation and precision** {% cite goldstein2024pbt %}.
 
 ---

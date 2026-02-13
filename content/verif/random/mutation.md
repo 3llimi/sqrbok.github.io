@@ -11,6 +11,22 @@ Mutation testing measures the fault-detection effectiveness of a test suite by i
 
 For an introduction to mutation operators and mutation score, see [Mutation Coverage](../coverage/mutation).
 
+```mermaid
+flowchart LR
+    A["Original<br/>Program"] --> B["Apply Mutation<br/>Operators"]
+    B --> C["Mutants"]
+    C --> D["Run Test Suite"]
+    D --> E{"Test fails?"}
+    E -- "Yes" --> F["Killed"]
+    E -- "No" --> G{"Equivalent?"}
+    G -- "Yes" --> H["Exclude"]
+    G -- "No" --> I["Survives — weak test"]
+
+    style F fill:#c8e6c9,stroke:#388e3c
+    style I fill:#ffcdd2,stroke:#c62828
+    style H fill:#e0e0e0,stroke:#757575
+```
+
 ---
 
 ## Theoretical Foundations
