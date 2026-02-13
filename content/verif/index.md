@@ -62,6 +62,13 @@ Learn how to measure and achieve thorough testing:
 - **[Mutation Testing](coverage/mutation.md)** - Measuring test suite effectiveness
 - **[Discussion](coverage/discussion.md)** - Trade-offs and practical considerations
 
+### [Random Testing](random/)
+Techniques that generate test inputs by sampling rather than systematic design:
+- **[Fundamentals](random/fundamentals)** - Theory, reliability prediction, Randoop, AutoTest
+- **[Fuzz Testing](random/fuzzing)** - From Miller 1990 to coverage-guided greybox fuzzing
+- **[Property-Based Testing](random/property-based)** - QuickCheck, Hypothesis, JQF, industry practice
+- **[Mutation Testing](random/mutation)** - Fault seeding, equivalent mutants, LLM-assisted detection
+
 ---
 
 ## Testing Approaches
