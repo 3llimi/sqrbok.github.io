@@ -69,6 +69,18 @@ Techniques that generate test inputs by sampling rather than systematic design:
 - **[Property-Based Testing](random/property-based)** - QuickCheck, Hypothesis, JQF, industry practice
 - **[Mutation Testing](random/mutation)** - Fault seeding, equivalent mutants, LLM-assisted detection
 
+### [Exploratory Testing](exploratory/)
+Human-driven testing where learning, test design, and execution happen simultaneously:
+- **[Techniques and Heuristics](exploratory/techniques)** - Whittaker's tours, Hendrickson's heuristics, dynamic test design
+- **[Session-Based Test Management](exploratory/session-based)** - Charters, time boxes, metrics, degrees of exploration
+- **[Empirical Evidence](exploratory/effectiveness)** - ET vs. scripted experiments, efficiency data, tester knowledge
+
+### [Operational Profile](operational-profile/)
+Usage-based testing proportional to how software is used in the field:
+- **[Developing an OP](operational-profile/development)** - Musa's five-step procedure, representations, data sources
+- **[Industrial Evidence](operational-profile/case-studies)** - AT&T, HP results, Android profile coverage
+- **[Modern Approaches](operational-profile/modern)** - Operational coverage, adaptive testing, relative coverage
+
 ---
 
 ## Testing Approaches
