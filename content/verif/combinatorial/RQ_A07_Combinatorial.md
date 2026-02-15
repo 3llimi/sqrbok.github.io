@@ -191,3 +191,23 @@ Compare the following three testing approaches for a system with 10 parameters, 
 a) Fill in the table with approximate test counts and what each guarantees.
 b) Which approach would you use for: (i) a prototype, (ii) a production web app, (iii) a medical device controller?
 c) What additional technique would you combine with CT for maximum effectiveness?
+
+---
+
+## Topics Covered
+
+| Topic | Questions |
+|-------|-----------|
+| Covering arrays | Q1, Q2, Q15 |
+| NIST fault interaction data | Q3 |
+| IPOG algorithm | Q4 |
+| AETG vs IPOG | Q5 |
+| Constraint handling | Q6 |
+| Industrial evidence | Q7 |
+| Interaction strength | Q3, Q8 |
+| Autonomous driving CT | Q9 |
+| Seed reuse | Q10 |
+| CT for ML datasets | Q11 |
+| Tool selection | Q12 |
+| Calculation problems | Q13 |
+| Algorithm taxonomy | Q14 |

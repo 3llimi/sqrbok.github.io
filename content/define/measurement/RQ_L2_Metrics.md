@@ -5,9 +5,8 @@ nav_order: 100
 layout: default
 ---
 
-# Quality Measurement and Metrics — Revision Questions
+# L02: Quality Measurement and Metrics — Revision Questions
 
-**Purpose:** Self-study and exam preparation
 **Format:** Explain in your own words, give brief examples
 
 ---

@@ -5,7 +5,11 @@ nav_order: 100
 layout: default
 ---
 
-# Software Inspection — Revision Questions
+# A05: Software Inspection — Revision Questions
+
+**Format:** Explain in your own words, give brief examples
+
+---
 
 ## Question 1: Evolution of Inspection
 
