@@ -5,7 +5,7 @@ nav_order: 99
 layout: default
 ---
 
-# Study Notes: Static Analysis (A06)
+# Study Notes: Static Analysis
 
 ## Purpose
 These study notes cover static analysis techniques for finding software defects without executing code. The material follows the lecture structure: motivation, theoretical foundations, technique overview, two deep dives (zero analysis and model checking), and modern industrial practice.

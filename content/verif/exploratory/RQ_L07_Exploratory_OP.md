@@ -5,7 +5,7 @@ nav_order: 100
 layout: default
 ---
 
-# L07: Exploratory Testing & Operational Profile — Revision Questions
+# Exploratory Testing & Operational Profile — Revision Questions
 
 **Format:** Explain in your own words, give brief examples
 

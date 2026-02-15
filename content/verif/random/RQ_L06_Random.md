@@ -5,7 +5,7 @@ nav_order: 100
 layout: default
 ---
 
-# L06: Random Testing — Revision Questions
+# Random Testing — Revision Questions
 
 **Format:** Explain in your own words, give brief examples
 

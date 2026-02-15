@@ -5,7 +5,7 @@ nav_order: 100
 layout: default
 ---
 
-# A06: Static Analysis — Revision Questions
+# Static Analysis — Revision Questions
 
 **Format:** Explain in your own words, give brief examples
 

@@ -5,7 +5,7 @@ nav_order: 99
 layout: default
 ---
 
-# Study Notes: Exploratory Testing & Operational Profile (L07)
+# Study Notes: Exploratory Testing & Operational Profile
 
 ## Purpose
 These study notes cover two complementary testing approaches: **exploratory testing** (qualitative, human-driven discovery) and **operational profile-based testing** (quantitative, usage-driven prioritization). The lecture traces ET from its definition through structured heuristics and empirical evidence, then connects it to operational profiles — from Musa's foundational work (1993) through modern developments like operational coverage and Android Cloud Profiles.

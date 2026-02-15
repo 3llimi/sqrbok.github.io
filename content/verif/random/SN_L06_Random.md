@@ -5,7 +5,7 @@ nav_order: 99
 layout: default
 ---
 
-# Study Notes: Random Testing (L06)
+# Study Notes: Random Testing
 
 ## Purpose
 These study notes cover the four pillars of random testing: probabilistic theory, fuzz testing, property-based testing, and mutation testing. The lecture traces the evolution from simple random input generation (1984) to coverage-guided structured fuzzing and LLM-assisted mutation analysis.
