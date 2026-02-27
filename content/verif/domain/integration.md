@@ -213,6 +213,7 @@ xychart-beta
 | **PICT** | Microsoft | Easy syntax, good documentation |
 | **Jenny** | Open source | Command-line, scriptable |
 | **Hexawise** | Commercial | Web-based, reporting |
+| **TESTONA** | Berner & Mattner | [Classification Tree Method](classification-tree.md) with SAT solver, test oracles |
 
 ### Integration Workflow
 

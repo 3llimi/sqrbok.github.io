@@ -192,6 +192,9 @@ Combine choices according to selection criteria.
 ### Step 6: Derive Test Cases
 Assign concrete values to each test frame.
 
+{: .note }
+The [Classification Tree Method](classification-tree.md) extends Category-Partition with a **graphical tree notation** and **combination table**, replacing textual TSL constraints with a visual, hierarchical representation.
+
 ---
 
 ## Selection Criteria

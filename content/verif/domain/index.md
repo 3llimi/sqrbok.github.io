@@ -52,16 +52,20 @@ flowchart LR
         EP["Equivalence<br/>Partitioning"]
         BVA["Boundary Value<br/>Analysis"]
         DT["Decision<br/>Tables"]
+        CTM["Classification<br/>Tree Method"]
         CT["Combinatorial<br/>Testing"]
     end
 
     SPEC[Specification] --> EP
     EP --> BVA
     EP --> DT
+    EP --> CTM
+    CTM --> CT
     DT --> CT
     BVA --> TC[Test Cases]
     DT --> TC
     CT --> TC
+    CTM --> TC
 ```
 
 ### [Equivalence Partitioning](equivalence.md)
@@ -82,6 +86,12 @@ Systematically test condition combinations:
 - **Consolidation**: Reduce tests with don't-care values
 - **Checksum verification**: Ensure completeness
 
+### [Classification Tree Method](classification-tree.md)
+Systematic test design using graphical trees and combination tables:
+- **Tree notation**: Composition ("consists of") and classification ("is a kind of") nodes
+- **Combination table**: Direct, visual test case specification
+- **Constraint handling**: Dependency rules for eliminating infeasible combinations
+
 ### [Combining Techniques](integration.md)
 Integrate techniques for comprehensive coverage:
 - **90% finding**: Most faults from 1-2 way interactions
@@ -98,6 +108,7 @@ Integrate techniques for comprehensive coverage:
 | Numeric ranges with boundaries | **Boundary Value Analysis** | Faults cluster at edges |
 | Multiple conditions → actions | **Decision Tables** | Forces complete coverage |
 | Many parameters, interactions | **Combinatorial Testing** | Catches interaction faults |
+| Hierarchical parameters, many aspects | **Classification Tree Method** | Visual tree structure, constraint handling |
 | Complex business logic | **EP + DT combination** | Partitions + rule coverage |
 
 ---
@@ -139,6 +150,7 @@ Input domain testing complements structural (white-box) coverage:
 - [Equivalence Partitioning](equivalence.md) — Partition inputs into classes
 - [Boundary Value Analysis](boundary.md) — Test at partition edges
 - [Decision Tables](decision-tables.md) — Systematic condition testing
+- [Classification Tree Method](classification-tree.md) — Graphical tree-based test design
 - [Combining Techniques](integration.md) — Integration and the 90% finding
 
 ---
