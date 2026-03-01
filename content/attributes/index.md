@@ -13,6 +13,7 @@ Dive into key software quality attributes and how to measure, achieve, and maint
 
 - **Maintainability** - Code quality and evolvability
 - **Performance** - Timeliness, throughput, and scalability
+- **Queuing Theory** - Mathematical foundations for performance modeling and capacity planning
 - **Reliability** - Fault tolerance and dependability
 - **Security** - Protecting against threats and vulnerabilities
 - **Usability** - User experience and accessibility

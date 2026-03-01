@@ -389,7 +389,7 @@ The key difference between closed and open intervals determines where you place 
       "encoding": {"x": {"field": "x", "type": "quantitative"}, "text": {"field": "label"}}
     },
     {
-      "data": {"values": [{"x": 0, "status": "OFF"}, {"x": 1, "status": "ON"}, {"x": 3, "status": "ON"}, {"x": 4, "status": "OFF"}]},
+      "data": {"values": [{"x": 0, "status": "ON"}, {"x": 1, "status": "OFF"}, {"x": 3, "status": "OFF"}, {"x": 4, "status": "ON"}]},
       "mark": {"type": "text", "dy": 40, "fontSize": 10, "color": "#666"},
       "encoding": {"x": {"field": "x", "type": "quantitative"}, "text": {"field": "status"}}
     }
@@ -402,11 +402,13 @@ The key difference between closed and open intervals determines where you place 
 
 | Test Point | Purpose | In Domain? |
 |------------|---------|------------|
-| L | Left boundary (OFF) | **No** |
-| **L + 1** | Just inside left (ON) | Yes |
+| **L** | Left boundary (ON) | **No** |
+| L + ε | Just inside left (OFF) | Yes |
 | mid | Nominal interior | Yes |
-| **R - 1** | Just inside right (ON) | Yes |
-| R | Right boundary (OFF) | **No** |
+| R - ε | Just inside right (OFF) | Yes |
+| **R** | Right boundary (ON) | **No** |
+
+> **Note:** For open boundaries, the ON point is on the boundary but NOT in the domain (boundary excluded). The OFF point is placed just inside the domain. This ensures both test points are in opposite processing regions — necessary to detect closure faults (e.g., `<` vs `≤`).
 
 > **Memory Trick:**
 > - **Closed** = filled circle ● = points included = OFF goes OUTSIDE

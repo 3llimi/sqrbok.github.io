@@ -95,12 +95,12 @@ The boundary point is **excluded** from the valid region.
 ```mermaid
 flowchart LR
     subgraph "Open: x < 100"
-        BOUND["x = 100<br/>Boundary<br/>(excluded)"]
+        ON["x = 100<br/>ON point<br/>(excluded)"]
         OFF["x = 99<br/>OFF point<br/>(inside)"]
         IN2["x = 50<br/>Interior"]
     end
 
-    style BOUND fill:#ffcccc,stroke:#cc0000
+    style ON fill:#ffcccc,stroke:#cc0000
     style OFF fill:#fff3cd,stroke:#ffc107
     style IN2 fill:#ccffcc,stroke:#009900
 ```
