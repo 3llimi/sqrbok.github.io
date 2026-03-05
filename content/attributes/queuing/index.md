@@ -26,6 +26,19 @@ The average number of items in a system (L) equals the arrival rate (&lambda;) t
 
 ## Kendall Notation: The Language of Queuing Theory
 
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A'}}}%%
+graph LR
+    Source["📥 Source"] -->|"λ"| Queue["▐▐▐▐ Queue"]
+    Queue --> Server(("🔧 Server"))
+    Server -->|"μ"| Out["📤 Output"]
+
+    style Source fill:#f0f8f0,stroke:#019546,color:#282828
+    style Queue fill:#c8e6c9,stroke:#019546,color:#282828
+    style Server fill:#c8e6c9,stroke:#019546,color:#282828
+    style Out fill:#f0f8f0,stroke:#019546,color:#282828
+```
+
 Kendall notation classifies queuing systems using a six-position descriptor {% cite kendall1953stochastic %}:
 
 | Position | Meaning | Common Values |
@@ -50,6 +63,23 @@ The most important insight from queuing theory is the **non-linear relationship*
 For an M/M/1 queue: **R = S / (1 - U)**
 
 Where R is response time, S is service time, and U is utilization. This produces the characteristic "hockey stick" curve:
+
+```vega-lite
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 280,
+  "title": {"text": "Response Time vs Utilization (M/M/1)", "subtitle": "R = S / (1 − ρ) — the hockey stick curve", "subtitleFontSize": 12, "subtitleColor": "#666"},
+  "data": {"sequence": {"start": 0.01, "stop": 0.99, "step": 0.01, "as": "u"}},
+  "transform": [{"calculate": "1 / (1 - datum.u)", "as": "rt"}],
+  "mark": {"type": "line", "strokeWidth": 3, "color": "#019546"},
+  "encoding": {
+    "x": {"field": "u", "type": "quantitative", "title": "Utilization (ρ)", "axis": {"format": "%"}},
+    "y": {"field": "rt", "type": "quantitative", "title": "Response Time (× service time)", "scale": {"domain": [0, 25]}}
+  },
+  "config": {"font": "Tahoma, sans-serif", "view": {"stroke": null}}
+}
+```
 
 | Utilization | Response Time (× service time) | Character |
 |-------------|-------------------------------|-----------|

@@ -18,6 +18,24 @@ Capacity planning uses queuing models to answer: **when will the system fail und
 
 ### The Capacity Planning Pipeline
 
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A'}}}%%
+flowchart LR
+    A["🔨 Build System"] --> B["📏 Measure<br/>T, A, C, B"]
+    B --> C["📊 Derive<br/>X, U, R, S"]
+    C --> D["📐 Model<br/>Queuing Theory"]
+    D --> E["🔮 Predict<br/>What-if analysis"]
+    E --> F["✅ Validate<br/>Compare to reality"]
+    F -->|"Refine"| B
+
+    style A fill:#f0f8f0,stroke:#019546,color:#282828
+    style B fill:#c8e6c9,stroke:#019546,color:#282828
+    style C fill:#c8e6c9,stroke:#019546,color:#282828
+    style D fill:#c8e6c9,stroke:#019546,color:#282828
+    style E fill:#c8e6c9,stroke:#019546,color:#282828
+    style F fill:#fff3e0,stroke:#ff9800,color:#282828
+```
+
 1. **Measure** service demands at each resource (CPU, disk, network) using system counters
 2. **Build** a queuing network model with measured service demands as input
 3. **Solve** with MVA to find the bottleneck resource (largest D<sub>max</sub>) {% cite reiser1980mva %}
@@ -106,6 +124,59 @@ Since queuing theory cannot eliminate variability, Dean and Barroso propose **ma
 
 ### Connecting Tails to Queuing Theory
 
+```vega-lite
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 280,
+  "title": {"text": "Response Time Distribution at 90% Utilization", "subtitle": "M/M/1 queue: mean = 10×S, but tail extends far beyond", "subtitleFontSize": 12, "subtitleColor": "#666"},
+  "layer": [
+    {
+      "data": {"sequence": {"start": 0.1, "stop": 40, "step": 0.2, "as": "t"}},
+      "transform": [{"calculate": "0.1 * exp(-0.1 * datum.t)", "as": "density"}],
+      "mark": {"type": "area", "opacity": 0.3, "color": "#019546"},
+      "encoding": {
+        "x": {"field": "t", "type": "quantitative", "title": "Response Time (multiples of S)", "scale": {"domain": [0, 40]}},
+        "y": {"field": "density", "type": "quantitative", "title": "Probability Density"}
+      }
+    },
+    {
+      "data": {"sequence": {"start": 0.1, "stop": 40, "step": 0.2, "as": "t"}},
+      "transform": [{"calculate": "0.1 * exp(-0.1 * datum.t)", "as": "density"}],
+      "mark": {"type": "line", "color": "#019546", "strokeWidth": 2},
+      "encoding": {"x": {"field": "t", "type": "quantitative"}, "y": {"field": "density", "type": "quantitative"}}
+    },
+    {
+      "data": {"sequence": {"start": 23, "stop": 40, "step": 0.2, "as": "t"}},
+      "transform": [{"calculate": "0.1 * exp(-0.1 * datum.t)", "as": "density"}],
+      "mark": {"type": "area", "opacity": 0.5, "color": "#d32f2f"},
+      "encoding": {"x": {"field": "t", "type": "quantitative"}, "y": {"field": "density", "type": "quantitative"}}
+    },
+    {
+      "data": {"values": [{"x": 10}]},
+      "mark": {"type": "rule", "color": "#2D6E2A", "strokeWidth": 2, "strokeDash": [6, 4]},
+      "encoding": {"x": {"field": "x", "type": "quantitative"}}
+    },
+    {
+      "data": {"values": [{"x": 10, "label": "Mean (10×S)"}]},
+      "mark": {"type": "text", "align": "left", "dx": 5, "dy": -120, "fontSize": 12, "color": "#2D6E2A", "fontWeight": "bold"},
+      "encoding": {"x": {"field": "x", "type": "quantitative"}, "text": {"field": "label", "type": "nominal"}}
+    },
+    {
+      "data": {"values": [{"x": 23}]},
+      "mark": {"type": "rule", "color": "#d32f2f", "strokeWidth": 2, "strokeDash": [6, 4]},
+      "encoding": {"x": {"field": "x", "type": "quantitative"}}
+    },
+    {
+      "data": {"values": [{"x": 23, "label": "p90 (23×S)"}]},
+      "mark": {"type": "text", "align": "left", "dx": 5, "dy": -120, "fontSize": 12, "color": "#d32f2f", "fontWeight": "bold"},
+      "encoding": {"x": {"field": "x", "type": "quantitative"}, "text": {"field": "label", "type": "nominal"}}
+    }
+  ],
+  "config": {"font": "Tahoma, sans-serif", "axis": {"labelFontSize": 12, "titleFontSize": 14}, "view": {"stroke": null}}
+}
+```
+
 Tail latency is not a separate phenomenon — it is a **direct consequence of queuing at high utilization**. The M/M/1 response time formula R = S/(1-U) gives the mean, but the actual distribution is exponential with CDF:
 
 P(R > t) = U &middot; e<sup>&minus;(1&minus;U)t/S</sup>
@@ -132,6 +203,31 @@ JMT is particularly well-suited for teaching because it provides both exact anal
 ## Software Architecture as Queuing Network
 
 Software architectures map naturally to queuing networks {% cite balsamo2003queueing %}:
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A'}}}%%
+graph LR
+    LB["⚖️ Load<br/>Balancer"]
+    GW["🚪 API Gateway<br/>⏳ queue"]
+    SA["Service A<br/>⏳ thread pool"]
+    SB["Service B<br/>⏳ thread pool"]
+    DB["🗄️ Database<br/>⏳ conn pool"]
+    MQ["📨 Message<br/>Broker<br/>⏳ queue"]
+
+    LB --> GW
+    GW --> SA
+    GW --> SB
+    SA --> DB
+    SA --> MQ
+    MQ --> SB
+
+    style LB fill:#f0f8f0,stroke:#019546,color:#282828
+    style GW fill:#c8e6c9,stroke:#019546,color:#282828
+    style SA fill:#c8e6c9,stroke:#019546,color:#282828
+    style SB fill:#c8e6c9,stroke:#019546,color:#282828
+    style DB fill:#fff3cd,stroke:#ffc107,color:#282828
+    style MQ fill:#fff3cd,stroke:#ffc107,color:#282828
+```
 
 | Architecture Pattern | Queuing Model |
 |---------------------|---------------|

@@ -62,6 +62,86 @@ Hillston formalizes six laws relating these parameters {% cite hillston2014opera
 
 The average number of requests in the system (N) equals throughput (X) times average response time (R) {% cite little1961proof %}. Little's original formulation uses L = &lambda;W; in operational analysis the equivalent form N = X &middot; R is preferred because X and R are directly derived from the five observed counters {% cite denning1978operational %}. The law is distribution-free and requires only job flow balance {% cite little2008littles %}.
 
+```vega-lite
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 450,
+  "height": 300,
+  "title": {"text": "Cumulative Arrivals a(t) and Completions d(t)", "subtitle": "Shaded area H = accumulated time in system (req-sec)", "subtitleFontSize": 11, "subtitleColor": "#666"},
+  "layer": [
+    {
+      "data": {"values": [
+        {"time": 0, "arrivals": 0, "completions": 0},
+        {"time": 0, "arrivals": 1, "completions": 0},
+        {"time": 3, "arrivals": 2, "completions": 0},
+        {"time": 5, "arrivals": 3, "completions": 0},
+        {"time": 8, "arrivals": 3, "completions": 1},
+        {"time": 11, "arrivals": 3, "completions": 2},
+        {"time": 12, "arrivals": 3, "completions": 3},
+        {"time": 18, "arrivals": 4, "completions": 3},
+        {"time": 19, "arrivals": 5, "completions": 3},
+        {"time": 23, "arrivals": 5, "completions": 4},
+        {"time": 26, "arrivals": 5, "completions": 5},
+        {"time": 27, "arrivals": 6, "completions": 5},
+        {"time": 30, "arrivals": 7, "completions": 6},
+        {"time": 33, "arrivals": 8, "completions": 6},
+        {"time": 35, "arrivals": 9, "completions": 6},
+        {"time": 36, "arrivals": 9, "completions": 7},
+        {"time": 38, "arrivals": 9, "completions": 8},
+        {"time": 40, "arrivals": 10, "completions": 8},
+        {"time": 41, "arrivals": 10, "completions": 9},
+        {"time": 45, "arrivals": 10, "completions": 10},
+        {"time": 50, "arrivals": 10, "completions": 10}
+      ]},
+      "mark": {"type": "area", "interpolate": "step-after", "opacity": 0.3, "color": "#1976d2"},
+      "encoding": {
+        "x": {"field": "time", "type": "quantitative"},
+        "y": {"field": "arrivals", "type": "quantitative"},
+        "y2": {"field": "completions"}
+      }
+    },
+    {
+      "data": {"values": [
+        {"time": 0, "value": 0}, {"time": 0, "value": 1}, {"time": 3, "value": 2}, {"time": 5, "value": 3},
+        {"time": 18, "value": 4}, {"time": 19, "value": 5}, {"time": 27, "value": 6}, {"time": 30, "value": 7},
+        {"time": 33, "value": 8}, {"time": 35, "value": 9}, {"time": 40, "value": 10}, {"time": 50, "value": 10}
+      ]},
+      "mark": {"type": "line", "interpolate": "step-after", "strokeWidth": 2.5, "color": "#1565c0"}
+    },
+    {
+      "data": {"values": [
+        {"time": 0, "value": 0}, {"time": 8, "value": 1}, {"time": 11, "value": 2}, {"time": 12, "value": 3},
+        {"time": 23, "value": 4}, {"time": 26, "value": 5}, {"time": 30, "value": 6}, {"time": 36, "value": 7},
+        {"time": 38, "value": 8}, {"time": 41, "value": 9}, {"time": 45, "value": 10}, {"time": 50, "value": 10}
+      ]},
+      "mark": {"type": "line", "interpolate": "step-after", "strokeWidth": 2.5, "color": "#c62828"}
+    },
+    {
+      "data": {"values": [{"time": 48, "value": 10, "label": "a(t) = arrivals"}]},
+      "mark": {"type": "text", "align": "left", "dx": 5, "fontSize": 13, "fontWeight": "bold", "color": "#1565c0"},
+      "encoding": {"x": {"field": "time", "type": "quantitative"}, "y": {"field": "value", "type": "quantitative"}, "text": {"field": "label", "type": "nominal"}}
+    },
+    {
+      "data": {"values": [{"time": 48, "value": 9.2, "label": "d(t) = completions"}]},
+      "mark": {"type": "text", "align": "left", "dx": 5, "fontSize": 13, "fontWeight": "bold", "color": "#c62828"},
+      "encoding": {"x": {"field": "time", "type": "quantitative"}, "y": {"field": "value", "type": "quantitative"}, "text": {"field": "label", "type": "nominal"}}
+    },
+    {
+      "data": {"values": [{"time": 15, "value": 4.5, "label": "H"}]},
+      "mark": {"type": "text", "fontSize": 16, "fontWeight": "bold", "fontStyle": "italic", "color": "#1976d2", "opacity": 0.7},
+      "encoding": {"x": {"field": "time", "type": "quantitative"}, "y": {"field": "value", "type": "quantitative"}, "text": {"field": "label", "type": "nominal"}}
+    }
+  ],
+  "encoding": {
+    "x": {"field": "time", "type": "quantitative", "scale": {"domain": [0, 55]}, "axis": {"title": "time", "grid": false}},
+    "y": {"field": "value", "type": "quantitative", "scale": {"domain": [0, 11]}, "axis": {"title": "units", "tickMinStep": 1}}
+  },
+  "config": {"font": "Tahoma, sans-serif", "view": {"stroke": null}}
+}
+```
+
+The shaded area H between the arrival curve a(t) and completion curve d(t) represents the total accumulated time in system. N = H/T, R = H/C, X = C/T — therefore **N = X &middot; R**.
+
 ### 2. Utilization Law
 
 **U<sub>i</sub> = X &middot; D<sub>i</sub>**
@@ -103,6 +183,29 @@ A resource is the system bottleneck if it has the **largest service demand** D<s
 X<sub>max</sub> = 1 / D<sub>max</sub>
 
 **Example:** A three-tier web application with service demands:
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A'}}}%%
+graph LR
+    Client["🌐 Client<br/>Requests"] --> Web
+
+    subgraph System["3-Tier Web Application"]
+        Web["🖥️ Web Server<br/>D = 5 ms"]
+        App["⚙️ App Server<br/>D = 15 ms"]
+        DB["🗄️ Database<br/>D = 25 ms<br/>⚠️ BOTTLENECK"]
+    end
+
+    Web --> App
+    App --> DB
+    DB --> Response["✅ Response"]
+
+    style Web fill:#c8e6c9,stroke:#019546,color:#282828
+    style App fill:#c8e6c9,stroke:#019546,color:#282828
+    style DB fill:#ffcdd2,stroke:#d32f2f,color:#282828,stroke-width:3px
+    style Client fill:#f0f8f0,stroke:#019546,color:#282828
+    style Response fill:#f0f8f0,stroke:#019546,color:#282828
+    style System fill:#fffef0,stroke:#ccc
+```
 
 | Resource | Service Demand D<sub>i</sub> |
 |----------|------------------------------|

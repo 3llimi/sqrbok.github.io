@@ -18,6 +18,17 @@ Queuing models predict **how response time, throughput, and queue length change 
 
 The simplest useful model: Poisson arrivals (M), exponential service (M), one server (1) {% cite kendall1953stochastic %}:
 
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A'}}}%%
+graph LR
+    Src["📥 Source"] --> Q["▐▐▐▐ Queue"] --> S(("Server")) --> Out["📤"]
+
+    style Src fill:#f0f8f0,stroke:#019546,color:#282828
+    style Q fill:#c8e6c9,stroke:#019546,color:#282828
+    style S fill:#c8e6c9,stroke:#019546,color:#282828
+    style Out fill:#f0f8f0,stroke:#019546,color:#282828
+```
+
 | Metric | Formula |
 |--------|---------|
 | **Response time** | R = S / (1 &minus; U) |
@@ -33,7 +44,22 @@ Where S is mean service time and U is utilization (&lambda;/&mu;). The key insig
 
 ### M/M/c: Multiple Servers
 
-When *c* parallel servers share a single queue (e.g., thread pool of size *c*), the model becomes M/M/c {% cite hillier2001operations %}. Multiple servers delay the hockey stick — a 4-server system can sustain higher total utilization before response time explodes:
+When *c* parallel servers share a single queue (e.g., thread pool of size *c*), the model becomes M/M/c {% cite hillier2001operations %}.
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A'}}}%%
+graph LR
+    Src["📥 Source"] --> Q["▐▐▐▐ Queue"]
+    Q --> S1(("Server 1"))
+    Q --> S2(("Server 2"))
+    Q --> Sn(("Server n"))
+
+    style Src fill:#f0f8f0,stroke:#019546,color:#282828
+    style Q fill:#c8e6c9,stroke:#019546,color:#282828
+    style S1 fill:#c8e6c9,stroke:#019546,color:#282828
+    style S2 fill:#c8e6c9,stroke:#019546,color:#282828
+    style Sn fill:#c8e6c9,stroke:#019546,color:#282828
+``` Multiple servers delay the hockey stick — a 4-server system can sustain higher total utilization before response time explodes:
 
 | Servers (c) | Total utilization at 3&times; service time |
 |-------------|-------------------------------------------|
@@ -65,6 +91,39 @@ Real software systems are not single queues — they are **networks of interconn
 |------|-----------|----------|-------------|
 | **Open** | Infinite (requests arrive from outside) | OLTP, API traffic | Analytically tractable {% cite liu2011performance %} |
 | **Closed** | Fixed (N users cycle through system) | Interactive users, batch jobs | Requires iterative solution (MVA) |
+
+**Open network** — requests arrive from outside and exit after service:
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A'}}}%%
+graph LR
+    Src["📥 Source"] --> Q1["▐▐▐▐"] --> S1(("Server 1")) --> Q2["▐▐▐▐"] --> S2(("Server 2")) --> Q3["▐▐▐▐"] --> S3(("Server 3")) --> Out["📤 Exit"]
+
+    style Src fill:#f0f8f0,stroke:#019546,color:#282828
+    style Q1 fill:#c8e6c9,stroke:#019546,color:#282828
+    style Q2 fill:#c8e6c9,stroke:#019546,color:#282828
+    style Q3 fill:#c8e6c9,stroke:#019546,color:#282828
+    style S1 fill:#c8e6c9,stroke:#019546,color:#282828
+    style S2 fill:#c8e6c9,stroke:#019546,color:#282828
+    style S3 fill:#c8e6c9,stroke:#019546,color:#282828
+    style Out fill:#f0f8f0,stroke:#019546,color:#282828
+```
+
+**Closed network** — fixed population recirculates through the system:
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A'}}}%%
+graph LR
+    Src["📥 Source"] --> Q1["▐▐▐▐"] --> S1(("Server 1")) --> Q2["▐▐▐▐"] --> S2(("Server 2")) --> Q3["▐▐▐▐"] --> S3(("Server 3")) --> Src
+
+    style Src fill:#f0f8f0,stroke:#019546,color:#282828
+    style Q1 fill:#c8e6c9,stroke:#019546,color:#282828
+    style Q2 fill:#c8e6c9,stroke:#019546,color:#282828
+    style Q3 fill:#c8e6c9,stroke:#019546,color:#282828
+    style S1 fill:#c8e6c9,stroke:#019546,color:#282828
+    style S2 fill:#c8e6c9,stroke:#019546,color:#282828
+    style S3 fill:#c8e6c9,stroke:#019546,color:#282828
+```
 
 Open networks are simpler for back-of-the-envelope calculations. Closed networks model the **think time** between requests and the feedback effect where slow responses reduce the arrival rate {% cite denning1978operational %}.
 
