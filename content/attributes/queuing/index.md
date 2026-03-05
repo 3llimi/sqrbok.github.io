@@ -80,6 +80,13 @@ Queuing theory connects to software quality through three practical applications
 | [Queuing Models](models.md) | M/M/1, M/M/c, queuing networks, Mean-Value Analysis |
 | [Applications](applications.md) | Capacity planning, cloud queuing, tail latency, simulation tools |
 
+## Study Materials
+
+| Page | Content |
+|------|---------|
+| [Study Notes](SN-A10-Queuing.md) | Comprehensive study notes covering queuing theory for exam preparation |
+| [Revision Questions](RQ-A10-Queuing.md) | 30 self-assessment questions with hidden answers, including problem-solving exercises |
+
 ---
 
 ### References

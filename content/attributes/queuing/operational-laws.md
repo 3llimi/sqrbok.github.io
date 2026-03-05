@@ -27,23 +27,28 @@ The key advantage is that operational laws are **tautologies** — they hold for
 
 ## Observed and Derived Parameters
 
-From system instrumentation (perfmon, sar, Prometheus), we directly observe four quantities:
+From system instrumentation (perfmon, sar, Prometheus, APM traces), we directly observe five quantities {% cite denning1978operational %}:
 
-| Parameter | Symbol | Definition |
-|-----------|--------|-----------|
-| Arrivals | A | Total requests entering the system |
-| Completions | C | Total requests leaving the system |
-| Busy time | B | Time the resource is not idle |
-| Observation period | T | Duration of measurement |
+| Parameter | Symbol | Definition | How to collect |
+|-----------|--------|-----------|----------------|
+| Observation period | T | Duration of measurement | Clock |
+| Arrivals | A | Total requests entering the system | HTTP logs, load balancer counters |
+| Completions | C | Total requests leaving the system | HTTP logs, load balancer counters |
+| Time in system | W | Sum of all request durations | APM traces (Jaeger, Datadog) |
+| Busy time | B | Time the resource is not idle | Prometheus, `sar`, perfmon |
 
-From these, we derive:
+From these, we derive six performance metrics:
 
 | Parameter | Symbol | Formula |
 |-----------|--------|---------|
+| Arrival rate | &lambda; | A / T |
 | Throughput | X | C / T |
 | Utilization | U | B / T |
 | Service time | S | B / C |
-| Arrival rate | &lambda; | A / T |
+| Avg. number in system | N | W / T |
+| Response time | R | W / C |
+
+**Consistency check:** If A &asymp; C over the observation period (flow balance), then &lambda; &asymp; X.
 
 ---
 
@@ -53,9 +58,9 @@ Hillston formalizes six laws relating these parameters {% cite hillston2014opera
 
 ### 1. Little's Law
 
-**L = X &middot; W**
+**N = X &middot; R**
 
-The average number of items in a system equals throughput times average time in the system {% cite little1961proof %}. This is distribution-free and requires only job flow balance {% cite little2008littles %}.
+The average number of requests in the system (N) equals throughput (X) times average response time (R) {% cite little1961proof %}. Little's original formulation uses L = &lambda;W; in operational analysis the equivalent form N = X &middot; R is preferred because X and R are directly derived from the five observed counters {% cite denning1978operational %}. The law is distribution-free and requires only job flow balance {% cite little2008littles %}.
 
 ### 2. Utilization Law
 
@@ -113,7 +118,7 @@ No amount of web or app server optimization will push throughput past 40 TPS unt
 
 ## Data Validation with Little's Law
 
-Little's Law serves as a **sanity check** for measurement data {% cite little2011littles %}. If measured throughput and response times do not satisfy L = X &middot; W, the measurements are wrong — not the law.
+Little's Law serves as a **sanity check** for measurement data {% cite little2011littles %}. If measured throughput and response times do not satisfy N = X &middot; R, the measurements are wrong — not the law.
 
 Common causes of violation:
 - **Orphan requests** that overlapped the observation window boundary
