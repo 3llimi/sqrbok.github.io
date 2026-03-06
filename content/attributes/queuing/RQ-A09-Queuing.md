@@ -7,7 +7,7 @@ layout: default
 
 # Queuing Theory — Revision Questions
 
-**Format:** 30 questions covering conceptual understanding and problem-solving. All answers are hidden — click to reveal. Use alongside the [Study Notes](SN-A10-Queuing.md) for detailed explanations.
+**Format:** 30 questions covering conceptual understanding and problem-solving. All answers are hidden — click to reveal. Use alongside the [Study Notes](SN-A09-Queuing.md) for detailed explanations.
 
 ---
 

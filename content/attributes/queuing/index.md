@@ -114,8 +114,8 @@ Queuing theory connects to software quality through three practical applications
 
 | Page | Content |
 |------|---------|
-| [Study Notes](SN-A10-Queuing.md) | Comprehensive study notes covering queuing theory for exam preparation |
-| [Revision Questions](RQ-A10-Queuing.md) | 30 self-assessment questions with hidden answers, including problem-solving exercises |
+| [Study Notes](SN-A09-Queuing.md) | Comprehensive study notes covering queuing theory for exam preparation |
+| [Revision Questions](RQ-A09-Queuing.md) | 30 self-assessment questions with hidden answers, including problem-solving exercises |
 
 ---
 
