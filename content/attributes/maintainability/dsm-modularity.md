@@ -52,9 +52,18 @@ When partitioning cannot eliminate all feedback marks, **tearing** selects speci
 
 ### Measurement Process
 
-1. **Direct Dependency Matrix** (D): a binary matrix where entry d(i,j) = 1 if file *i* calls a function in file *j*
-2. **Visibility Matrix** (V): raise D to successive powers (D, D^2, D^3, ...) and combine to capture indirect dependency chains; entry v(i,j) > 0 means a change to *j* can eventually reach *i*
-3. **Propagation Cost**: the fraction of non-zero entries in V, expressed as a percentage
+1. **Direct Dependency Matrix** ($M$): a binary matrix where entry $m_{ij} = 1$ if element $i$ depends on element $j$
+2. **Visibility Matrix** ($V$): computed as the sum of powers of $M$:
+
+$$V = \sum_{n=0}^{k} M^n$$
+
+where $k$ is the diameter of the dependency graph. Entry $v_{ij} > 0$ means a change to $j$ can eventually reach $i$ through direct or indirect dependency chains.
+
+3. **Propagation Cost**: the fraction of reachable pairs in $V$:
+
+$$PC = \frac{\sum_{i=1}^{N}\sum_{j=1}^{N} \hat{v}_{ij}}{N^2} \quad \text{where } \hat{v}_{ij} = \begin{cases} 1 & \text{if } V_{ij} > 0 \\ 0 & \text{otherwise} \end{cases}$$
+
+![Worked example: computing the Visibility Matrix from powers of the dependency matrix, yielding PC = 15/36 = 41.7%](visi_matrix.png)
 
 A low PC indicates a modular system where changes are contained locally. A high PC signals a tightly coupled system where changes ripple widely.
 
@@ -69,6 +78,10 @@ MacCormack et al. compared two large open-source systems to demonstrate that arc
 | **Dependency density** (per 1000 pairs) | 3.4 | 2.4 | lower |
 
 Despite having *fewer* raw dependencies per element pair, Mozilla's 1998 architecture was far more coupled than Linux because its dependencies formed long indirect chains. After a purposeful re-design, Mozilla's propagation cost dropped from 17.35% to 2.78% -- a change to a file now impacted **80% fewer files** on average.
+
+![DSM heatmaps: Mozilla (left) shows scattered dependencies; Linux (right) shows block-diagonal clusters](mozilla-linux-comparison.png)
+
+![Mozilla DSM after redesign: block-diagonal clusters with sparse inter-cluster dependencies](mozilla-re2.png)
 
 {: .important }
 > Architecture is not wholly determined by function. The Mozilla re-design proves that architects can significantly adapt a design's structure through purposeful effort {% cite maccormack2006exploring %}.
@@ -93,6 +106,8 @@ Sullivan et al. tested the theory on Parnas's classic Key Words in Context (KWIC
 - **Information-hiding decomposition**: modules aligned with design decisions likely to change -- modular
 
 The options-based analysis confirmed Parnas's original conclusion: the information-hiding decomposition has **higher Net Option Value** because each module can be independently redesigned without affecting others. This provides an **economic justification** for Parnas's design principles beyond the usual engineering arguments.
+
+![Non-modular design offers one option (accept/reject whole); modular design offers N independent replacement options](nov-options.svg)
 
 ---
 
@@ -148,6 +163,8 @@ Bogner et al. identify **15 modifiability tactics** organized in three categorie
 | **Reduce Coupling** | Encapsulate, Use an Intermediary, Restrict Dependencies, ... | 4 |
 | **Defer Binding Time** | Runtime Registration, Configuration Files, ... | 6 |
 
+![DSM architectural patterns: vertical bus (library used by many) and horizontal bus (controller calling many)](bus-patterns.svg)
+
 These tactics map directly to observable DSM patterns:
 
 | Tactic | DSM Effect |
@@ -158,6 +175,8 @@ These tactics map directly to observable DSM patterns:
 | **Use an Intermediary** | Replaces direct dependencies with indirect paths through a controlled interface |
 
 Nord et al. formalized this connection: DSM clustering operationalizes the "Increase Cohesion" / "Reduce Coupling" pair, while partitioning and tearing break cyclical dependencies that are sometimes called "code cancer" {% cite nord2013propagation bogner2019modifiability %}.
+
+![Layered architecture dependency graph — upward dependencies (above the diagonal) indicate architectural violations](achi_graph.png)
 
 ### Modularity Beyond OO: Aspect-Oriented Analysis
 

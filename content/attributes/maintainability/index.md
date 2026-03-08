@@ -25,6 +25,8 @@ Most software cost is invisible at release time. The development phase — requi
 | 80--85% of life-cycle cost is committed during requirements and design | {% cite gullo2021maintainability %} |
 | ROI of "Design for Maintainability" can reach 1000% vs doing nothing | {% cite gullo2021maintainability %} |
 
+![Software lifecycle cost distribution — development vs maintenance phases](chart-maintenance-cost.svg)
+
 The implication is stark: **the cheapest time to invest in maintainability is before code is written**, because design decisions lock in 80--85% of future maintenance cost.
 
 ---
@@ -76,14 +78,7 @@ Law I corresponds to Parnas's "Lack of Movement": stop adapting and the system l
 
 Parnas describes the combined effect of both aging forces as a "one-two punch" that accelerates value decline {% cite parnas1994aging %}:
 
-```mermaid
-graph TD
-    A[Software Release] --> B{Time passes}
-    B -->|No updates| C[Lack of Movement<br/>Obsolescence]
-    B -->|Uninformed changes| D[Ignorant Surgery<br/>Structural decay]
-    C --> E[Rapid Value Decline]
-    D --> E
-```
+![Software aging: Lack of Movement and Ignorant Surgery combine to accelerate value decline](aging-flow.svg)
 
 The two forces reinforce each other. Lack of Movement creates pressure for urgent changes ("we must catch up"), and urgent changes are precisely the ones most likely to be Ignorant Surgery. The only defense is deliberate investment in **design for change**: information hiding, separation of concerns, and continuous architectural stewardship {% cite parnas1994aging %}.
 

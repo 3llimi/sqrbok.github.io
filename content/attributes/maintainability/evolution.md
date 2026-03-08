@@ -59,6 +59,8 @@ Parnas {% cite parnas1994aging %} argued that software, like people, gets old. U
 
 When both forces combine, software value declines rapidly. Lack of Movement creates pressure for urgent changes, which are then carried out as Ignorant Surgery because the urgency leaves no time for proper understanding. The result is accelerating decay -- a vicious cycle that can render a system unmaintainable.
 
+![Software aging: Lack of Movement and Ignorant Surgery combine as a "one-two punch" accelerating value decline](aging-flow.svg)
+
 ### Software Geriatrics (Prescriptions)
 
 Parnas {% cite parnas1994aging %} proposed two categories of intervention:

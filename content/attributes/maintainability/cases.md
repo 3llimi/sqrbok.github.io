@@ -28,6 +28,12 @@ A purposeful architectural re-design in late 1998 restructured the codebase to r
 | Vertical buses | 2 | increased significantly | — |
 | Architecture | highly coupled | more modular than Linux (5.82% PC) | — |
 
+![DSM heatmaps: Mozilla v1 (left) shows scattered dependencies; Linux (right) shows block-diagonal clusters](mozilla-linux-comparison.png)
+
+![Mozilla DSM after redesign showing emergent block-diagonal modular structure](mozilla-re2.png)
+
+![Propagation cost comparison: Mozilla v1 (17.35%), Linux (5.82%), Mozilla v2 (2.78%)](chart-mozilla-linux.svg)
+
 ### Lesson
 
 Architecture is not determined by function — it results from purposeful choices by designers. An "architecture for participation" is essential for open-source success {% cite maccormack2006exploring %}.
@@ -121,6 +127,8 @@ Molnar (2020) studied maintainability evolution in 3 open-source projects (FreeM
 | Automatic | Framework at scale | Maintainability score | **55% improved** |
 
 Four common patterns emerge across all cases:
+
+![Lorenz curve: dependency concentration — top 10% of dependencies cause over 50% of change propagation](chart-lorenz.svg)
 
 1. **Targeted intervention outperforms broad application.** Mozilla re-designed architecture; ABB focused on separation of concerns; the automated framework was most effective against specific anti-patterns.
 2. **Expert interpretation of metrics is essential.** The "UnnecessaryConstructor" paradox and the Microsoft finding that LOC increases during refactoring both show that raw numbers mislead without context.

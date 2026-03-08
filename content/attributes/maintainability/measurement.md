@@ -16,11 +16,9 @@ The measurement landscape for software maintainability is highly fragmented. A s
 
 The Maintainability Index is one of the earliest composite metrics, combining Halstead volume, cyclomatic complexity, and lines of code into a single number {% cite ardito2020maintainability %}:
 
-```
-MI = 171 - 5.2 * ln(aveV) - 0.23 * aveG - 16.2 * ln(aveSTAT)
-```
+$$MI = 171 - 5.2 \cdot \ln(\text{aveV}) - 0.23 \cdot \text{aveG} - 16.2 \cdot \ln(\text{aveSTAT})$$
 
-where **aveV** = average Halstead Volume per module, **aveG** = average Cyclomatic Complexity per module, and **aveSTAT** = average lines of code per module.
+where $\text{aveV}$ = average Halstead Volume per module, $\text{aveG}$ = average Cyclomatic Complexity per module, and $\text{aveSTAT}$ = average lines of code per module.
 
 | MI Range | Interpretation |
 |----------|---------------|
@@ -61,6 +59,8 @@ Each sub-characteristic of maintainability is derived from a specific subset of 
 | **Modularity** | Module Coupling, Component Balance, Component Independence |
 | **Reusability** | Unit Size, Unit Interfacing |
 
+![SIG model: eight source code properties mapped to five ISO 25010 maintainability sub-characteristics](sig-model-mapping.png)
+
 ### Star Rating Calibration
 
 Properties are rated on a 1-to-5 star scale, calibrated against SIG's benchmark repository so that the distribution reflects the full range of quality achieved by real-world systems {% cite baggen2012standardized %}:
@@ -72,6 +72,8 @@ Properties are rated on a 1-to-5 star scale, calibrated against SIG's benchmark 
 | 3 | Next 30% |
 | 2 | Next 30% |
 | 1 | Bottom 5% |
+
+![SIG star rating distribution calibrated against industry benchmark](chart-sig-stars.svg)
 
 **Certification threshold:** overall maintainability rating of at least 3 stars, with each sub-characteristic scoring at least 2 stars {% cite sig2016criteria %}.
 
@@ -87,9 +89,7 @@ The SQALE (Software Quality Assessment based on Lifecycle Expectations) method r
 
 Rather than scoring code on a relative benchmark, SQALE normalizes static-analysis findings into remediation costs. The central metric is the **Technical Debt Ratio (TDR)**:
 
-```
-TDR = remediation cost / estimated development cost
-```
+$$TDR = \frac{\text{remediation cost}}{\text{estimated development cost}}$$
 
 | Rating | TDR Threshold |
 |--------|--------------|
