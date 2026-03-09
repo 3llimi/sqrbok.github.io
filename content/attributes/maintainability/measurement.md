@@ -1,5 +1,5 @@
 ---
-title: Measurement
+title: Measuring Maintainability
 parent: Maintainability
 grand_parent: Quality Attributes
 nav_order: 2
