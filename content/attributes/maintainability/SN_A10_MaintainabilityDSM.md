@@ -432,6 +432,20 @@ graph LR
     style H fill:#e8f5e9
 ```
 
+**DSM representation** (· = diagonal, X = dependency):
+
+|   | A | B | C | D | F | G | H |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| **A** | · |   |   |   |   |   |   |
+| **B** | X | · |   |   |   |   |   |
+| **C** | X |   | · |   |   |   |   |
+| **D** | X |   |   | · |   |   |   |
+| **F** |   | X |   |   | · |   |   |
+| **G** |   |   |   | X |   | · |   |
+| **H** |   |   |   | X |   | X | · |
+
+Reading row B: B depends on A. Reading column D: G and H depend on D.
+
 **Key insight:** The matrix representation enables algorithmic operations (partitioning, clustering) that are difficult on graphs.
 
 ### 5.3 Three Fundamental Dependency Patterns
@@ -441,6 +455,31 @@ graph LR
 | **Independent** | No marks between A and B | No relationship, can work in parallel | Unrelated services |
 | **Dependent** | Mark below diagonal only | Sequential, layered — B depends on A | UI layer depends on API layer |
 | **Coupled** | Marks both directions | Mutual dependency, cyclic | Circular imports between modules |
+
+**DSM examples** (· = diagonal):
+
+**Independent** — no marks between A and B:
+
+|   | A | B |
+|---|:-:|:-:|
+| **A** | · |   |
+| **B** |   | · |
+
+**Dependent** — B depends on A (mark below diagonal):
+
+|   | A | B |
+|---|:-:|:-:|
+| **A** | · |   |
+| **B** | X | · |
+
+**Coupled** — mutual dependency (marks in both directions):
+
+|   | A | B |
+|---|:-:|:-:|
+| **A** | · | ↑X |
+| **B** | X | · |
+
+(↑X = above-diagonal mark, indicating a feedback/violation)
 
 **Design goal:** Maximize independent and dependent patterns. Minimize coupled patterns (cycles create ripple effects).
 
@@ -460,33 +499,60 @@ graph LR
 4. Result: topological sort of the dependency graph
 
 **Concrete Example — Partitioning:**
-Before (order A-G): 6 above-diagonal marks (red violations)
-After (order F→B→D→G→C→A→E): all marks below diagonal
+
+**Before (original order A–G)** — 6 above-diagonal marks (↑X = violations):
+
+|   | A | B | C | D | E | F | G |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| **A** | · |   | ↑X |   |   |   |   |
+| **B** |   | · |   |   |   | ↑X |   |
+| **C** |   |   | · | ↑X |   |   | ↑X |
+| **D** |   | X |   | · |   | ↑X |   |
+| **E** | X |   | X | X | · |   | ↑X |
+| **F** |   |   |   |   |   | · |   |
+| **G** |   | X |   |   |   |   | · |
+
+**After (F→B→D→G→C→A→E)** — all marks below diagonal ✓:
+
+|   | F | B | D | G | C | A | E |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| **F** | · |   |   |   |   |   |   |
+| **B** | X | · |   |   |   |   |   |
+| **D** | X | X | · |   |   |   |   |
+| **G** |   | X |   | · |   |   |   |
+| **C** |   |   | X | X | · |   |   |
+| **A** |   |   |   |   | X | · |   |
+| **E** |   |   | X | X | X | X | · |
 
 The algorithm discovers: F has no dependencies (goes first), E provides nothing (goes last), and the rest form a dependency chain F→{B,D}→G→C→A→E.
 
-```mermaid
-graph LR
-    subgraph "Before: mixed order"
-        A1["A"] --> C1["C"]
-        B1["B"] --> F1["F"]
-        C1 --> D1["D"]
-        C1 --> G1["G"]
-    end
-    subgraph "After: topologically sorted"
-        F2["F"] --> B2["B"]
-        B2 --> D2["D"]
-        D2 --> G2["G"]
-        G2 --> C2["C"]
-        C2 --> A2["A"]
-        A2 --> E2["E"]
-    end
+**Concrete Example — Clustering:**
 
-    style F2 fill:#e8f5e9
-    style E2 fill:#ffcdd2
-```
+**Before (original order 1–7)** — dependencies scattered:
 
-**Clustering** groups mutually dependent elements into blocks on the diagonal. Within each block, coupling is expected (the elements form a tightly coupled subsystem). Between blocks, coupling should be minimal. Clustering operationalizes the coupling/cohesion principle: intra-cluster = high cohesion; inter-cluster = low coupling.
+|   | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| **1** | · |   |   |   |   | ↑X |   |
+| **2** |   | · | ↑X | ↑X |   |   |   |
+| **3** |   | X | · | ↑X |   |   |   |
+| **4** |   |   |   | · | ↑X |   |   |
+| **5** | X |   |   |   | · | ↑X |   |
+| **6** | X |   |   |   | X | · |   |
+| **7** |   | X | X | X |   |   | · |
+
+**After ({1,6,5} | {4} | {2,3} | 7)** — block-diagonal clusters visible ([X] = within-cluster):
+
+|   | 1 | 6 | 5 | 4 | 2 | 3 | 7 |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| **1** | · | [X] |   |   |   |   |   |
+| **6** | [X] | · | [X] |   |   |   |   |
+| **5** | [X] | [X] | · |   |   |   |   |
+| **4** |   |   | X | · |   |   |   |
+| **2** |   |   |   | X | · | [X] |   |
+| **3** |   |   |   | X | [X] | · |   |
+| **7** |   |   |   | X | X | X | · |
+
+Cluster {1,6,5} — mutually dependent (tightly coupled subsystem). Cluster {2,3} — mutually dependent. Cross-cluster marks (plain X) reveal the minimal coupling between subsystems.
 
 ### 5.5 Layering and Violations
 
@@ -495,8 +561,33 @@ graph LR
 - **Below diagonal (green):** Valid dependency — higher layer depends on lower layer
 - **Above diagonal (red):** Violation — lower layer depends on higher layer (upward dependency)
 
-**Concrete Example:**
-In a 4-layer system (UI → Service → Domain → Infrastructure), if the Infrastructure layer imports a class from the UI layer, this appears as a red mark above the diagonal. This upward dependency means changes to the UI can break the Infrastructure — the opposite of what layering is supposed to prevent.
+**Concrete Example — Clean layered system** (8 elements, all marks below diagonal):
+
+|   | A | E | B | C | D | F | G | H |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| **A** | · |   |   |   |   |   |   |   |
+| **E** |   | · |   |   |   |   |   |   |
+| **B** | X |   | · |   |   |   |   |   |
+| **C** | X |   |   | · |   |   |   |   |
+| **D** | X |   |   |   | · |   |   |   |
+| **F** |   |   | X |   |   | · |   |   |
+| **G** |   |   |   |   | X |   | · |   |
+| **H** |   |   |   |   | X |   | X | · |
+
+**With violation — E depends on G** (upward dependency ↑X):
+
+|   | A | E | B | C | D | F | G | H |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| **A** | · |   |   |   |   |   |   |   |
+| **E** |   | · |   |   |   |   | ↑X |   |
+| **B** | X |   | · |   |   |   |   |   |
+| **C** | X |   |   | · |   |   |   |   |
+| **D** | X |   |   |   | · |   |   |   |
+| **F** |   |   | X |   |   | · |   |   |
+| **G** |   |   |   |   | X |   | · |   |
+| **H** |   |   |   |   | X |   | X | · |
+
+E→G is above the diagonal — a higher layer depends on a lower layer, violating the layering constraint. Changes to G can now break E, which defeats the purpose of layering.
 
 ### 5.6 Bus Patterns
 
@@ -509,6 +600,30 @@ In a 4-layer system (UI → Service → Domain → Infrastructure), if the Infra
 - Row with many marks (depends on many modules)
 - Few incoming dependencies
 - Examples: main controller, orchestration service, entry point
+
+**DSM examples** (· = diagonal, **★** = bus element):
+
+**Vertical Bus** — column E has many marks (A, B, C, F all depend on E):
+
+|   | A | B | C | D | **★E** | F |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|
+| **A** | · |   |   |   | X |   |
+| **B** |   | · |   |   | X |   |
+| **C** |   |   | · |   | X |   |
+| **D** |   |   |   | · |   |   |
+| **★E** |   |   |   |   | · |   |
+| **F** |   |   |   |   | X | · |
+
+**Horizontal Bus** — row E has many marks (E depends on A, B, C, F):
+
+|   | A | B | C | D | E | F |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|
+| **A** | · |   |   |   |   |   |
+| **B** |   | · |   |   |   |   |
+| **C** |   |   | · |   |   |   |
+| **D** |   |   |   | · |   |   |
+| **★E** | X | X | X |   | · | X |
+| **F** |   |   |   |   |   | · |
 
 **Why bus patterns matter:** They are architecturally intentional (libraries *should* be widely used; controllers *should* orchestrate many services), but they inflate propagation cost because they create many transitive paths through the system.
 
