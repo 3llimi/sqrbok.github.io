@@ -244,9 +244,9 @@ flowchart TD
     MS --> S(["Single"])
     MS --> F(["Family"])
 
-    GP --> LOW(["≤ $30,000"])
-    GP --> MID(["$30,001–<br/>$50,000"])
-    GP --> HIGH(["> $50,000"])
+    GP --> LOW(["≤ #36;30,000"])
+    GP --> MID(["#36;30,001–<br/>#36;50,000"])
+    GP --> HIGH(["> #36;50,000"])
 
     style ROOT fill:#019546,stroke:#333,color:white
     style RES fill:#4a90d9,stroke:#333,color:white
