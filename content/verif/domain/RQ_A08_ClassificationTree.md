@@ -47,7 +47,7 @@ layout: default
 ## Part 4: Examples & Practice
 
 18. Build a classification tree for an ATM withdrawal function. Include at least 4 aspects and model invalid cases.
-19. In the tax example, why are Resident?, Marital Status, and Gross Pay at the same root level instead of nesting Status and Pay under "Resident = Yes"?
+19. In the tax example, what would go wrong if you modeled Residency, Marital Status, and Gross Pay as a flat tree (all at root level) instead of nesting Status and Pay under the Resident class? How does hierarchy eliminate infeasible combinations?
 20. You have this abstract test specification: "Array: size > 1, unsorted, multiple occurrences, alphanumeric content. CountWhat: multiple characters." Provide three different valid concrete test cases.
 21. In the password validation example, why can't you use standard CTM combination generation? What special handling is needed?
 22. Identify the constraints (infeasible combinations) in the count() function tree. How would you handle them?
