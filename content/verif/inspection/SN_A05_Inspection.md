@@ -281,8 +281,8 @@ PBR {% cite basili1996empirical %} assigns stakeholder perspectives to inspector
 **Key insight:** If you can't build the work product, there's a defect in the artifact!
 
 **Research results:**
-- Shull et al. (2000) {% cite shull2000perspective %}: PBR found 35% more defects than ad hoc
-- Basili et al. (1996): 21-30% improvement over checklist-based reading
+- Basili et al. (1996) {% cite basili1996empirical %}: PBR found 21-30% more defects than traditional reading
+- Shull et al. (2000) {% cite shull2000perspective %}: PBR consistently improved detection rates, especially for less-experienced reviewers in unfamiliar domains
 
 ### 4.3 Checklist Best Practices
 
