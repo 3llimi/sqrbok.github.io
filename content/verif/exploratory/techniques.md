@@ -135,11 +135,11 @@ A concrete example of applying the Money Tour {% cite whittaker2009exploratory %
 ```mermaid
 flowchart TD
     Start["Start: Money Tour<br/>Focus on revenue-critical features"]
-    S1["1. Add items to cart<br/>Try different quantities, variants"]
-    S2["2. Apply discount codes<br/>Valid, expired, stacked, boundary amounts"]
-    S3["3. Checkout flow<br/>Credit card, PayPal, gift card, split payment"]
-    S4["4. Order confirmation<br/>Email, receipt, inventory update"]
-    S5["5. Refund/return<br/>Partial refund, full refund, exchange"]
+    S1["1. Add items to cart<br>Try different quantities, variants"]
+    S2["2. Apply discount codes<br>Valid, expired, stacked, boundary amounts"]
+    S3["3. Checkout flow<br>Credit card, PayPal, gift card, split payment"]
+    S4["4. Order confirmation<br>Email, receipt, inventory update"]
+    S5["5. Refund/return<br>Partial refund, full refund, exchange"]
 
     Start --> S1 --> S2 --> S3 --> S4 --> S5
 

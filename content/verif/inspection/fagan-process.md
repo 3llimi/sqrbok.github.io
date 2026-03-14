@@ -29,18 +29,18 @@ Michael Fagan introduced formal software inspection at IBM in 1976, establishing
 ```mermaid
 flowchart LR
     subgraph prep["Preparation Phase"]
-        P1[1. Planning<br/>📋 Moderator]
-        P2[2. Overview<br/>👤 Author]
-        P3[3. Preparation<br/>👥 All]
+        P1["Planning<br>📋 Moderator"]
+        P2["Overview<br>👤 Author"]
+        P3["Preparation<br>👥 All"]
     end
 
     subgraph exec["Execution Phase"]
-        P4[4. Inspection<br/>Meeting<br/>🔍 Reader leads]
+        P4["Inspection Meeting<br>🔍 Reader leads"]
     end
 
     subgraph fix["Correction Phase"]
-        P5[5. Rework<br/>🔧 Author]
-        P6[6. Follow-up<br/>✅ Moderator]
+        P5["Rework<br>🔧 Author"]
+        P6["Follow-up<br>✅ Moderator"]
     end
 
     P1 --> P2 --> P3 --> P4 --> P5 --> P6
