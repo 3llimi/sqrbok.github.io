@@ -37,10 +37,10 @@ The causal chain **fault → error → failure** from dependability theory appli
 
 ```mermaid
 flowchart LR
-    F["🔧 Fault<br/>(flaw in code)"]
-    E["⚠️ Error<br/>(incorrect state)"]
-    Fail["💥 Failure<br/>(breach)"]
-    A["🎯 Attack<br/>(malicious fault)"]
+    F["🔧 Fault<br>(flaw in code)"]
+    E["⚠️ Error<br>(incorrect state)"]
+    Fail["💥 Failure<br>(breach)"]
+    A["🎯 Attack<br>(malicious fault)"]
 
     F -->|"activates"| E
     A -->|"triggers"| E

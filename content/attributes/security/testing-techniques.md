@@ -160,10 +160,10 @@ Modern security testing increasingly uses hybrid approaches {% cite rajapakse202
 
 ```mermaid
 flowchart LR
-    IDE["<b>🖥️ IDE</b><br/>IDE SAST<br/>Real-time"]
-    Build["<b>🔨 Build</b><br/>SAST · SCA"]
-    Test["<b>🧪 Test</b><br/>DAST<br/>HTTP scanning"]
-    Runtime["<b>🚀 Runtime</b><br/>IAST · RASP"]
+    IDE["<b>🖥️ IDE</b><br>IDE SAST<br>Real-time"]
+    Build["<b>🔨 Build</b><br>SAST · SCA"]
+    Test["<b>🧪 Test</b><br>DAST<br>HTTP scanning"]
+    Runtime["<b>🚀 Runtime</b><br>IAST · RASP"]
 
     IDE --> Build --> Test --> Runtime
 

@@ -29,12 +29,12 @@ In 1975, Saltzer and Schroeder published eight design principles for computer sy
 
 ```mermaid
 flowchart LR
-    S75["1975<br/>Saltzer &<br/>Schroeder<br/>(warnings)"]
-    A04["2004<br/>Avizienis<br/>(taxonomy)"]
-    H06["2006<br/>Howard SD3<br/>(practice)"]
-    M06["2006<br/>McGraw<br/>(touchpoints)"]
-    SDL["2010s<br/>Microsoft SDL<br/>(industry)"]
-    RQ24["2024<br/>RQCODE<br/>(executable)"]
+    S75["1975<br>Saltzer &<br>Schroeder<br>(warnings)"]
+    A04["2004<br>Avizienis<br>(taxonomy)"]
+    H06["2006<br>Howard SD3<br>(practice)"]
+    M06["2006<br>McGraw<br>(touchpoints)"]
+    SDL["2010s<br>Microsoft SDL<br>(industry)"]
+    RQ24["2024<br>RQCODE<br>(executable)"]
 
     S75 --> A04 --> H06 --> M06 --> SDL --> RQ24
 
@@ -125,12 +125,12 @@ DevSecOps extends DevOps by embedding security activities into every pipeline st
 
 ```mermaid
 flowchart LR
-    P["<b>📋 Plan</b><br/>Threat Modeling<br/>Security Reqs"]
-    C["<b>💻 Code</b><br/>Secure Coding<br/>Code Review"]
-    B["<b>🔨 Build</b><br/>SAST · SCA"]
-    T["<b>🧪 Test</b><br/>DAST<br/>Pen Testing"]
-    D["<b>🚀 Deploy</b><br/>Sign-off<br/>Infra Security"]
-    O["<b>📊 Operate</b><br/>Monitoring<br/>Incident Response"]
+    P["<b>📋 Plan</b><br>Threat Modeling<br>Security Reqs"]
+    C["<b>💻 Code</b><br>Secure Coding<br>Code Review"]
+    B["<b>🔨 Build</b><br>SAST · SCA"]
+    T["<b>🧪 Test</b><br>DAST<br>Pen Testing"]
+    D["<b>🚀 Deploy</b><br>Sign-off<br>Infra Security"]
+    O["<b>📊 Operate</b><br>Monitoring<br>Incident Response"]
 
     P --> C --> B --> T --> D --> O
     O -.-> P

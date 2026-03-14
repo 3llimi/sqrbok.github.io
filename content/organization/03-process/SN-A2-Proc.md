@@ -532,10 +532,10 @@ Goldratt {% cite goldratt1984goal %} introduced TOC based on a fundamental princ
 
 ```mermaid
 flowchart TD
-    I["1️⃣ IDENTIFY<br/>Find the constraint"] --> E["2️⃣ EXPLOIT<br/>Maximize constraint usage"]
-    E --> S["3️⃣ SUBORDINATE<br/>Align everything else"]
-    S --> EL["4️⃣ ELEVATE<br/>Increase capacity"]
-    EL --> R{"5️⃣ REPEAT<br/>Constraint broken?"}
+    I["1️⃣ IDENTIFY<br>Find the constraint"] --> E["2️⃣ EXPLOIT<br>Maximize constraint usage"]
+    E --> S["3️⃣ SUBORDINATE<br>Align everything else"]
+    S --> EL["4️⃣ ELEVATE<br>Increase capacity"]
+    EL --> R{"5️⃣ REPEAT<br>Constraint broken?"}
     R -->|Yes| I
     R -->|No| EL
 
@@ -737,11 +737,11 @@ CMMI (Capability Maturity Model Integration) is a **best practice framework** pr
 flowchart TB
     subgraph CMMI["CMMI Maturity Levels"]
         direction TB
-        L5["Level 5: Optimizing<br/>🚀 Continuous Improvement"]
-        L4["Level 4: Quantitatively Managed<br/>📊 Statistical Control"]
-        L3["Level 3: Defined<br/>📋 Organization-wide Standards"]
-        L2["Level 2: Managed<br/>📁 Project-level Control"]
-        L1["Level 1: Initial<br/>🔥 Ad hoc, Chaotic"]
+        L5["Level 5: Optimizing<br>🚀 Continuous Improvement"]
+        L4["Level 4: Quantitatively Managed<br>📊 Statistical Control"]
+        L3["Level 3: Defined<br>📋 Organization-wide Standards"]
+        L2["Level 2: Managed<br>📁 Project-level Control"]
+        L1["Level 1: Initial<br>🔥 Ad hoc, Chaotic"]
     end
 
     L1 --> L2 --> L3 --> L4 --> L5

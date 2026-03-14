@@ -25,10 +25,10 @@ Shostack distills threat modeling into four questions {% cite shostack2014threat
 
 ```mermaid
 flowchart LR
-    Q1["1. What are<br/>we building?<br/>(DFDs)"]
-    Q2["2. What can<br/>go wrong?<br/>(STRIDE)"]
-    Q3["3. What to<br/>do about it?<br/>(mitigate/accept)"]
-    Q4["4. Did we do<br/>a decent job?<br/>(validate)"]
+    Q1["1. What are<br>we building?<br>(DFDs)"]
+    Q2["2. What can<br>go wrong?<br>(STRIDE)"]
+    Q3["3. What to<br>do about it?<br>(mitigate/accept)"]
+    Q4["4. Did we do<br>a decent job?<br>(validate)"]
     Q1 --> Q2 --> Q3 --> Q4
     Q4 -.->|"iterate"| Q1
 

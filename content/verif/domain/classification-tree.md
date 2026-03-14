@@ -22,12 +22,12 @@ flowchart LR
     subgraph "Category-Partition (1988)"
         A1["Specification"] --> A2["TSL Text"]
         A2 --> A3["Constraints"]
-        A3 --> A4["Generated<br/>Test Frames"]
+        A3 --> A4["Generated<br>Test Frames"]
     end
 
     subgraph "Classification Tree Method (1993)"
         B1["Specification"] --> B2["Tree Diagram"]
-        B2 --> B3["Combination<br/>Table"]
+        B2 --> B3["Combination<br>Table"]
         B3 --> B4["Test Cases"]
     end
 
@@ -72,8 +72,8 @@ flowchart TD
     COLOR --> g(["Green"])
     COLOR --> b(["Blue"])
 
-    SIZE --> sm(["Small<br/>≤300px"])
-    SIZE --> lg(["Large<br/>>300px"])
+    SIZE --> sm(["Small<br>≤300px"])
+    SIZE --> lg(["Large<br>>300px"])
 
     ENV --> LIGHT{{"Lighting"}}
     ENV --> BG{{"Background"}}
@@ -145,7 +145,7 @@ flowchart TD
 
     INV --> EXMP["Exemplars"]
     EXMP --> hex(["Small hexagon"])
-    EXMP --> irreg(["Large irregular<br/>shape"])
+    EXMP --> irreg(["Large irregular<br>shape"])
     EXMP --> wclr(["Wrong color"])
 
     VAL --> ATTR["Attributes"]
@@ -188,11 +188,11 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    S1["1. Select<br/>Test Object"] --> S2["2. Analyze<br/>Aspects"]
-    S2 --> S3["3. Model<br/>Tree"]
-    S3 --> S4["4. Add<br/>Constraints"]
-    S4 --> S5["5. Generate<br/>Test Cases"]
-    S5 --> S6["6. Export &<br/>Execute"]
+    S1["1. Select<br>Test Object"] --> S2["2. Analyze<br>Aspects"]
+    S2 --> S3["3. Model<br>Tree"]
+    S3 --> S4["4. Add<br>Constraints"]
+    S4 --> S5["5. Generate<br>Test Cases"]
+    S5 --> S6["6. Export &<br>Execute"]
 
     style S1 fill:#019546,stroke:#333,color:white
     style S2 fill:#2D6E2A,stroke:#333,color:white
@@ -232,7 +232,7 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-    ROOT(["City Tax<br/>Calculator"])
+    ROOT(["City Tax<br>Calculator"])
     ROOT --> RES{{"Residency"}}
 
     RES --> NR(["Non-Resident"])
@@ -245,7 +245,7 @@ flowchart TD
     MS --> F(["Family"])
 
     GP --> LOW(["≤ #36;30,000"])
-    GP --> MID(["#36;30,001–<br/>#36;50,000"])
+    GP --> MID(["#36;30,001–<br>#36;50,000"])
     GP --> HIGH(["> #36;50,000"])
 
     style ROOT fill:#019546,stroke:#333,color:white
@@ -303,7 +303,7 @@ flowchart TD
     ARR --> ORD{{"Order"}}
     ARR --> CNT{{"Content Type"}}
 
-    SZ --> sz0(["0<br/>(empty)"])
+    SZ --> sz0(["0<br>(empty)"])
     SZ --> sz1(["1"])
     SZ --> szN(["> 1"])
 
@@ -364,10 +364,10 @@ When generating test cases from a constrained tree, four strategies exist {% cit
 
 ```mermaid
 flowchart TD
-    CONFLICT["Conflict<br/>Detected"] --> AVOID["Avoid<br/>(prevent selection)"]
-    CONFLICT --> REPLACE["Replace<br/>(substitute value)"]
-    CONFLICT --> ABSTRACT["Abstract<br/>(merge parameters)"]
-    CONFLICT --> SUBMODEL["Sub-Model<br/>(split tree)"]
+    CONFLICT["Conflict<br>Detected"] --> AVOID["Avoid<br>(prevent selection)"]
+    CONFLICT --> REPLACE["Replace<br>(substitute value)"]
+    CONFLICT --> ABSTRACT["Abstract<br>(merge parameters)"]
+    CONFLICT --> SUBMODEL["Sub-Model<br>(split tree)"]
 
     style AVOID fill:#c8e6c9,stroke:#388e3c,stroke-width:3px
     style REPLACE fill:#fff3cd,stroke:#ffc107
@@ -397,14 +397,14 @@ CTM tool support has evolved over 27+ years from a research prototype to a full 
 
 ```mermaid
 flowchart LR
-    CTE["CTE<br/>(1993)"] --> CTEXL["CTE XL<br/>(2000)"]
-    CTEXL --> PRO["CTE XL Pro<br/>(2014)"]
-    PRO --> TESTONA["TESTONA<br/>(2016+)"]
+    CTE["CTE<br>(1993)"] --> CTEXL["CTE XL<br>(2000)"]
+    CTEXL --> PRO["CTE XL Pro<br>(2014)"]
+    PRO --> TESTONA["TESTONA<br>(2016+)"]
 
-    CTE -.-> F1["Graphical editor<br/>Combination table"]
-    CTEXL -.-> F2["Dependency rules<br/>N-wise generation<br/>>90% test reduction"]
-    PRO -.-> F3["BVA automation<br/>Requirements tracing<br/>Coverage analysis"]
-    TESTONA -.-> F4["SAT solver<br/>Test oracles<br/>Script generation"]
+    CTE -.-> F1["Graphical editor<br>Combination table"]
+    CTEXL -.-> F2["Dependency rules<br>N-wise generation<br>>90% test reduction"]
+    PRO -.-> F3["BVA automation<br>Requirements tracing<br>Coverage analysis"]
+    TESTONA -.-> F4["SAT solver<br>Test oracles<br>Script generation"]
 
     style CTE fill:#e1f5fe,stroke:#0288d1
     style CTEXL fill:#c8e6c9,stroke:#388e3c
@@ -497,10 +497,10 @@ CTM is not an isolated technique — it acts as an **integrating framework** tha
 
 ```mermaid
 flowchart TD
-    SPEC["Specification"] --> CTM["Classification<br/>Tree Method"]
-    EP["Equivalence<br/>Partitioning"] -.->|"classification<br/>step"| CTM
-    BVA["Boundary Value<br/>Analysis"] -.->|"class boundary<br/>selection"| CTM
-    CTM -->|"combination<br/>table"| COMB["Combinatorial<br/>Testing"]
+    SPEC["Specification"] --> CTM["Classification<br>Tree Method"]
+    EP["Equivalence<br>Partitioning"] -.->|"classification<br>step"| CTM
+    BVA["Boundary Value<br>Analysis"] -.->|"class boundary<br>selection"| CTM
+    CTM -->|"combination<br>table"| COMB["Combinatorial<br>Testing"]
     COMB --> TC["Test Cases"]
     CTM --> TC
 

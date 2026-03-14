@@ -18,10 +18,10 @@ SBTM structures ET around four elements:
 ```mermaid
 flowchart TB
     subgraph session["ET Session"]
-        C["Charter<br/>What to explore and why"]
-        T["Time Box<br/>60-120 minutes"]
-        R["Reviewable Result<br/>Session notes, bugs, questions"]
-        D["Debriefing<br/>Review with manager/team"]
+        C["Charter<br>What to explore and why"]
+        T["Time Box<br>60-120 minutes"]
+        R["Reviewable Result<br>Session notes, bugs, questions"]
+        D["Debriefing<br>Review with manager/team"]
     end
 
     C --> T --> R --> D

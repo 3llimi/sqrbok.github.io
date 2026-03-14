@@ -60,11 +60,11 @@ The three terms form a causal chain — each causes the next:
 
 ```mermaid
 flowchart LR
-    F["🔧 Fault<br/>(defect in code)"]
-    E["⚠️ Error<br/>(incorrect state)"]
-    FL["💥 Failure<br/>(observable deviation)"]
-    F -->|"activated by<br/>input"| E
-    E -->|"propagates to<br/>output"| FL
+    F["🔧 Fault<br>(defect in code)"]
+    E["⚠️ Error<br>(incorrect state)"]
+    FL["💥 Failure<br>(observable deviation)"]
+    F -->|"activated by<br>input"| E
+    E -->|"propagates to<br>output"| FL
     style F fill:#fff3cd,stroke:#ffc107,color:#282828
     style E fill:#ffe0b2,stroke:#ff9800,color:#282828
     style FL fill:#ffcdd2,stroke:#d32f2f,color:#282828
@@ -488,7 +488,7 @@ flowchart LR
     end
     A3 -->|"message"| B2
     A5 -->|"rollback to A1"| A1
-    B4 -->|"rollback to B1<br/>(domino effect)"| B1
+    B4 -->|"rollback to B1<br>(domino effect)"| B1
     style A5 fill:#d32f2f,stroke:#b71c1c,color:#fff
     style B4 fill:#ffc107,stroke:#f57f17,color:#282828
 ```
@@ -774,13 +774,13 @@ The evolution of thinking about software diversity {% cite littlewood2001diversi
 
 ```mermaid
 flowchart LR
-    REQ["Request"] --> CB{"Circuit<br/>Breaker"}
+    REQ["Request"] --> CB{"Circuit<br>Breaker"}
     CB -->|"Closed ✅"| SVC["Service Call"]
     SVC -->|"Success"| OK["Response"]
-    SVC -->|"Failure"| COUNT["Increment<br/>failure count"]
-    COUNT -->|"threshold<br/>reached"| OPEN["🔴 Open"]
+    SVC -->|"Failure"| COUNT["Increment<br>failure count"]
+    COUNT -->|"threshold<br>reached"| OPEN["🔴 Open"]
     CB -->|"Open 🔴"| FB["⚡ Fallback"]
-    OPEN -->|"timeout<br/>expires"| HALF["🟡 Half-Open"]
+    OPEN -->|"timeout<br>expires"| HALF["🟡 Half-Open"]
     HALF -->|"probe OK"| CB
     HALF -->|"probe fails"| OPEN
     style CB fill:#019546,stroke:#2D6E2A,color:#fff
@@ -826,7 +826,7 @@ flowchart TB
     end
     subgraph slo["SLO: Operational Loop (2010s)"]
         P["Production"] --> MON["Monitor SLI"]
-        MON --> B{"Budget<br/>left?"}
+        MON --> B{"Budget<br>left?"}
         B -->|"Yes"| SHIP["Ship 🚀"]
         SHIP --> P
         B -->|"No"| FREEZE["Freeze 🛑"]

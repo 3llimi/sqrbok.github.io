@@ -56,11 +56,11 @@ ET and scripted testing are not binary alternatives but endpoints of a continuum
 
 ```mermaid
 flowchart LR
-    L1["Freestyle<br/>Tester gets only<br/>the test object"]
-    L2["High Exploration<br/>Charter with<br/>high-level goals"]
-    L3["Medium Exploration<br/>Charter adds starting<br/>points and info"]
-    L4["Low Exploration<br/>Charter contains<br/>detailed activities"]
-    L5["Fully Scripted<br/>Steps and test<br/>data specified"]
+    L1["Freestyle<br>Tester gets only<br>the test object"]
+    L2["High Exploration<br>Charter with<br>high-level goals"]
+    L3["Medium Exploration<br>Charter adds starting<br>points and info"]
+    L4["Low Exploration<br>Charter contains<br>detailed activities"]
+    L5["Fully Scripted<br>Steps and test<br>data specified"]
 
     L1 --> L2 --> L3 --> L4 --> L5
 

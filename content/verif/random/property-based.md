@@ -161,13 +161,13 @@ PBT is used **opportunistically** in high-leverage scenarios rather than as a un
 
 ```mermaid
 flowchart TD
-    A["QuickCheck (2000)<br/>Random generation + shrinking + properties"] --> B["Hypothesis (2019)<br/>Universal byte-stream representation"]
-    B --> C["JQF / Zest (2019)<br/>Coverage-guided + structured generation"]
-    C --> D["Industry adoption (2024)<br/>Opportunistic, high-leverage, time-bounded"]
+    A["QuickCheck (2000)<br>Random generation + shrinking + properties"] --> B["Hypothesis (2019)<br>Universal byte-stream representation"]
+    B --> C["JQF / Zest (2019)<br>Coverage-guided + structured generation"]
+    C --> D["Industry adoption (2024)<br>Opportunistic, high-leverage, time-bounded"]
 
-    A -- "Solved" --> A1(("Manual oracle<br/>effort"))
-    B -- "Solved" --> B1(("Custom shrinker<br/>per type"))
-    C -- "Solved" --> C1(("Coverage<br/>blindness"))
+    A -- "Solved" --> A1(("Manual oracle<br>effort"))
+    B -- "Solved" --> B1(("Custom shrinker<br>per type"))
+    C -- "Solved" --> C1(("Coverage<br>blindness"))
 
     style A fill:#e1f5fe,stroke:#0288d1
     style B fill:#e1f5fe,stroke:#0288d1

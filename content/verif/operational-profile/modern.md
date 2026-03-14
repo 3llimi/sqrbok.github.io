@@ -132,11 +132,11 @@ The **covrel** approach combines OP with count spectra adaptively, overcoming th
 
 ```mermaid
 flowchart LR
-    OP["Operational Profile<br/>Usage frequencies"]
-    CS["Count Spectra<br/>Code execution counts"]
-    IS["Importance Sampling<br/>Weighted allocation"]
-    CW["Coverage Weighting<br/>Selection criterion"]
-    TS["Test Suite<br/>Adaptive, balanced"]
+    OP["Operational Profile<br>Usage frequencies"]
+    CS["Count Spectra<br>Code execution counts"]
+    IS["Importance Sampling<br>Weighted allocation"]
+    CW["Coverage Weighting<br>Selection criterion"]
+    TS["Test Suite<br>Adaptive, balanced"]
 
     OP --> IS
     CS --> CW
@@ -219,13 +219,13 @@ Operational profile testing and exploratory testing are **complementary** approa
 flowchart LR
     subgraph phase1["Phase 1: Quantitative"]
         OP["Build Operational Profile"]
-        GT["Generate Tests<br/>Proportional to Usage"]
-        OC["Measure Operational<br/>Coverage"]
+        GT["Generate Tests<br>Proportional to Usage"]
+        OC["Measure Operational<br>Coverage"]
     end
 
     subgraph phase2["Phase 2: Qualitative"]
-        ET["Exploratory Testing<br/>Guided by OP Priorities"]
-        UD["Find Usability &<br/>Edge-Case Defects"]
+        ET["Exploratory Testing<br>Guided by OP Priorities"]
+        UD["Find Usability &<br>Edge-Case Defects"]
     end
 
     OP --> GT --> OC -->|"Saturation reached"| ET --> UD

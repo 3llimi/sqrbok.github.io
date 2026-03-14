@@ -247,29 +247,29 @@ This model, proposed by Capers Jones and formalized in COQUALMO {% cite chulani1
 flowchart LR
     subgraph Injection["🔴 INJECTION"]
         direction TB
-        R[Requirements<br/>+10]
-        D[Design<br/>+20]
-        C[Code<br/>+50]
+        R[Requirements<br>+10]
+        D[Design<br>+20]
+        C[Code<br>+50]
     end
     
     R --> T
     D --> T
     C --> T
     
-    T[("🪣<br/>Defect Pool<br/>(80)")] 
+    T[("🪣<br>Defect Pool<br>(80)")] 
     
     T --> Rev
     T --> UT
     T --> IT
     T --> ST
-    T -->|"5 escape"| EXT[💥 Field<br/>Failure]
+    T -->|"5 escape"| EXT[💥 Field<br>Failure]
     
     subgraph Removal["🟢 REMOVAL"]
         direction TB
-        Rev[Reviews<br/>−30]
-        UT[Unit Test<br/>−20]
-        IT[Int Test<br/>−15]
-        ST[Sys Test<br/>−10]
+        Rev[Reviews<br>−30]
+        UT[Unit Test<br>−20]
+        IT[Int Test<br>−15]
+        ST[Sys Test<br>−10]
     end
 ```
 

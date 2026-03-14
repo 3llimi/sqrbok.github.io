@@ -394,9 +394,9 @@ Defects discovered during testing/development need immediate triage. The Quality
 ```mermaid
 flowchart TB
     BF[🐛 Bug Found] --> T{Triage}
-    T -->|P1 Critical| FN[🔥 Fix NOW<br/>hotfix branch]
-    T -->|P2 High| FS[⚡ Fix Sprint<br/>if capacity]
-    T -->|P3-P4| BL[📋 Backlog<br/>next sprint]
+    T -->|P1 Critical| FN[🔥 Fix NOW<br>hotfix branch]
+    T -->|P2 High| FS[⚡ Fix Sprint<br>if capacity]
+    T -->|P3-P4| BL[📋 Backlog<br>next sprint]
 ```
 
 **Triage Decision Table:**
@@ -801,9 +801,9 @@ CI dashboards transform raw test data into actionable intelligence {% cite salag
 
 ```mermaid
 flowchart TB
-    EL[🔧 Execution Layer<br/>Jenkins pipelines] --> DB[(🗄️ Database<br/>Elasticsearch)]
-    DB --> API[⚙️ Backend API<br/>Flask]
-    API --> FE[📊 Frontend<br/>Chart.js, AG Grid]
+    EL[🔧 Execution Layer<br>Jenkins pipelines] --> DB[(🗄️ Database<br>Elasticsearch)]
+    DB --> API[⚙️ Backend API<br>Flask]
+    API --> FE[📊 Frontend<br>Chart.js, AG Grid]
 ```
 
 > "A CI dashboard is like the glass cockpit of a modern airliner." {% cite salagundi2024dashboard %}

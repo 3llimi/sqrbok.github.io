@@ -35,11 +35,11 @@ Defined by numeric or ordered ranges:
 ```mermaid
 flowchart LR
     subgraph "Age Input Domain"
-        INV["Invalid<br/>age < 0"]
-        C["Child<br/>0-12"]
-        T["Teen<br/>13-19"]
-        A["Adult<br/>20-64"]
-        S["Senior<br/>65+"]
+        INV["Invalid<br>age < 0"]
+        C["Child<br>0-12"]
+        T["Teen<br>13-19"]
+        A["Adult<br>20-64"]
+        S["Senior<br>65+"]
     end
 
     style INV fill:#ffcccc,stroke:#cc0000

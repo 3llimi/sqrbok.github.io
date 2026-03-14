@@ -19,7 +19,7 @@ James Whittaker's tourist metaphor provides memorable, actionable guidance for t
 
 ```mermaid
 mindmap
-  root((Software<br/>Under Test))
+  root((Software<br>Under Test))
     Business District
       Guidebook Tour
       Money Tour
@@ -35,7 +35,7 @@ mindmap
       Supermodel Tour
     Hotel District
       All-Nighter Tour
-      TOGOF Tour<br/>(Good Old Features)
+      TOGOF Tour<br>(Good Old Features)
 ```
 
 | District | Focus | Example Tours |
@@ -134,7 +134,7 @@ A concrete example of applying the Money Tour {% cite whittaker2009exploratory %
 
 ```mermaid
 flowchart TD
-    Start["Start: Money Tour<br/>Focus on revenue-critical features"]
+    Start["Start: Money Tour<br>Focus on revenue-critical features"]
     S1["1. Add items to cart<br>Try different quantities, variants"]
     S2["2. Apply discount codes<br>Valid, expired, stacked, boundary amounts"]
     S3["3. Checkout flow<br>Credit card, PayPal, gift card, split payment"]
@@ -143,9 +143,9 @@ flowchart TD
 
     Start --> S1 --> S2 --> S3 --> S4 --> S5
 
-    S1 -.- N1["Found: quantity overflow<br/>allows negative price"]
-    S3 -.- N2["Found: race condition<br/>double-charge on timeout"]
-    S5 -.- N3["Found: refund exceeds<br/>original payment"]
+    S1 -.- N1["Found: quantity overflow<br>allows negative price"]
+    S3 -.- N2["Found: race condition<br>double-charge on timeout"]
+    S5 -.- N3["Found: refund exceeds<br>original payment"]
 
     style Start fill:#fff3e0,stroke:#f57c00
     style N1 fill:#ffcdd2,stroke:#d32f2f

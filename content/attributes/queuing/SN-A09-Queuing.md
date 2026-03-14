@@ -405,12 +405,12 @@ Adding servers to an M/M/c queue shows diminishing returns {% cite hillier2001op
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A'}}}%%
 graph LR
-    LB["⚖️ Load<br/>Balancer"]
-    GW["🚪 API Gateway<br/>⏳ queue"]
-    SA["Service A<br/>⏳ thread pool"]
-    SB["Service B<br/>⏳ thread pool"]
-    DB["🗄️ Database<br/>⏳ conn pool"]
-    MQ["📨 Message<br/>Broker<br/>⏳ queue"]
+    LB["⚖️ Load<br>Balancer"]
+    GW["🚪 API Gateway<br>⏳ queue"]
+    SA["Service A<br>⏳ thread pool"]
+    SB["Service B<br>⏳ thread pool"]
+    DB["🗄️ Database<br>⏳ conn pool"]
+    MQ["📨 Message<br>Broker<br>⏳ queue"]
 
     LB --> GW
     GW --> SA
@@ -454,11 +454,11 @@ Use simulation (e.g., Java Modelling Tools — JMT) when analytical models are i
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A'}}}%%
 flowchart LR
-    A["🔨 Build System"] --> B["📏 Measure<br/>T, A, C, B"]
-    B --> C["📊 Derive<br/>X, U, R, S"]
-    C --> D["📐 Model<br/>Queuing Theory"]
-    D --> E["🔮 Predict<br/>What-if analysis"]
-    E --> F["✅ Validate<br/>Compare to reality"]
+    A["🔨 Build System"] --> B["📏 Measure<br>T, A, C, B"]
+    B --> C["📊 Derive<br>X, U, R, S"]
+    C --> D["📐 Model<br>Queuing Theory"]
+    D --> E["🔮 Predict<br>What-if analysis"]
+    E --> F["✅ Validate<br>Compare to reality"]
     F -->|"Refine"| B
 
     style A fill:#f0f8f0,stroke:#019546,color:#282828

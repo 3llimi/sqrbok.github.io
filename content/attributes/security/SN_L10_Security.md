@@ -68,10 +68,10 @@ The dependability taxonomy {% cite avizienis2004basic %} provides a causal model
 
 ```mermaid
 flowchart LR
-    F["Fault<br/>(Vulnerability)"]
-    E["Error<br/>(Exploited State)"]
-    FL["Failure<br/>(Security Breach)"]
-    F -->|"Activation<br/>(Attack)"| E
+    F["Fault<br>(Vulnerability)"]
+    E["Error<br>(Exploited State)"]
+    FL["Failure<br>(Security Breach)"]
+    F -->|"Activation<br>(Attack)"| E
     E -->|"Propagation"| FL
     style F fill:#fff3cd,stroke:#ffc107,color:#282828
     style E fill:#ffcdd2,stroke:#d32f2f,color:#282828
@@ -204,11 +204,11 @@ IAST combines SAST and DAST by instrumenting the application at runtime with an 
 ```mermaid
 flowchart LR
     subgraph "Build Time"
-        SAST["SAST<br/>Source code analysis<br/>~70% false positives"]
+        SAST["SAST<br>Source code analysis<br>~70% false positives"]
     end
     subgraph "Runtime"
-        DAST["DAST<br/>Black-box scanning<br/>No code visibility"]
-        IAST["IAST<br/>In-app agent<br/>Lowest false positives"]
+        DAST["DAST<br>Black-box scanning<br>No code visibility"]
+        IAST["IAST<br>In-app agent<br>Lowest false positives"]
     end
     SAST -.->|"Evolution"| DAST
     DAST -.->|"Evolution"| IAST
@@ -563,12 +563,12 @@ Security activities must be integrated into **every phase** of the software deve
 
 ```mermaid
 flowchart LR
-    R["Requirements<br/>SQUARE"]
-    D["Design<br/>STRIDE"]
-    I["Implementation<br/>SAST + SCA"]
-    T["Testing<br/>DAST + Pen Test"]
-    DP["Deployment<br/>IAST + RASP"]
-    O["Operations<br/>SIEM + Patching"]
+    R["Requirements<br>SQUARE"]
+    D["Design<br>STRIDE"]
+    I["Implementation<br>SAST + SCA"]
+    T["Testing<br>DAST + Pen Test"]
+    DP["Deployment<br>IAST + RASP"]
+    O["Operations<br>SIEM + Patching"]
     R --> D --> I --> T --> DP --> O
     O -->|"Feedback"| R
     style R fill:#e8f5e9,stroke:#019546,color:#282828

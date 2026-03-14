@@ -208,12 +208,12 @@ Musa's demonstration chart provides a go/no-go decision: plot cumulative failure
 graph LR
     subgraph Demonstration Chart
         direction TB
-        A["Plot actual<br/>cumulative failures<br/>vs test time"]
-        B{"Crosses acceptance<br/>boundary?"}
-        C{"Crosses rejection<br/>boundary?"}
-        D["✅ Release<br/>FIO achieved"]
-        E["❌ Continue testing<br/>or redesign"]
-        F["⏳ Keep testing<br/>(in between)"]
+        A["Plot actual<br>cumulative failures<br>vs test time"]
+        B{"Crosses acceptance<br>boundary?"}
+        C{"Crosses rejection<br>boundary?"}
+        D["✅ Release<br>FIO achieved"]
+        E["❌ Continue testing<br>or redesign"]
+        F["⏳ Keep testing<br>(in between)"]
         A --> B
         B -->|Yes| D
         B -->|No| C

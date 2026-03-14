@@ -200,7 +200,7 @@ y = z / x       # S3 ← Potential division by zero!
 
 ```mermaid
 flowchart TB
-    AP["All Paths<br/>(Exhaustive)"] --> MCDC["MC/DC"]
+    AP["All Paths<br>(Exhaustive)"] --> MCDC["MC/DC"]
     AP --> MC["Multiple Condition"]
     MCDC --> CD["Condition/Decision"]
     MC --> CD

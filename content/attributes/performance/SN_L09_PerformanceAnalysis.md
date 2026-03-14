@@ -75,9 +75,9 @@ A critical distinction: performance testing is **reactive** (find problems after
 
 ```mermaid
 flowchart LR
-    PE["Performance<br/>Engineering<br/>(Design time)"]
-    PT["Performance<br/>Testing<br/>(Test time)"]
-    FF["Firefighting<br/>(Production)"]
+    PE["Performance<br>Engineering<br>(Design time)"]
+    PT["Performance<br>Testing<br>(Test time)"]
+    FF["Firefighting<br>(Production)"]
     PE -->|"predict"| PT
     PT -->|"validate"| FF
     style PE fill:#c8e6c9,stroke:#019546,color:#282828
@@ -103,9 +103,9 @@ Three fundamental metrics define system performance, connected by **Little's Law
 
 ```mermaid
 graph TD
-    T["Throughput (λ)<br/>Requests per second"]
-    R["Response Time (W)<br/>Seconds per request"]
-    C["Concurrency (L)<br/>Simultaneous requests"]
+    T["Throughput (λ)<br>Requests per second"]
+    R["Response Time (W)<br>Seconds per request"]
+    C["Concurrency (L)<br>Simultaneous requests"]
     T <-->|"L = λW"| R
     R <-->|"L = λW"| C
     C <-->|"L = λW"| T
@@ -398,7 +398,7 @@ $$S = \frac{1}{0.4 + \frac{0.6}{1.35}} = \frac{1}{0.4 + 0.444} = \frac{1}{0.844}
 ```mermaid
 flowchart LR
     P["Profile"] --> M["Measure α"]
-    M --> C{"α large<br/>enough?"}
+    M --> C{"α large<br>enough?"}
     C -->|"Yes"| O["Optimize (q)"]
     C -->|"No"| S["Skip — low impact"]
     O --> V["Verify S = 1/((1-α)+α/q)"]
@@ -452,9 +452,9 @@ $$S(N) = \frac{N}{1 + \alpha(N-1) + \beta N(N-1)}$$
 
 ```mermaid
 graph LR
-    A["Amdahl<br/>(β = 0)<br/>Plateau only"]
-    G["Gustafson<br/>Scaled speedup<br/>Near-linear"]
-    U["USL<br/>(β > 0)<br/>Peak + degradation"]
+    A["Amdahl<br>(β = 0)<br>Plateau only"]
+    G["Gustafson<br>Scaled speedup<br>Near-linear"]
+    U["USL<br>(β > 0)<br>Peak + degradation"]
     A -->|"Fixed problem"| G
     A -->|"Add coherence"| U
     style A fill:#4CAF50,color:#fff
@@ -615,11 +615,11 @@ Molyneaux defines three maturity levels for performance testing {% cite molyneau
 
 ```mermaid
 flowchart LR
-    L1["Level 1<br/>Firefighting<br/>❌ Reactive"]
-    L2["Level 2<br/>Validation<br/>⚠️ ~30% escape"]
-    L3["Level 3<br/>Performance Driven<br/>✅ ~5% escape"]
+    L1["Level 1<br>Firefighting<br>❌ Reactive"]
+    L2["Level 2<br>Validation<br>⚠️ ~30% escape"]
+    L3["Level 3<br>Performance Driven<br>✅ ~5% escape"]
     L1 -->|"Add testing"| L2
-    L2 -->|"Integrate PE<br/>throughout"| L3
+    L2 -->|"Integrate PE<br>throughout"| L3
     style L1 fill:#ffcdd2,stroke:#d32f2f,color:#282828
     style L2 fill:#fff3cd,stroke:#ffc107,color:#282828
     style L3 fill:#c8e6c9,stroke:#019546,color:#282828
@@ -645,12 +645,12 @@ Each test type answers different questions {% cite molyneaux2014art %}:
 
 ```mermaid
 flowchart TD
-    BL["Baseline<br/>(1 user)"]
-    SM["Smoke<br/>(quick check)"]
-    LD["Load<br/>(expected traffic)"]
-    SK["Soak<br/>(hours/days)"]
-    ST["Stress<br/>(beyond capacity)"]
-    IS["Isolation<br/>(single transaction)"]
+    BL["Baseline<br>(1 user)"]
+    SM["Smoke<br>(quick check)"]
+    LD["Load<br>(expected traffic)"]
+    SK["Soak<br>(hours/days)"]
+    ST["Stress<br>(beyond capacity)"]
+    IS["Isolation<br>(single transaction)"]
     BL -->|"Establish reference"| SM
     SM -->|"Pass → full test"| LD
     LD -->|"SLA met → endurance"| SK
@@ -831,7 +831,7 @@ Dean and Barroso propose solutions that **tolerate** tail latency rather than tr
 ```mermaid
 flowchart LR
     C["Client"] -->|"Request"| S1["Server 1"]
-    C -->|"Same request<br/>(hedged)"| S2["Server 2"]
+    C -->|"Same request<br>(hedged)"| S2["Server 2"]
     S1 -->|"200ms"| C
     S2 -->|"5ms ✅"| C
     style C fill:#fff3cd,stroke:#ffc107,color:#282828
@@ -877,11 +877,11 @@ Each service owns its SLO. The call chain maps to a **wait chain** model from qu
 
 ```mermaid
 flowchart LR
-    U["User<br/>Request"]
-    A["Service A<br/>SLO: p99 < 50ms"]
-    B["Service B<br/>SLO: p99 < 100ms"]
-    C["Service C<br/>SLO: p99 < 50ms"]
-    R["Response<br/>Total < 200ms"]
+    U["User<br>Request"]
+    A["Service A<br>SLO: p99 < 50ms"]
+    B["Service B<br>SLO: p99 < 100ms"]
+    C["Service C<br>SLO: p99 < 50ms"]
+    R["Response<br>Total < 200ms"]
     U --> A --> B --> C --> R
     style A fill:#c8e6c9,stroke:#019546,color:#282828
     style B fill:#fff3cd,stroke:#ffc107,color:#282828
@@ -899,9 +899,9 @@ flowchart TB
         M1["Model"] --> M2["Measure"] --> M3["Optimize"]
     end
     subgraph Modern["Cloud-Native PE (2020s)"]
-        O1["Observe<br/>(traces, metrics)"] --> O2["Model<br/>(USL, SLO burn)"] --> O3["Act<br/>(scale, fix, budget)"]
+        O1["Observe<br>(traces, metrics)"] --> O2["Model<br>(USL, SLO burn)"] --> O3["Act<br>(scale, fix, budget)"]
     end
-    Classical -->|"Same physics<br/>New tools"| Modern
+    Classical -->|"Same physics<br>New tools"| Modern
     style M1 fill:#f0f8f0,stroke:#019546,color:#282828
     style M2 fill:#f0f8f0,stroke:#019546,color:#282828
     style M3 fill:#f0f8f0,stroke:#019546,color:#282828

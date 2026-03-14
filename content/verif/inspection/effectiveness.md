@@ -61,9 +61,9 @@ Source: {% cite dodd2003inspection %}
 %%{init: {'theme': 'base'}}%%
 flowchart LR
     subgraph cost["Cost to Fix Defect (Relative)"]
-        R["🔍 Review<br/>1×"]
-        T["🧪 Testing<br/>8-12×"]
-        P["🚀 Production<br/>30-100×"]
+        R["🔍 Review<br>1×"]
+        T["🧪 Testing<br>8-12×"]
+        P["🚀 Production<br>30-100×"]
     end
 
     R -->|"8-12×"| T
@@ -92,9 +92,9 @@ flowchart LR
 %%{init: {'theme': 'base'}}%%
 flowchart LR
     subgraph hours["Hours per Defect Found"]
-        DI["Design<br/>Inspection<br/>⏱️ 1.5h"]
-        CI["Code<br/>Inspection<br/>⏱️ 1.5h"]
-        TE["Testing<br/>⏱️ 6-17h"]
+        DI["Design<br>Inspection<br>⏱️ 1.5h"]
+        CI["Code<br>Inspection<br>⏱️ 1.5h"]
+        TE["Testing<br>⏱️ 6-17h"]
     end
 
     style DI fill:#c8e6c9,stroke:#388e3c

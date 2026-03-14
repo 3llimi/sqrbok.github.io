@@ -13,7 +13,7 @@ For an introduction to mutation operators and mutation score, see [Mutation Cove
 
 ```mermaid
 flowchart LR
-    A["Original<br/>Program"] --> B["Apply Mutation<br/>Operators"]
+    A["Original<br>Program"] --> B["Apply Mutation<br>Operators"]
     B --> C["Mutants"]
     C --> D["Run Test Suite"]
     D --> E{"Test fails?"}

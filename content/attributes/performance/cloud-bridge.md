@@ -129,9 +129,9 @@ Woodside et al. (2007) predicted a convergence of measurement-based and model-ba
 
 ```mermaid
 graph LR
-    M["Model-Based<br/>(early, approximate)"]
-    D["Measurement-Based<br/>(late, accurate)"]
-    C["Converged<br/>Runtime data feeds models<br/>Models guide monitoring"]
+    M["Model-Based<br>(early, approximate)"]
+    D["Measurement-Based<br>(late, accurate)"]
+    C["Converged<br>Runtime data feeds models<br>Models guide monitoring"]
     M -->|"feedback"| C
     D -->|"structure"| C
     style C fill:#4CAF50,color:#fff

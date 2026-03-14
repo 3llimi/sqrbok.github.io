@@ -37,8 +37,8 @@ The model checking process follows five steps:
 
 ```mermaid
 flowchart TD
-    A["System Model<br/>(finite state machine)"] --> C["Model Checker<br/>(exhaustive search)"]
-    B["Property<br/>(temporal logic)"] --> C
+    A["System Model<br>(finite state machine)"] --> C["Model Checker<br>(exhaustive search)"]
+    B["Property<br>(temporal logic)"] --> C
     C -->|"All states satisfy property"| D["Verified"]
     C -->|"Property violated"| E["Counterexample Trace"]
 ```
@@ -243,9 +243,9 @@ Real programs have too many states to explore directly. **CEGAR** addresses this
 
 ```mermaid
 flowchart LR
-    A["Abstract<br/>model"] --> B["Model<br/>check"]
+    A["Abstract<br>model"] --> B["Model<br>check"]
     B -->|"Counterexample"| C{"Spurious?"}
-    C -->|"Yes"| D["Refine<br/>abstraction"]
+    C -->|"Yes"| D["Refine<br>abstraction"]
     D --> A
     C -->|"No"| E["Real Bug!"]
     B -->|"Verified"| F["Safe"]

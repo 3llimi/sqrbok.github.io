@@ -16,13 +16,13 @@ flowchart TD
   Entry(("IN"))
   OutT(("OUT True"))
   OutF(("OUT False"))
-  Note["<b>Conditions:</b><br/>Logical Operators<br/>(AND/OR)"]
+  Note["<b>Conditions:</b><br>Logical Operators<br>(AND/OR)"]
 
   %% Subgraph for a Basic Block
   subgraph BB["Basic Block"]
     direction TB
-    STMS["a = a + 1;<br/>b[i] = c + 5;<br/>…<br/>char last = argstr.CharAt(0);"]
-    DEC{"Decision:<br/>a > b && c == 1"}
+    STMS["a = a + 1;<br>b[i] = c + 5;<br>…<br>char last = argstr.CharAt(0);"]
+    DEC{"Decision:<br>a > b && c == 1"}
   end
 
   %% Control Flow

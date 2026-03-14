@@ -15,11 +15,11 @@ John Musa's five-step procedure transforms vague usage assumptions into a quanti
 
 ```mermaid
 flowchart TD
-    S1["1. Customer Profile<br/>Who purchases?<br/>Customer types + weights"]
-    S2["2. User Profile<br/>Who operates?<br/>User types + weights"]
-    S3["3. System-Mode Profile<br/>How is it configured?<br/>Modes + probabilities"]
-    S4["4. Functional Profile<br/>What do users do?<br/>Functions + frequencies"]
-    S5["5. Operational Profile<br/>What input combinations?<br/>Operations + probabilities"]
+    S1["1. Customer Profile<br>Who purchases?<br>Customer types + weights"]
+    S2["2. User Profile<br>Who operates?<br>User types + weights"]
+    S3["3. System-Mode Profile<br>How is it configured?<br>Modes + probabilities"]
+    S4["4. Functional Profile<br>What do users do?<br>Functions + frequencies"]
+    S5["5. Operational Profile<br>What input combinations?<br>Operations + probabilities"]
 
     S1 --> S2 --> S3 --> S4 --> S5
 

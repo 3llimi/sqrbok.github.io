@@ -49,11 +49,11 @@ Research by Teasley et al. {% cite teasley1994positive %} revealed a critical in
 ```mermaid
 flowchart LR
     subgraph "Input Domain Techniques"
-        EP["Equivalence<br/>Partitioning"]
-        BVA["Boundary Value<br/>Analysis"]
-        DT["Decision<br/>Tables"]
-        CTM["Classification<br/>Tree Method"]
-        CT["Combinatorial<br/>Testing"]
+        EP["Equivalence<br>Partitioning"]
+        BVA["Boundary Value<br>Analysis"]
+        DT["Decision<br>Tables"]
+        CTM["Classification<br>Tree Method"]
+        CT["Combinatorial<br>Testing"]
     end
 
     SPEC[Specification] --> EP

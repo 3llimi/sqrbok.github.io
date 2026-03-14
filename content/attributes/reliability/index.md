@@ -21,9 +21,9 @@ Avizienis et al. defined **dependability** as "the ability to deliver service th
 ```mermaid
 graph TD
     D["Dependability"]
-    A["Attributes<br/>(what is required)"]
-    T["Threats<br/>(what can go wrong)"]
-    M["Means<br/>(how to achieve it)"]
+    A["Attributes<br>(what is required)"]
+    T["Threats<br>(what can go wrong)"]
+    M["Means<br>(how to achieve it)"]
     D --> A
     D --> T
     D --> M
@@ -78,11 +78,11 @@ Consider a bug in an e-commerce checkout service:
 
 ```mermaid
 flowchart LR
-    F["🔴 Fault<br/>Off-by-one error in<br/>discount calculation<br/>(dormant in code)"]
-    E["🟡 Error<br/>Cart total = $89.10<br/>instead of $99.00<br/>(wrong system state)"]
-    FL["⚫ Failure<br/>Customer charged<br/>wrong amount<br/>(service deviation)"]
-    F -->|"User applies<br/>10% coupon<br/>(activation)"| E
-    E -->|"Reaches payment<br/>interface<br/>(propagation)"| FL
+    F["🔴 Fault<br>Off-by-one error in<br>discount calculation<br>(dormant in code)"]
+    E["🟡 Error<br>Cart total = $89.10<br>instead of $99.00<br>(wrong system state)"]
+    FL["⚫ Failure<br>Customer charged<br>wrong amount<br>(service deviation)"]
+    F -->|"User applies<br>10% coupon<br>(activation)"| E
+    E -->|"Reaches payment<br>interface<br>(propagation)"| FL
 ```
 
 The fault (off-by-one in discount logic) exists in every copy of the code. It stays dormant until a user applies a percentage discount to an item with a specific price. The wrong total (error state) propagates through checkout to become a user-visible failure.
@@ -97,7 +97,7 @@ flowchart LR
         FA["Fault"] --> EA["Error"] --> FLA["Failure"]
     end
     subgraph Service B
-        FB["Fault<br/>(= A's failure)"] --> EB["Error"] --> FLB["Failure"]
+        FB["Fault<br>(= A's failure)"] --> EB["Error"] --> FLB["Failure"]
     end
     FLA -->|"becomes"| FB
 ```

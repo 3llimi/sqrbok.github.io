@@ -23,10 +23,10 @@ An **operational profile** (OP) is a quantitative characterization of how a soft
 
 ```mermaid
 flowchart LR
-    UP["Usage Data<br/>How users actually<br/>use the software"]
-    OP["Operational<br/>Profile<br/>Operations +<br/>Probabilities"]
-    TA["Test<br/>Allocation<br/>Proportional<br/>to usage"]
-    RI["Reliability<br/>Improvement<br/>Maximum per<br/>test hour"]
+    UP["Usage Data<br>How users actually<br>use the software"]
+    OP["Operational<br>Profile<br>Operations +<br>Probabilities"]
+    TA["Test<br>Allocation<br>Proportional<br>to usage"]
+    RI["Reliability<br>Improvement<br>Maximum per<br>test hour"]
 
     UP --> OP --> TA --> RI
 

@@ -187,12 +187,12 @@ X<sub>max</sub> = 1 / D<sub>max</sub>
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A'}}}%%
 graph LR
-    Client["🌐 Client<br/>Requests"] --> Web
+    Client["🌐 Client<br>Requests"] --> Web
 
     subgraph System["3-Tier Web Application"]
-        Web["🖥️ Web Server<br/>D = 5 ms"]
-        App["⚙️ App Server<br/>D = 15 ms"]
-        DB["🗄️ Database<br/>D = 25 ms<br/>⚠️ BOTTLENECK"]
+        Web["🖥️ Web Server<br>D = 5 ms"]
+        App["⚙️ App Server<br>D = 15 ms"]
+        DB["🗄️ Database<br>D = 25 ms<br>⚠️ BOTTLENECK"]
     end
 
     Web --> App

@@ -247,9 +247,9 @@ When &beta;=0, USL reduces to Amdahl's Law. When &beta;>0, the system **degrades
 
 ```mermaid
 graph LR
-    A["Amdahl (1967)<br/>Serial ceiling: 1/f<br/>Plateau only"]
-    G["Gustafson (1988)<br/>Scaled speedup<br/>Near-linear possible"]
-    U["USL (2002)<br/>Contention + Coherence<br/>Predicts degradation"]
+    A["Amdahl (1967)<br>Serial ceiling: 1/f<br>Plateau only"]
+    G["Gustafson (1988)<br>Scaled speedup<br>Near-linear possible"]
+    U["USL (2002)<br>Contention + Coherence<br>Predicts degradation"]
     A -->|"Fixed problem"| G
     A -->|"Add coherence"| U
     style A fill:#4CAF50,color:#fff

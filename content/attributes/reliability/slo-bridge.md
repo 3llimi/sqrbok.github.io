@@ -65,7 +65,7 @@ flowchart LR
 
     subgraph "SLO: Operational Loop (2010s)"
         PROD["Production"] --> MON["Monitor SLI"]
-        MON --> B{"Budget<br/>remaining?"}
+        MON --> B{"Budget<br>remaining?"}
         B -->|"Yes"| SHIP["Ship features 🚀"]
         SHIP --> PROD
         B -->|"No"| FREEZE["Feature freeze 🛑"]
@@ -213,15 +213,15 @@ The Chaos Automation Platform (ChAP) compares **control vs experimental** traffi
 
 ```mermaid
 flowchart TB
-    TRAFFIC["Production Traffic<br/>(100%)"] --> SPLIT{"Traffic<br/>Splitter"}
-    SPLIT -->|"99%"| CTRL["Control Cluster<br/>(normal operation)"]
-    SPLIT -->|"1%"| EXP["Experimental Cluster<br/>(fault injected 💥)"]
+    TRAFFIC["Production Traffic<br>(100%)"] --> SPLIT{"Traffic<br>Splitter"}
+    SPLIT -->|"99%"| CTRL["Control Cluster<br>(normal operation)"]
+    SPLIT -->|"1%"| EXP["Experimental Cluster<br>(fault injected 💥)"]
     CTRL --> SPS1["SPS = 1,000/sec"]
     EXP --> SPS2["SPS = 980/sec"]
-    SPS1 --> CMP{"Compare<br/>SPS delta"}
+    SPS1 --> CMP{"Compare<br>SPS delta"}
     SPS2 --> CMP
-    CMP -->|"Δ < 2%"| OK["✅ Resilience<br/>confirmed"]
-    CMP -->|"Δ ≥ 2%"| ABORT["🛑 Auto-abort<br/>+ alert team"]
+    CMP -->|"Δ < 2%"| OK["✅ Resilience<br>confirmed"]
+    CMP -->|"Δ ≥ 2%"| ABORT["🛑 Auto-abort<br>+ alert team"]
 ```
 
 Netflix's SPS (Stream-Starts Per Second) metric serves as an SLI at the system boundary — a business-meaningful measure directly descended from Musa's "natural units" {% cite musa2004sre %}.

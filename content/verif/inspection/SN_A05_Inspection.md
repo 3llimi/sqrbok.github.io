@@ -182,15 +182,15 @@ Fagan {% cite fagan1976design %} defined six structured phases:
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A', 'clusterBkg': '#fffef0', 'clusterBorder': '#ccc'}}}%%
 flowchart LR
     subgraph prep["Preparation Phase"]
-        P1["1. Planning<br/>Moderator"]
-        P2["2. Overview<br/>Author"]
-        P3["3. Preparation<br/>All"]
+        P1["1. Planning<br>Moderator"]
+        P2["2. Overview<br>Author"]
+        P3["3. Preparation<br>All"]
     end
 
     subgraph exec["Execution Phase"]
-        P4["4. Inspection<br/>Team"]
-        P5["5. Rework<br/>Author"]
-        P6["6. Follow-up<br/>Moderator"]
+        P4["4. Inspection<br>Team"]
+        P5["5. Rework<br>Author"]
+        P6["6. Follow-up<br>Moderator"]
     end
 
     P1 --> P2 --> P3 --> P4 --> P5 --> P6
@@ -251,10 +251,10 @@ Reading techniques range from ad hoc to highly structured approaches {% cite bas
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A', 'clusterBkg': '#fffef0', 'clusterBorder': '#ccc'}}}%%
 flowchart LR
-    A["Ad hoc<br/>Baseline"]
-    C["Checklist<br/>+10-15%"]
-    S["Scenario-based<br/>+35%"]
-    P["PBR<br/>+21-30%"]
+    A["Ad hoc<br>Baseline"]
+    C["Checklist<br>+10-15%"]
+    S["Scenario-based<br>+35%"]
+    P["PBR<br>+21-30%"]
 
     A -->|"+10-15%"| C
     C -->|"+20%"| S
@@ -530,16 +530,16 @@ The capture-recapture method {% cite briand2000capture %} originates from wildli
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#019546', 'lineColor': '#2D6E2A', 'clusterBkg': '#fffef0', 'clusterBorder': '#ccc'}}}%%
 flowchart TB
     subgraph inspectors["Two Independent Inspectors"]
-        I1["Inspector 1<br/>Found: M = 12"]
-        I2["Inspector 2<br/>Found: C = 15"]
+        I1["Inspector 1<br>Found: M = 12"]
+        I2["Inspector 2<br>Found: C = 15"]
     end
 
     subgraph overlap["Overlap"]
-        R["Recaptured: R = 4<br/>(found by both)"]
+        R["Recaptured: R = 4<br>(found by both)"]
     end
 
     subgraph estimate["Estimate"]
-        N["N = M × C / R<br/>= 12 × 15 / 4<br/>= 45 total defects"]
+        N["N = M × C / R<br>= 12 × 15 / 4<br>= 45 total defects"]
     end
 
     I1 --> R

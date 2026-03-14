@@ -45,12 +45,12 @@ Each test type serves a distinct purpose {% cite molyneaux2014art %}:
 
 ```mermaid
 graph TD
-    B["Baseline<br/>1 user, empty system"]
-    L["Load Test<br/>Target concurrency"]
-    ST["Stress Test<br/>Beyond capacity"]
-    SK["Soak Test<br/>Extended duration"]
-    SM["Smoke Test<br/>Changed code only"]
-    I["Isolation Test<br/>Single transaction"]
+    B["Baseline<br>1 user, empty system"]
+    L["Load Test<br>Target concurrency"]
+    ST["Stress Test<br>Beyond capacity"]
+    SK["Soak Test<br>Extended duration"]
+    SM["Smoke Test<br>Changed code only"]
+    I["Isolation Test<br>Single transaction"]
 
     B -->|"establishes"| L
     L -->|"push beyond"| ST

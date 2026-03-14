@@ -22,10 +22,10 @@ Independently developed versions execute **in parallel** on the same inputs. A *
 
 ```mermaid
 flowchart LR
-    I["Input"] --> V1["Version 1<br/>(Team A, C++)"]
-    I --> V2["Version 2<br/>(Team B, Ada)"]
-    I --> V3["Version 3<br/>(Team C, Java)"]
-    V1 -->|"result: 42"| VOTE["Voter<br/>(2-of-3)"]
+    I["Input"] --> V1["Version 1<br>(Team A, C++)"]
+    I --> V2["Version 2<br>(Team B, Ada)"]
+    I --> V3["Version 3<br>(Team C, Java)"]
+    V1 -->|"result: 42"| VOTE["Voter<br>(2-of-3)"]
     V2 -->|"result: 42"| VOTE
     V3 -->|"result: 41 ❌"| VOTE
     VOTE -->|"majority = 42"| O["Output: 42 ✅"]
@@ -44,18 +44,18 @@ A primary block executes first. An **acceptance test** (AT) checks the result. I
 
 ```mermaid
 flowchart TD
-    CP["💾 Checkpoint<br/>(save state)"] --> P["Primary Algorithm<br/>(fast, optimized)"]
-    P --> AT1{"Acceptance<br/>Test"}
+    CP["💾 Checkpoint<br>(save state)"] --> P["Primary Algorithm<br>(fast, optimized)"]
+    P --> AT1{"Acceptance<br>Test"}
     AT1 -->|"✅ Pass"| OUT["Output"]
-    AT1 -->|"❌ Fail"| RB1["↩️ Rollback<br/>(restore state)"]
-    RB1 --> A1["Alternate 1<br/>(different algorithm)"]
-    A1 --> AT2{"Acceptance<br/>Test"}
+    AT1 -->|"❌ Fail"| RB1["↩️ Rollback<br>(restore state)"]
+    RB1 --> A1["Alternate 1<br>(different algorithm)"]
+    A1 --> AT2{"Acceptance<br>Test"}
     AT2 -->|"✅ Pass"| OUT
     AT2 -->|"❌ Fail"| RB2["↩️ Rollback"]
     RB2 --> A2["Alternate 2"]
-    A2 --> AT3{"Acceptance<br/>Test"}
+    A2 --> AT3{"Acceptance<br>Test"}
     AT3 -->|"✅ Pass"| OUT
-    AT3 -->|"❌ All fail"| EX["⚠️ Exception<br/>(propagate up)"]
+    AT3 -->|"❌ All fail"| EX["⚠️ Exception<br>(propagate up)"]
 ```
 
 - **Recovery type:** Backward (checkpoint/rollback)
@@ -116,9 +116,9 @@ sequenceDiagram
     P2->>P3: message M2 (depends on M1)
     P1->>P1: ❌ Fault detected!
     P1->>P1: ↩️ Rollback (M1 now invalid)
-    Note over P2: M1 was received after<br/>P1's checkpoint → suspect!
+    Note over P2: M1 was received after<br>P1's checkpoint → suspect!
     P2->>P2: ↩️ Forced rollback
-    Note over P3: M2 was based on M1<br/>→ also suspect!
+    Note over P3: M2 was based on M1<br>→ also suspect!
     P3->>P3: ↩️ Forced rollback
     Note over P1,P3: 😱 All progress lost!
 ```
@@ -226,11 +226,11 @@ Modern systems favor **resilience** (timeouts, retries, circuit breakers, fallba
 
 ```mermaid
 flowchart LR
-    REQ["Request"] --> CB{"Circuit<br/>Breaker"}
-    CB -->|"Closed<br/>(normal)"| SVC["Service"]
-    CB -->|"Open<br/>(failures > threshold)"| FB["Fallback<br/>(cached response)"]
-    SVC -->|"Timeout<br/>> 500ms"| RT["Retry<br/>(with backoff)"]
-    RT -->|"Max retries<br/>exceeded"| FB
+    REQ["Request"] --> CB{"Circuit<br>Breaker"}
+    CB -->|"Closed<br>(normal)"| SVC["Service"]
+    CB -->|"Open<br>(failures > threshold)"| FB["Fallback<br>(cached response)"]
+    SVC -->|"Timeout<br>> 500ms"| RT["Retry<br>(with backoff)"]
+    RT -->|"Max retries<br>exceeded"| FB
     SVC -->|"Success"| RESP["Response"]
     FB --> RESP
 ```

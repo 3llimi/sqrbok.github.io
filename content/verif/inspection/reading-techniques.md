@@ -36,10 +36,10 @@ Since preparation is where most defects are found, **how** reviewers read direct
 flowchart LR
     subgraph effectiveness["Defect Detection Effectiveness"]
         direction LR
-        A["Ad hoc<br/>📊 Baseline"]
-        C["Checklist<br/>📊 +10-15%"]
-        S["Scenario-based<br/>📊 +35%"]
-        P["PBR<br/>📊 +21-30%"]
+        A["Ad hoc<br>📊 Baseline"]
+        C["Checklist<br>📊 +10-15%"]
+        S["Scenario-based<br>📊 +35%"]
+        P["PBR<br>📊 +21-30%"]
     end
 
     A -->|"+10-15%"| C

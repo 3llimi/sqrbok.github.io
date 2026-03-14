@@ -123,8 +123,8 @@ Parnas {% cite parnas1994aging %} identified two mechanisms by which software de
 ```mermaid
 graph LR
     subgraph Causes
-        A["Lack of Movement<br/>(failure to adapt)"]
-        B["Ignorant Surgery<br/>(uninformed changes)"]
+        A["Lack of Movement<br>(failure to adapt)"]
+        B["Ignorant Surgery<br>(uninformed changes)"]
     end
     A -->|"obsolescence"| C["Aged Software"]
     B -->|"structural decay"| C
@@ -132,9 +132,9 @@ graph LR
     C --> E["Eventual Rewrite"]
 
     subgraph Prescriptions
-        F["Design for Change<br/>(information hiding)"]
-        G["Keep Records<br/>(documentation)"]
-        H["Seek Second Opinions<br/>(reviews)"]
+        F["Design for Change<br>(information hiding)"]
+        G["Keep Records<br>(documentation)"]
+        H["Seek Second Opinions<br>(reviews)"]
     end
 
     style A fill:#ffcdd2
@@ -362,14 +362,14 @@ The information-hiding decomposition has higher NOV because it preserves more op
 graph TB
     subgraph "Good: Low Coupling, High Cohesion"
         direction TB
-        A1["Module A<br/>━━━━━━<br/>func1()<br/>func2()<br/>func3()"]
-        B1["Module B<br/>━━━━━━<br/>func4()<br/>func5()<br/>func6()"]
+        A1["Module A<br>━━━━━━<br>func1()<br>func2()<br>func3()"]
+        B1["Module B<br>━━━━━━<br>func4()<br>func5()<br>func6()"]
         A1 -.->|"1 dependency"| B1
     end
     subgraph "Bad: High Coupling, Low Cohesion"
         direction TB
-        A2["Module C<br/>━━━━━━<br/>func1()<br/>func5()"]
-        B2["Module D<br/>━━━━━━<br/>func2()<br/>func4()"]
+        A2["Module C<br>━━━━━━<br>func1()<br>func5()"]
+        B2["Module D<br>━━━━━━<br>func2()<br>func4()"]
         A2 <-->|"5 dependencies"| B2
     end
 

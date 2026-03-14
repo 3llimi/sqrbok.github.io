@@ -119,16 +119,16 @@ In software inspection:
 flowchart TB
     subgraph total["Total Defects (N̂ = 50)"]
         subgraph i1["Inspector A (n₁ = 20)"]
-            a1["14 unique<br/>to A"]
+            a1["14 unique<br>to A"]
         end
         subgraph overlap["Both (m₂ = 6)"]
-            o1["6 found by<br/>A and B"]
+            o1["6 found by<br>A and B"]
         end
         subgraph i2["Inspector B (n₂ = 15)"]
-            b1["9 unique<br/>to B"]
+            b1["9 unique<br>to B"]
         end
         subgraph unfound["Unfound"]
-            u1["~21 defects<br/>not detected"]
+            u1["~21 defects<br>not detected"]
         end
     end
 

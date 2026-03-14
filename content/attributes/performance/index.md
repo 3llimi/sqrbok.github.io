@@ -34,9 +34,9 @@ Three fundamental metrics define system performance. Little's Law connects them:
 
 ```mermaid
 graph TD
-    T["Throughput (λ)<br/>Requests per second"]
-    R["Response Time (W)<br/>Seconds per request"]
-    C["Concurrency (L)<br/>Simultaneous requests"]
+    T["Throughput (λ)<br>Requests per second"]
+    R["Response Time (W)<br>Seconds per request"]
+    C["Concurrency (L)<br>Simultaneous requests"]
     T <-->|"L = λW"| R
     R <-->|"L = λW"| C
     C <-->|"L = λW"| T
