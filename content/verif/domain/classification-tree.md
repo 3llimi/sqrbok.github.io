@@ -72,8 +72,8 @@ flowchart TD
     COLOR --> g(["Green"])
     COLOR --> b(["Blue"])
 
-    SIZE --> sm(["Small<br>≤300px"])
-    SIZE --> lg(["Large<br>>300px"])
+    SIZE --> sm(["Small<br>#le;300px"])
+    SIZE --> lg(["Large<br>#gt;300px"])
 
     ENV --> LIGHT{{"Lighting"}}
     ENV --> BG{{"Background"}}
@@ -192,7 +192,7 @@ flowchart LR
     S2 --> S3["3. Model<br>Tree"]
     S3 --> S4["4. Add<br>Constraints"]
     S4 --> S5["5. Generate<br>Test Cases"]
-    S5 --> S6["6. Export &<br>Execute"]
+    S5 --> S6["6. Export #amp;<br>Execute"]
 
     style S1 fill:#019546,stroke:#333,color:white
     style S2 fill:#2D6E2A,stroke:#333,color:white
@@ -244,9 +244,9 @@ flowchart TD
     MS --> S(["Single"])
     MS --> F(["Family"])
 
-    GP --> LOW(["≤ #36;30,000"])
-    GP --> MID(["#36;30,001–<br>#36;50,000"])
-    GP --> HIGH(["> #36;50,000"])
+    GP --> LOW(["#le; $30,000"])
+    GP --> MID(["$30,001–<br>$50,000"])
+    GP --> HIGH(["#gt; $50,000"])
 
     style ROOT fill:#019546,stroke:#333,color:white
     style RES fill:#4a90d9,stroke:#333,color:white
@@ -305,11 +305,11 @@ flowchart TD
 
     SZ --> sz0(["0<br>(empty)"])
     SZ --> sz1(["1"])
-    SZ --> szN(["> 1"])
+    SZ --> szN(["#gt; 1"])
 
     OCC --> oNone(["None"])
     OCC --> oOne(["One"])
-    OCC --> oMany(["> One"])
+    OCC --> oMany(["#gt; One"])
 
     ORD --> sorted(["Sorted"])
     ORD --> unsorted(["Unsorted"])
@@ -321,7 +321,7 @@ flowchart TD
     CW --> LEN{{"Length"}}
     LEN --> empty(["Empty"])
     LEN --> one(["1 char"])
-    LEN --> multi(["> 1 char"])
+    LEN --> multi(["#gt; 1 char"])
 
     style ROOT fill:#019546,stroke:#333,color:white
     style ARR fill:#2D6E2A,stroke:#333,color:white,stroke-width:3px
@@ -402,7 +402,7 @@ flowchart LR
     PRO --> TESTONA["TESTONA<br>(2016+)"]
 
     CTE -.-> F1["Graphical editor<br>Combination table"]
-    CTEXL -.-> F2["Dependency rules<br>N-wise generation<br>>90% test reduction"]
+    CTEXL -.-> F2["Dependency rules<br>N-wise generation<br>#gt;90% test reduction"]
     PRO -.-> F3["BVA automation<br>Requirements tracing<br>Coverage analysis"]
     TESTONA -.-> F4["SAT solver<br>Test oracles<br>Script generation"]
 
