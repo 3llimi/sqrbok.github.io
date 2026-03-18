@@ -540,7 +540,7 @@ The algorithm discovers: F has no dependencies (goes first), E provides nothing 
 | **6** | X |   |   |   | X | · |   |
 | **7** |   | X | X | X |   |   | · |
 
-**After ({1,6,5} | {4} | {2,3} | 7)** — block-diagonal clusters visible ([X] = within-cluster):
+**After ({1,6,5} \| {4} \| {2,3} \| 7)** — block-diagonal clusters visible ([X] = within-cluster):
 
 |   | 1 | 6 | 5 | 4 | 2 | 3 | 7 |
 |---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
