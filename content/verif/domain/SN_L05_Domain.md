@@ -275,9 +275,11 @@ ON point:  $100.00 → should NOT get discount (boundary excluded)
 OFF point: $100.01 → should get discount (inside domain)
 ```
 
+> **Warning — Open Boundaries Are Counterintuitive:** "ON" means *on the boundary* (Beizer's definition), **not** "the feature is on." For open boundaries like `> $100`, the ON point ($100.00) is *excluded* from the domain — it does NOT get the discount. The OFF point ($100.01) is the first value *inside* the domain that does. This reversal surprises many readers: the ON point is inactive, the OFF point is active. Keep the definition in mind: ON = at the boundary; OFF = just past it.
+
 > **Key Insight:** The OFF point must be in the **opposite** processing region from the ON point. This ensures you detect whether the boundary operator is correct.
 
-> **Exam Tip:** For closed boundaries (≤, ≥), the OFF point goes OUTSIDE. For open boundaries (<, >), the OFF point goes INSIDE. Think: "OFF point tests the OTHER side."
+> **Exam Tip:** For closed boundaries (≤, ≥), the OFF point goes OUTSIDE the domain. For open boundaries (<, >), the OFF point goes INSIDE the domain. Think: "OFF point tests the OTHER side."
 
 ---
 
