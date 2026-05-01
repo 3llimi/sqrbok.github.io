@@ -30,7 +30,7 @@ We want to minimize the number of test cases without missing potential faults. E
 | --------------------------- | -------------------------------------------------------------------------- |
 | **Boundary Value Analysis** | Tests values at the edges of input ranges (e.g., min/max).                 |
 | **Combinatorial Testing**   | Tests combinations of input parameters, often using pairwise combinations. |
-| **Data Flow Testing**       | Focuses on variable definitions and their usage paths.                     |
+| **Equivalence Partitioning** | Divides the input domain into classes; one representative value per class. |
 | **State-Based Testing**     | Tests transitions and behavior of systems with state machines.             |
 | **Negative Testing**        | Tests how the system handles invalid, unexpected, or out-of-range inputs.  |
 
@@ -91,7 +91,7 @@ A core challenge in random testing is knowing the **correct output** for the ran
 
 | Category              | Key Idea                            | Examples                                | Goal                                      |
 | --------------------- | ----------------------------------- | --------------------------------------- | ----------------------------------------- |
-| **Partition Testing** | Divide inputs into classes          | Boundary values, data flow, state tests | Efficiently test different behavior types |
+| **Partition Testing** | Divide inputs into classes          | Equivalence partitioning, boundary values, combinatorial | Efficiently test different behavior types |
 | **Random Testing**    | Sample inputs across the full space | Random input, fuzzing                   | Detect unexpected behavior or crashes     |
 | **Oracle Mechanism**  | Know what correct output should be  | Proxy, assertions, pattern analysis     | Determine whether a test passed or failed |
 
