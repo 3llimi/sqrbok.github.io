@@ -508,11 +508,13 @@ Halstead {% cite halstead1977elements %} developed metrics based on operators an
 
 Oman and Hagemeister {% cite oman1992maintainability %} developed the Maintainability Index using empirical data from HP C and Pascal codebases.
 
-**Formula (Visual Studio variant):**
+**Formula (Visual Studio normalized variant):**
 
 ```
-MI = 171 - 5.2×ln(HV) - 0.23×CC - 16.2×ln(LOC)
+MI = max(0, (171 - 5.2×ln(HV) - 0.23×CC - 16.2×ln(LOC)) × 100/171)
 ```
+
+The original Oman & Hagemeister (1992) formula produces values on a 0–171 scale. Visual Studio normalizes this to 0–100 by multiplying by 100/171 and clamping at 0.
 
 Where:
 - HV = Halstead Volume
