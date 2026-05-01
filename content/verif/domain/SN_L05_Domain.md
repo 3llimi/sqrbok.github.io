@@ -688,12 +688,37 @@ From Kuhn et al. 2004 {% cite kuhn2004fault %} and Wallace & Kuhn 2001 {% cite w
       {"approach": "All combinations", "tests": 17179869184, "order": 4}
     ]
   },
-  "mark": {"type": "bar", "cornerRadiusEnd": 4},
-  "encoding": {
-    "y": {"field": "approach", "type": "nominal", "sort": {"field": "order"}, "axis": {"title": null}},
-    "x": {"field": "tests", "type": "quantitative", "scale": {"type": "log"}, "title": "Number of Tests (log scale)"},
-    "color": {"condition": {"test": "datum.approach === '2-way (Pairwise)'", "value": "#019546"}, "value": "#c8e6c9"}
-  },
+  "transform": [
+    {"calculate": "log(datum.tests) / log(10)", "as": "log_tests"},
+    {"calculate": "datum.tests < 1000 ? datum.tests + '' : datum.tests < 1000000 ? format(datum.tests/1000, '.0f') + 'K' : datum.tests < 1000000000 ? format(datum.tests/1000000, '.0f') + 'M' : format(datum.tests/1000000000, '.1f') + 'B'", "as": "label"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "bar", "cornerRadiusEnd": 4},
+      "encoding": {
+        "y": {"field": "approach", "type": "nominal", "sort": {"field": "order"}, "axis": {"title": null}},
+        "x": {
+          "field": "log_tests",
+          "type": "quantitative",
+          "title": "Number of Tests (log₁₀ scale)",
+          "scale": {"domain": [0, 11]},
+          "axis": {
+            "values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            "labelExpr": "datum.value < 3 ? format(pow(10, datum.value), ',.0f') : datum.value < 6 ? format(pow(10, datum.value)/1000, ',.0f') + 'K' : datum.value < 9 ? format(pow(10, datum.value)/1000000, ',.0f') + 'M' : format(pow(10, datum.value)/1000000000, ',.0f') + 'B'"
+          }
+        },
+        "color": {"condition": {"test": "datum.approach === '2-way (Pairwise)'", "value": "#019546"}, "value": "#c8e6c9"}
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 3, "fontSize": 11},
+      "encoding": {
+        "y": {"field": "approach", "type": "nominal", "sort": {"field": "order"}},
+        "x": {"field": "log_tests", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    }
+  ],
   "config": {"font": "Tahoma, sans-serif", "view": {"stroke": null}}
 }
 ```
