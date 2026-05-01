@@ -192,14 +192,14 @@ end if
 
 Let’s test 3 cases to see the effect of each condition.
 
-| A   | B   | Expected | Faulty Output | Pass |
-| --- | --- | -------- | ------------- | ---- |
-| F   | F   | Z + 2    | Z + 2         | ✅    |
-| T   | F   | Z + 1    | Z + 2         | ❌    |
-| F   | T   | Z + 1    | Z + 2         | ❌    |
-| T   | T   | Z + 1    | Z + 1         | ✅    |
+| A   | B   | Expected | Faulty Output | Pass | MC/DC role |
+| --- | --- | -------- | ------------- | ---- | ---------- |
+| F   | F   | Z + 2    | Z + 2         | ✅    | anchor: pairs with rows 2 and 3 |
+| T   | F   | Z + 1    | Z + 2         | ❌    | A's independence: (FF→TF) B=F fixed, outcome changes |
+| F   | T   | Z + 1    | Z + 2         | ❌    | B's independence: (FF→FT) A=F fixed, outcome changes |
+| T   | T   | Z + 1    | Z + 1         | ✅    | *(not usable for MC/DC — no single flip changes the outcome)* |
 
-Any 3 of the first 4 tests would be sufficient to meet **MC/DC**.
+The first 3 tests `{FF, TF, FT}` are the valid MC/DC set — `(TT)` must be omitted. When both conditions are true, flipping either one alone leaves the OR result true, so `(TT)` cannot demonstrate independent effect for any condition. Not all 3-test subsets work: `{FF, TF, TT}`, `{FF, FT, TT}`, and `{TF, FT, TT}` all fail MC/DC.
 
 ---
 
@@ -215,14 +215,14 @@ end if
 
 **Test Suite for MC/DC:**
 
-| A   | B   | Expected | Faulty Output | Pass |
-| --- | --- | -------- | ------------- | ---- |
-| F   | F   | Z + 2    | Z + 2         | ✅    |
-| T   | F   | Z + 2    | Z + 1         | ❌    |
-| F   | T   | Z + 2    | Z + 1         | ❌    |
-| T   | T   | Z + 1    | Z + 1         | ✅    |
+| A   | B   | Expected | Faulty Output | Pass | MC/DC role |
+| --- | --- | -------- | ------------- | ---- | ---------- |
+| F   | F   | Z + 2    | Z + 2         | ✅    | *(not usable for MC/DC — no single flip changes the outcome)* |
+| T   | F   | Z + 2    | Z + 1         | ❌    | B's independence: (TF→TT) A=T fixed, outcome changes |
+| F   | T   | Z + 2    | Z + 1         | ❌    | A's independence: (FT→TT) B=T fixed, outcome changes |
+| T   | T   | Z + 1    | Z + 1         | ✅    | anchor: pairs with rows 2 and 3 |
 
-To show **independent effect**, any 3 of the first 4 tests would be sufficient to meet **MC/DC**.
+The last 3 tests `{TF, FT, TT}` are the valid MC/DC set — `(FF)` must be omitted. When both conditions are false, flipping either one alone leaves the AND result false, so `(FF)` cannot demonstrate independent effect for any condition. Not all 3-test subsets work: `{FF, TF, FT}`, `{FF, TF, TT}`, and `{FF, FT, TT}` all fail MC/DC.
 
 
 ## Summary
