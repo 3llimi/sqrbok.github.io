@@ -116,8 +116,44 @@ Software failures continue to cause massive damage — these are not problems fr
 
 **Pattern recognition:** Every concept in this lecture — severity classes, failure intensity, fault tolerance, diversity — was developed because of incidents like these {% cite dubrova2013fault %}.
 
+### 1.5 Fault → Error → Failure: Case Analyses
+
+**CrowdStrike 2024**
+
+| Stage | What happened |
+|-------|--------------|
+| **Fault** | A content configuration file (Channel File 291) shipped by CrowdStrike's update mechanism contained malformed data — a logic error in the content validator allowed an invalid pattern to pass quality checks |
+| **Error** | The Falcon sensor kernel driver attempted to parse the malformed file at runtime; an out-of-bounds memory read produced an invalid internal state (corrupted pointer) inside the Windows kernel |
+| **Failure** | The kernel encountered an unrecoverable exception and issued a Blue Screen of Death; 8.5 million Windows hosts could not boot, affecting hospitals, airlines, banks, and broadcasters globally |
+
+**Reliability concept:** Common-mode failure — every host running the same sensor version failed simultaneously; redundant hardware provided no protection because all instances shared the identical fault.
+
+---
+
+**Meta/Facebook 2021**
+
+| Stage | What happened |
+|-------|--------------|
+| **Fault** | A routine BGP (Border Gateway Protocol) configuration change contained an error that withdrew all of Facebook's BGP route advertisements — the command that should have been scoped to a subset of routers was applied globally |
+| **Error** | Facebook's backbone routers stopped announcing their IP prefixes to the internet; DNS servers that needed to reach Facebook's authoritative name servers became unreachable; internal tools used to diagnose and fix the problem also relied on the same network and went dark |
+| **Failure** | Facebook, Instagram, and WhatsApp became globally unreachable for ~6 hours; ~3.5 billion users could not connect; engineers had to physically travel to data centres to restore access because remote management was also cut off |
+
+**Reliability concept:** Cascading failure — the BGP fault knocked out DNS, which knocked out all services including the recovery tooling itself.
+
+---
+
+**Boeing 737 MAX (MCAS)**
+
+| Stage | What happened |
+|-------|--------------|
+| **Fault** | The Maneuvering Characteristics Augmentation System (MCAS) was designed to rely on input from a **single** angle-of-attack (AoA) sensor with no cross-check against the second sensor; the software specification did not require sensor disagreement detection for MCAS activation |
+| **Error** | A failed AoA sensor reported an erroneously high angle of attack; MCAS accepted the reading as valid and repeatedly commanded the horizontal stabiliser to push the nose down; pilots' corrective inputs were overridden each time they tried to recover |
+| **Failure** | The aircraft entered an unrecoverable dive; two crashes (Lion Air 610 and Ethiopian Airlines 302) killed 346 people |
+
+**Reliability concept:** Lack of redundancy and diversity — safety-critical input came from a single sensor with no independent cross-check; the fault was a specification fault (the requirement for single-sensor reliance was written into the design).
+
 {: .highlight }
-> **Exam Tip:** Be able to identify which reliability concept each failure illustrates (e.g., CrowdStrike = common-mode failure, Boeing = lack of redundancy).
+> **Exam Tip:** For each case, be able to state the fault (what was wrong in the code/design), the error (which internal state became incorrect), and the failure (what users/operators observed). The fault is always a design decision or defect — it may have existed silently for a long time before being triggered.
 
 ### Practice Questions
 
@@ -886,6 +922,30 @@ flowchart TB
     style INC fill:#f0f8f0,stroke:#019546,color:#282828
     style PCT fill:#f0f8f0,stroke:#019546,color:#282828
 ```
+
+**Mixed-Unit Incidents (outage time + failed requests):**
+
+When an incident report gives both downtime *and* a failed-request count, convert everything to requests using the traffic rate before adding:
+
+$$\text{Request rate} = \frac{\text{Total requests/month}}{\text{Minutes/month}}$$
+
+$$\text{Requests lost to outage} = \text{Outage minutes} \times \text{Request rate}$$
+
+$$\text{Total impact} = \text{Requests lost to outage} + \text{Failed requests (degraded period)}$$
+
+**Example — 99.95% SLO, 50M requests/month:**
+
+| Metric | Calculation | Value |
+|--------|-------------|-------|
+| Error budget | 50M × 0.0005 | **25,000 requests** |
+| Budget in time | 30 × 24 × 60 × 0.0005 | **21.6 minutes** |
+| Request rate | 50M / 43,200 min | **~1,157 req/min** |
+| Outage impact (8 min) | 8 × 1,157 | **~9,259 requests** |
+| Degraded impact | — | **5,000 requests** |
+| Total consumed | (9,259 + 5,000) / 25,000 | **~57%** |
+
+{: .highlight }
+> **Exam Tip:** Always convert outage minutes to failed requests (or vice versa) before combining. Use the monthly traffic rate to do the conversion. Never add percentages computed from different unit bases — convert to one unit first.
 
 **Why 100% is the Wrong Target:**
 

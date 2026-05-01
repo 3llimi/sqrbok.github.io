@@ -36,6 +36,9 @@ Both ET and operational profiles share a common goal: **test what matters most t
 | **Best for** | Regression, coverage metrics | Discovery, edge cases | Reliability prediction |
 | **Repeatability** | High | Lower | High |
 | **Documentation** | Upfront (test plans) | Session reports | Quantitative (rates, probabilities) |
+| **Defect types found** | Known, specified | Unknown, emergent | High-frequency, usage-driven |
+
+**Scripted + Exploratory = Coverage:** Scripted testing systematically exercises known requirements and guards against regression — it finds *specified* defects. Exploratory testing discovers unexpected behaviour that no test plan anticipated — it finds *emergent* defects. Neither alone is sufficient: scripted testing misses what was never specified; exploratory testing misses what requires systematic repetition to verify. Together they cover both dimensions, which is why the combination is standard industry practice {% cite shah2014hybrid %}.
 
 ### 1.2 The SRE Context
 
@@ -163,6 +166,19 @@ ET and scripted testing form a spectrum {% cite ghazi2017levels %}:
 
 **Industrial adoption:** 88% of professionals use ET {% cite pfahl2014survey %}.
 
+### 2.8 The Coverage Paradox
+
+ET consistently achieves **lower structural coverage** than scripted testing (Shah 2014 {% cite shah2014hybrid %}), yet matches or exceeds it in defect counts. This apparent contradiction has three explanations:
+
+1. **Coverage measures traversal, not fault-revealing power.** Code coverage records which statements or branches were executed — not whether those executions stressed the system. Scripted tests systematically execute all branches, but many of those executions use "expected" inputs on "expected" paths. The code runs without finding a bug not because the bug isn't there, but because the input didn't trigger it.
+
+2. **Defects cluster.** Most bugs are concentrated in a small fraction of the codebase — the complex, edge-case-heavy modules. ET testers, guided by heuristics and active reasoning, naturally gravitate toward complexity and anomalies. They reach high-defect areas without covering the full structural map.
+
+3. **ET exercises paths with higher fault-revealing inputs.** Even when an ET tester and a scripted tester both execute the same branch, the ET tester is more likely to do so with adversarial, boundary-probing, or semantically interesting inputs. Coverage counts the path once; it doesn't distinguish between a routine traversal and a targeted probe.
+
+{: .highlight }
+> **Exam Tip:** Coverage is a **necessary but not sufficient** condition for fault detection. Executing code does not guarantee finding bugs in it — it depends on *how* the code is executed. ET achieves comparable fault detection with lower coverage because it optimises the *quality* of each execution, not the breadth.
+
 ---
 
 ## Part 3: Operational Profile Definition
@@ -222,6 +238,18 @@ Musa defines a six-step procedure {% cite musa1999software %}:
 | 6 | **Calculate probabilities** | Normalize: sum = 1.0 |
 
 **Cost:** ~1 staff-month for an average project (10 developers, 100 KLOC) {% cite musa1993operational %}.
+
+**Step 3 — Tabular vs Graphical:**
+
+| Representation | Structure | Use When |
+|----------------|-----------|----------|
+| **Tabular (flat)** | Simple table: operation, rate, probability | Single initiator type; ≤ ~30 operations; straightforward system |
+| **Graphical (tree)** | Hierarchical: initiator types branch into operations | Multiple initiator types; large operation count; complex system; communication to non-technical stakeholders |
+
+> **Rule of thumb (Musa):** Start with tabular. Switch to graphical when you have multiple initiator types whose operations do not overlap, or when the list grows large enough that structure aids comprehension.
+
+{: .highlight }
+> **Exam Tip:** Tabular = one initiator type, small list. Graphical = multiple initiator types or complex hierarchy. The key driver is the number and type of initiators, not personal preference.
 
 ### 4.2 From Rates to Probabilities
 

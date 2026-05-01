@@ -103,9 +103,21 @@ The debate has been running since 1984 {% cite duran1984evaluation %}:
 |------|---------|---------|
 | 1984 | Duran & Ntafos | Random often more cost-effective |
 | 2001 | Ntafos | ~20% more random tests erase partition advantage |
-| 2006 | Hamlet | Only random will do for unstructured spaces |
+| 2006 | Hamlet | Only random will do for unstructured spaces and state-dependent systems |
 
 **Resolution (Ntafos 2001):** The gap shrinks to <0.05% at scale. Roughly 20% more random tests eliminate any partition testing advantage {% cite ntafos2001comparisons %}.
+
+### 2.3.1 Hamlet's Two Scenarios (2006)
+
+Hamlet {% cite hamlet2006random %} argues random testing is not merely an alternative but the **only valid choice** in two specific scenarios:
+
+**Scenario 1 — Large, unstructured input domains:**
+When no rational basis exists to partition the input space, systematic subdomain testing relies on subjective judgement. Without meaningful partitions, it is "no more than subjective comfort." Random sampling of the operational profile is the only principled approach.
+
+**Scenario 2 — Persistent-state systems:**
+Valid tests of stateful programs must be *input sequences from reset*, not individually sampled states. Feasible states are "very sparse in all possible bit patterns" — directly setting a program to an arbitrary state may exercise configurations no real input sequence can reach. Random sequence generation correctly restricts testing to reachable states; state-sampled systematic testing does not.
+
+> "Valid tests of programs with state are sequences of inputs, and it is here that random testing comes into its own." — Hamlet 2006
 
 ### 2.4 Randoop: Feedback-Directed Random Testing
 

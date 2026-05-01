@@ -449,7 +449,7 @@ McCabe {% cite mccabe1976complexity %} defined cyclomatic complexity as the numb
 **Formula:** `CC = Edges - Nodes + 2` (in Control Flow Graph)
 
 **Simplified counting:** Count decision points and add 1:
-- `if`, `elif`, `else`: +1 each
+- `if`, `elif`: +1 each (`else` does not add +1 — it is not a new decision point, just the remaining branch already created by the `if`)
 - `for`, `while`: +1 each
 - `and`, `or`: +1 each
 - `case` in switch: +1 each

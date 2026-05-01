@@ -53,7 +53,7 @@ What does Rice's Theorem tell us about the fundamental limitations of static ana
 
 ## Question 6: Test Levels
 
-Describe the four test levels: Unit, Integration, and System.
+Describe the four test levels: Unit, Integration, System, and Acceptance.
 
 For each level, identify: (a) what is being tested, (b) who typically performs the testing, and (c) one example of a defect that would be found at that level.
 

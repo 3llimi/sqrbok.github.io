@@ -824,22 +824,22 @@ Dean and Barroso propose solutions that **tolerate** tail latency rather than tr
 
 | Technique | How It Works | Result |
 |-----------|-------------|--------|
-| **Hedged requests** | Send to 2 servers, take first reply | p99.9: 1800ms → **74ms** (+2% traffic) |
-| **Tied requests** | Send to 2 servers, cancel the slower one | Median −21%, p99 −38% |
+| **Hedged requests** | Send to server 1; if no reply within the 95th-percentile threshold, send a delayed backup to server 2; cancel the slower one when either replies | p99.9: 1800ms → **74ms** (+2% traffic) |
+| **Tied requests** | Send to 2 servers simultaneously, cancel the slower one | Median −21%, p99 −38% |
 | **"Good enough"** responses | Return partial results from fast servers | Graceful degradation |
 
 ```mermaid
-flowchart LR
-    C["Client"] -->|"Request"| S1["Server 1"]
-    C -->|"Same request<br>(hedged)"| S2["Server 2"]
-    S1 -->|"200ms"| C
-    S2 -->|"5ms ✅"| C
-    style C fill:#fff3cd,stroke:#ffc107,color:#282828
-    style S1 fill:#ffcdd2,stroke:#d32f2f,color:#282828
-    style S2 fill:#c8e6c9,stroke:#019546,color:#282828
+sequenceDiagram
+    participant C as Client
+    participant S1 as Server 1
+    participant S2 as Server 2 (backup)
+    C->>S1: Request (t=0)
+    Note over C: Wait for 95th-pct threshold
+    C->>S2: Backup request (t=threshold, ~5% of requests only)
+    S2-->>C: Fast reply ✅ (cancel S1)
 ```
 
-**Why hedged requests are so effective:** You're not making the slow server faster — you're giving the request a second chance to hit a fast server. At +2% traffic cost, you reduce p99.9 latency by **96%**.
+**Why hedged requests are so effective — and why overhead is only +2%:** The backup request is *delayed*, not simultaneous. It is only issued if the first server has not replied within the 95th-percentile expected latency. Because ~95% of requests complete before that threshold, only ~5% ever trigger the backup — and those often cancel quickly once one reply arrives. Unconditional duplication to two servers simultaneously would cost ~100% extra traffic; the delayed backup design reduces that to ~2%. You're not making the slow server faster — you're giving the slow tail a second chance to hit a fast one.
 
 ### 6.4 The DevOps Performance Gap
 
@@ -934,7 +934,7 @@ flowchart TB
 | **Anti-patterns** | Redesign, don't tune | God Class, Chatty N+1 |
 | **Testing maturity** | L1→L2→L3 | 30% → 5% defect escape |
 | **Tail latency** | P = 1−(1−p)^N | 100 servers × 1% = 63% |
-| **Hedged requests** | Send to 2, take first | p99.9: 1800ms → 74ms |
+| **Hedged requests** | Delayed backup: send to S2 only if S1 misses 95th-pct threshold | p99.9: 1800ms → 74ms (+2% traffic) |
 | **Per-service SLO** | Latency budget per service | Classical PE → cloud-native |
 
 ---

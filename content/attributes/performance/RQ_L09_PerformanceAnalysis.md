@@ -173,8 +173,9 @@ Design a performance test strategy:
 A search service fans out each user query to **80 backend shards**. Each shard has a 0.5% probability of responding slowly (>200ms).
 
 1. Calculate the probability that a user query hits at least one slow shard
-2. If the team implements **hedged requests** (sending each sub-request to 2 shards), what is the new probability of a slow response for each shard?
+2. If the team implements **tied requests** (sending each sub-request to 2 shards simultaneously, cancelling the slower reply), what is the new probability of a slow response per sub-request?
 3. What is the total cost in terms of additional traffic?
+4. How would true **hedged requests** (delayed backup only issued after the 95th-percentile threshold) differ in traffic overhead, and why?
 
 ---
 

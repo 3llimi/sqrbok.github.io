@@ -789,7 +789,7 @@ Both tests might show the same coverage, but only the second catches bugs!
 
 | Language | Tool | Coverage Types |
 |----------|------|----------------|
-| Java | **JaCoCo** | Stmt, Branch, MC/DC |
+| Java | **JaCoCo** | Stmt, Branch, Line, Method, Complexity |
 | Python | **Coverage.py** | Stmt, Branch |
 | C/C++ | **LLVM-cov**, gcov | Stmt, Branch |
 | C# | **Coverlet**, dotCover | Stmt, Branch |

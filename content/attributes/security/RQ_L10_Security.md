@@ -203,18 +203,19 @@ A vulnerability in your company's web framework receives the following CVSS v3.1
 **Base Score: 8.1 (High)**
 `AV:N / AC:H / PR:N / UI:N / S:U / C:H / I:H / A:H`
 
-**Temporal Score: 6.2**
-- Exploit Code Maturity: Unproven
-- Remediation Level: Official Fix available
-- Report Confidence: Confirmed
+**Temporal Score: 7.1**
+- Exploit Code Maturity: Unproven (multiplier 0.91)
+- Remediation Level: Official Fix available (multiplier 0.95)
+- Report Confidence: Confirmed (multiplier 1.00)
+- Calculation: Roundup(8.1 × 0.91 × 0.95 × 1.00) = Roundup(7.002) = **7.1**
 
 **Environmental Score: 4.0**
 - The affected component handles only **public, non-sensitive data**
 - The system is behind a WAF with rate limiting
 
-(a) Explain what each **metric group** (Base, Temporal, Environmental) tells you and why the score drops from 8.1 → 6.2 → 4.0.
+(a) Explain what each **metric group** (Base, Temporal, Environmental) tells you and why the score drops from 8.1 → 7.1 → 4.0.
 (b) Based on these scores, should you **patch immediately** (emergency change) or **schedule for next sprint** (2 weeks)? Justify your decision.
-(c) Compare with **Log4Shell** (CVSS Base 10.0, `AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H`). Both vulnerabilities are "network accessible" — why was Log4Shell vastly more urgent? Identify at least 3 specific CVSS metric differences.
+(c) Compare with **Log4Shell** (CVSS Base 10.0, `AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H`). Both vulnerabilities are "network accessible" — why was Log4Shell vastly more urgent? Identify the **2 specific CVSS base metric differences**, then explain how **temporal factors** at the time of Log4Shell's disclosure (exploit code maturity, remediation availability) constitute a third dimension of urgency.
 
 ---
 

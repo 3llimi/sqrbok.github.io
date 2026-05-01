@@ -215,8 +215,8 @@ Systematic approach to EP:
 
 **Most common bug:** Off-by-one errors (`<` vs `≤`, array index 0 vs 1, loop termination)
 
-**Real-World Example - The Mars Climate Orbiter (1999):**
-A unit conversion error at a boundary caused $327 million loss. Ground software used pounds; spacecraft expected Newtons. This wasn't caught because testing focused on "typical" values, not boundary conditions between systems.
+**Real-World Counterexample - The Mars Climate Orbiter (1999):**
+Ground software output thruster force in pound-force seconds; the navigation system expected newton-seconds (~4.45× difference). This was **not** a boundary value error — every value was wrong by the same factor, so testing min/max inputs would not have helped. The root cause was an **interface specification mismatch**, caught by integration testing or type-safe unit systems, not BVA. It illustrates a different lesson: always validate units and contracts at system interfaces.
 
 **Why boundaries are dangerous:**
 ```python
