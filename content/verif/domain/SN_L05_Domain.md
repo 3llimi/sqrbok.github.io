@@ -803,8 +803,8 @@ flowchart TD
 
 | Technique | Formula |
 |-----------|---------|
-| Weak EC | max(|classes|) tests |
-| Strong EC | ∏|classes| tests |
+| Weak EP | max(&#124;classes&#124;) tests |
+| Strong EP | ∏&#124;classes&#124; tests |
 | BVA (k variables) | 4k + 1 tests |
 | Robust BVA | 6k + 1 tests |
 | Pairwise | ~log₂(n) growth |
