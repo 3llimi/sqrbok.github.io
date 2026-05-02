@@ -69,8 +69,12 @@ Access curated references and resources:
 
 ## 🛠️ Resources
 
-- **Contribution Template**: [Get started with the contribution template](/content/template/)
-  Help us improve these notes by following the provided contribution guidelines.
+- **Contribution templates**:
+  - [Analysis template](/templates/analysis-template)
+  - [Method template](/templates/method-template)
+<br>
+
+Help us improve these notes by following the provided contribution guidelines.
 
 ---
 

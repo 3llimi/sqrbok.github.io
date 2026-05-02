@@ -103,7 +103,7 @@ These cases share a common pattern: maintainability problems are **structural**,
 |------|---------|
 | [Evolution](evolution.md) | Lehman's 8 Laws of Software Evolution, Parnas's aging theory, complexity growth patterns |
 | [Measurement](measurement.md) | Maintainability Index (MI), SIG model, SQALE method, Cognitive Complexity |
-| [DSM & Modularity](dsm.md) | Design Structure Matrix operations, propagation cost metric, Mozilla vs Linux comparison |
+| [DSM & Modularity](dsm-modularity.md) | Design Structure Matrix operations, propagation cost metric, Mozilla vs Linux comparison |
 | [Case Studies](cases.md) | Microsoft refactoring study, ABB DID platform, Mozilla restructuring — detailed analysis |
 
 ---
