@@ -496,19 +496,19 @@ Chen et al. {% cite chen2000integrated %} proposed a metric to measure tree qual
 
 **Step 2-3 -- Classification Tree:**
 
-Notice that Non-Residents don't need marital status or pay brackets. The tree models this **structurally** by nesting those classifications under the Resident class:
+All three aspects are independent classification axes at the root level:
 
 {% raw %}
 ```mermaid
 flowchart TD
     ROOT(["City Tax<br>Calculator"])
+
     ROOT --> RES{{"Residency"}}
+    ROOT --> MS{{"Marital Status"}}
+    ROOT --> GP{{"Gross Pay"}}
 
     RES --> NR(["Non-Resident"])
     RES --> R(["Resident"])
-
-    R --> MS{{"Marital Status"}}
-    R --> GP{{"Gross Pay"}}
 
     MS --> S(["Single"])
     MS --> F(["Family"])
@@ -525,7 +525,7 @@ flowchart TD
 {% endraw %}
 
 {: .important }
-The hierarchy **eliminates impossible combinations structurally** — when Non-Resident is selected, Marital Status and Gross Pay simply don't exist in that subtree. No explicit constraint rules needed.
+This flat tree generates 2 × 2 × 3 = **12 potential combinations**. Six are infeasible (Non-Resident paired with any Status or Pay bracket). **Dependency rules** (Avoid strategy) filter them out before test generation.
 
 **Step 5 -- Combination Table:**
 
@@ -550,7 +550,7 @@ The hierarchy **eliminates impossible combinations structurally** — when Non-R
 | 6 | Resident, Family, $60,000 | $3,000 (5%) |
 
 {: .exam-tip }
-> **Exam Tip:** This example demonstrates **hierarchy as constraint elimination**. A flat tree with Residency, Status, and Pay all at root level would produce infeasible combinations (Non-Resident + Single + $30k). The hierarchical tree avoids this without explicit dependency rules.
+> **Exam Tip:** The flat tree produces 12 potential combinations, but only 6 are feasible (Non-Resident has no Status or Pay). The **Avoid** dependency rule (§3.4) discards the infeasible 6 before generating tests. This is the standard approach: flat tree + explicit constraint rules → 6 valid test specifications.
 
 ### 4.2 Document Identifier Example
 

@@ -405,42 +405,24 @@ State entering B3: {x: NZ, y: **MZ**, z: MZ}
 | Statement | x | y | z |
 |-----------|---|---|---|
 | (entry from B2) | NZ | **MZ** | MZ |
-| `x = x / y` | **WARNING: y is MZ!** | MZ | MZ |
-| `y = y - 1` | MZ | **MZ** (MZ - 1 = MZ) | MZ |
-| `z = 5` | MZ | MZ | **NZ** |
+| `x = x / y` | **NZ** ⚠️ WARNING: y is MZ! | MZ | MZ |
+| `y = y - 1` | NZ | **MZ** (MZ - 1 = MZ) | MZ |
+| `z = 5` | NZ | MZ | **NZ** |
 
-State leaving B3: {x: MZ, y: MZ, z: NZ}
+State leaving B3: {x: NZ, y: MZ, z: NZ}
 
-**The warning is issued:** At `x = x / y`, the variable y has abstract value MZ (Maybe Zero). The analysis cannot prove that y is non-zero, so it reports a potential divide-by-zero.
+**The warning is issued:** At `x = x / y`, the variable y has abstract value MZ (Maybe Zero). The analysis reports a potential divide-by-zero. Crucially, **x stays NZ** — the analysis continues only on the non-crash paths (y ≠ 0), and NZ ÷ NZ = NZ in this model.
 
 #### Iteration 3: Third pass (check for fixed point)
 
 **B2 (merge again):**
 - Input from B1: {x: NZ, y: NZ, z: Z}
-- Input from B3: {x: MZ, y: MZ, z: NZ}
-- **Merged:** {$x{:} NZ \sqcup MZ = MZ$, $y{:} NZ \sqcup MZ = MZ$, $z{:} Z \sqcup NZ = MZ$}
+- Input from B3: {x: NZ, y: MZ, z: NZ}
+- **Merged:** {$x{:} NZ \sqcup NZ = NZ$, $y{:} NZ \sqcup MZ = MZ$, $z{:} Z \sqcup NZ = MZ$}
 
-This is the same as Iteration 2's merged state? Let us check: Iteration 2 had {$x{:}NZ, y{:}MZ, z{:}MZ$}. Now we have {$x{:}MZ, y{:}MZ, z{:}MZ$}. This is different -- $x$ changed from $NZ$ to $MZ$.
+This is identical to Iteration 2's merged state {$x{:}NZ, y{:}MZ, z{:}MZ$}. **Fixed point reached.** No more changes. Analysis terminates.
 
-**B3 (one more pass):**
-
-| Statement | x | y | z |
-|-----------|---|---|---|
-| (entry) | MZ | MZ | MZ |
-| `x = x / y` | MZ (warning already issued) | MZ | MZ |
-| `y = y - 1` | MZ | MZ | MZ |
-| `z = 5` | MZ | MZ | NZ |
-
-State leaving B3: {x: MZ, y: MZ, z: NZ}
-
-**Iteration 4: Check fixed point again:**
-- Input from B1: {x: NZ, y: NZ, z: Z}
-- Input from B3: {x: MZ, y: MZ, z: NZ}
-- **Merged:** {x: MZ, y: MZ, z: MZ}
-
-This is identical to Iteration 3's input. **Fixed point reached.** No more changes. Analysis terminates.
-
-**Final abstract state at loop body entry:** {x: MZ, y: MZ, z: MZ}
+**Final abstract state at loop body entry:** {x: NZ, y: MZ, z: MZ}
 
 ### 4.6 Null Pointer Analysis: Same Idea, Different Domain
 

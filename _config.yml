@@ -20,6 +20,9 @@ math: mathjax
 vegalite: true
 
 
+kramdown:
+  parse_block_html: true
+
 title: SQRBOK - Handbook
 author: Andrey Sadovykh
 description: "Software Quality and Reliability Course Handbook (SQRBOK) - Collection of resources and handouts"
