@@ -129,32 +129,31 @@ def grade(score):          # Line 1
 - **Edges** = Control flow transitions
 - **Entry/Exit** = Special start and end nodes
 
-**Example CFG: If-Then-Else**
+**Example CFG: If-Then (no else)**
 
 ```python
 x = 0           # Block 1
-if A < 5:       # Decision
-    x = 4       # Block 2 (True)
-                # Block 3 (False - skip)
-y = z / x       # Block 4
+if A < 5:       # Decision (D)
+    x = 4       # Block 2 (True branch only)
+y = z / x       # Block 3 (merge point)
 ```
 
 ```mermaid
 flowchart TD
     B1["x = 0"] --> D{"A < 5?"}
     D -->|True| B2["x = 4"]
-    D -->|False| B3[" "]
-    B2 --> B4["y = z / x"]
-    B3 --> B4
+    D -->|False| B3["y = z / x"]
+    B2 --> B3
 
     style B1 fill:#f0f8f0,stroke:#019546
     style D fill:#fff3cd,stroke:#2D6E2A
     style B2 fill:#c8e6c9,stroke:#019546
-    style B3 fill:#c8e6c9,stroke:#019546
-    style B4 fill:#019546,stroke:#2D6E2A,color:#fff
+    style B3 fill:#019546,stroke:#2D6E2A,color:#fff
 ```
 
-**CFG Metrics:** Nodes=5, Edges=5, V(G) = 5 - 5 + 2 = **2**
+**CFG Metrics:** Nodes=4, Edges=4, V(G) = 4 − 4 + 2 = **2**
+
+> **Note:** An if-then (no else) has **no empty node** on the false path — the false edge goes directly to the merge block. Adding a phantom "skip" node keeps V(G) the same (5−5+2=2) but is non-standard and risks a counting mismatch if the empty node is forgotten while counting edges.
 
 ---
 
