@@ -43,8 +43,10 @@ Static Application Security Testing analyzes source code or bytecode **without e
 
 Rice's Theorem proves it is **impossible to perfectly determine any nontrivial property** of a general program {% cite chess2007secure %}. This means every static analysis tool must choose:
 
-- **Sound** (find all bugs, accept false positives) — preferred for security
-- **Complete** (no false positives, may miss bugs) — preferred for developer experience
+> **Reminder:** *Positive* = the tool reports a vulnerability. *False positive* = the tool fires but there is no real vulnerability (noise). *False negative* = the tool is silent but a real vulnerability exists (missed bug).
+
+- **Sound** (FN = 0: finds all bugs, accepts false positives) — preferred for security
+- **Complete** (FP = 0: no false positives, may miss bugs) — preferred for developer experience
 
 In practice, only 30% of automated scan results are effective vulnerabilities, causing "alert fatigue" that leads teams to distrust and ignore findings {% cite rajapakse2021security %}. SAST also finds implementation bugs well but **cannot find design-level flaws** — it cannot tell you that your authentication architecture is wrong {% cite chess2007secure %}.
 

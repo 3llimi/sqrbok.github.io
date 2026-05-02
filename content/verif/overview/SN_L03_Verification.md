@@ -195,6 +195,12 @@ Verification establishes **confidence** (not proof!) that software:
 
 ### Rice's Theorem — Why No Tool Is Perfect
 
+**Terminology (confusion matrix):** In analysis tools, *positive* = "the tool reports a defect"; *negative* = "the tool says nothing to flag." Therefore:
+- **False positive (FP):** tool fires → no real bug (false alarm, noise)
+- **False negative (FN):** tool is silent → real bug exists (missed bug)
+
+Note: "positive" here does **not** mean "good outcome" — it simply means "the tool flagged something."
+
 **The Theorem:**
 > No analysis can be sound, complete, AND terminate on all programs.
 
@@ -202,8 +208,8 @@ Verification establishes **confidence** (not proof!) that software:
 
 | Property | Description | Consequence |
 |----------|-------------|-------------|
-| **Sound** | Finds ALL bugs of a type | May report false positives |
-| **Complete** | All reports are real bugs | May miss some bugs |
+| **Sound** | Finds ALL bugs of a type (FN = 0) | May report false positives (FP > 0) |
+| **Complete** | All reports are real bugs (FP = 0) | May miss some real bugs (FN > 0) |
 
 **Practical Implications:**
 

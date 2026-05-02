@@ -70,11 +70,11 @@ Revision questions and exam preparation materials for the Process Improvement le
 
 ### Practice Questions
 
-1. Explain the One-Eighth Rule and its three filters in detail.
-2. What is the "capability trap" and how do organizations fall into it?
-3. Compare operational changes vs. cultural changes in process improvement.
-4. Why does "Working Smarter" often lead to worse performance before better?
-5. What are the top 3 critical success factors for SPI based on research?
+1. For each of the three filters in Pfeffer's One-Eighth Rule, describe one specific mitigation strategy from the change management literature that helps an organization pass through that filter.
+2. List the top three adoption barriers to SPI identified in Shelat 2025 (with percentages). Propose a concrete mitigation strategy for each.
+3. Compare operational changes vs. cultural changes in process improvement. Give one concrete example of an SPI initiative that failed because only the operational level was addressed.
+4. Describe the two levels of organizational change identified by Andrews & Stalick. Why must both levels change for process improvement to be sustainable?
+5. What are the top 3 critical success factors for SPI based on research? Why is management commitment ranked #1?
 
 ---
 
