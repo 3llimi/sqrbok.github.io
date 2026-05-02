@@ -369,11 +369,11 @@ flowchart TD
 
     SZ --> sz0(["0<br>(empty)"])
     SZ --> sz1(["1"])
-    SZ --> szN(["> 1"])
+    SZ --> szN(["&gt; 1"])
 
     OCC --> oNone(["None"])
     OCC --> oOne(["One"])
-    OCC --> oMany(["> One"])
+    OCC --> oMany(["&gt; One"])
 
     ORD --> sorted(["Sorted"])
     ORD --> unsorted(["Unsorted"])
@@ -385,7 +385,7 @@ flowchart TD
     CW --> LEN{{"Length"}}
     LEN --> empty(["Empty"])
     LEN --> one(["1 char"])
-    LEN --> multi(["> 1 char"])
+    LEN --> multi(["&gt; 1 char"])
 
     style ROOT fill:#019546,stroke:#333,color:white
     style ARR fill:#2D6E2A,stroke:#333,color:white,stroke-width:3px
@@ -515,7 +515,7 @@ flowchart TD
 
     GP --> LOW(["≤ $30,000"])
     GP --> MID(["$30,001–<br>$50,000"])
-    GP --> HIGH(["> $50,000"])
+    GP --> HIGH(["&gt; $50,000"])
 
     style ROOT fill:#019546,stroke:#333,color:white
     style RES fill:#4a90d9,stroke:#333,color:white
