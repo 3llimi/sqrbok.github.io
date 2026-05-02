@@ -222,6 +222,7 @@ flowchart LR
 
 Invalid cases form a **separate branch**, parallel to valid aspects — NOT scattered as individual leaves within each classification.
 
+{% raw %}
 ```mermaid
 flowchart TD
     ROOT(["Machine Vision System"])
@@ -261,6 +262,7 @@ flowchart TD
     style COLOR fill:#4a90d9,stroke:#333,color:white
     style SIZE fill:#4a90d9,stroke:#333,color:white
 ```
+{% endraw %}
 
 **Why?** If invalids sit inside each valid classification, the generator combines them with every valid value from other aspects — producing meaningless test cases. A separate branch ensures invalids are tested **individually**.
 
@@ -271,6 +273,7 @@ flowchart TD
 
 ### 2.6 Machine Vision: Complete Tree
 
+{% raw %}
 ```mermaid
 flowchart TD
     ROOT(["Machine Vision System"])
@@ -311,6 +314,7 @@ flowchart TD
     style LIGHT fill:#4a90d9,stroke:#333,color:white
     style BG fill:#4a90d9,stroke:#333,color:white
 ```
+{% endraw %}
 
 **Combinatorial count:** 3 (Shape) x 3 (Color) x 2 (Size) x 2 (Lighting) x 2 (Background) = **72 potential valid combinations**. Invalid exemplars are tested separately.
 
@@ -350,6 +354,7 @@ Use **probing questions** to systematically uncover aspects:
 
 ### 3.3 Count Function Tree
 
+{% raw %}
 ```mermaid
 flowchart TD
     ROOT(["count(array, what)"])
@@ -391,6 +396,7 @@ flowchart TD
     style CNT fill:#4a90d9,stroke:#333,color:white
     style LEN fill:#4a90d9,stroke:#333,color:white
 ```
+{% endraw %}
 
 **Combinatorial count:** 3 x 2 x 3 x 3 x 3 = **162 potential combinations** (valid only). Many are **infeasible** — e.g., "Array size = 0" AND "Occurrences = Many" is impossible. This is where constraints come in.
 
@@ -492,6 +498,7 @@ Chen et al. {% cite chen2000integrated %} proposed a metric to measure tree qual
 
 Notice that Non-Residents don't need marital status or pay brackets. The tree models this **structurally** by nesting those classifications under the Resident class:
 
+{% raw %}
 ```mermaid
 flowchart TD
     ROOT(["City Tax<br>Calculator"])
@@ -515,6 +522,7 @@ flowchart TD
     style MS fill:#4a90d9,stroke:#333,color:white
     style GP fill:#4a90d9,stroke:#333,color:white
 ```
+{% endraw %}
 
 {: .important }
 The hierarchy **eliminates impossible combinations structurally** — when Non-Resident is selected, Marital Status and Gross Pay simply don't exist in that subtree. No explicit constraint rules needed.
