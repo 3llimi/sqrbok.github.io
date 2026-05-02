@@ -59,7 +59,9 @@ graph LR
     style S1 fill:#c8e6c9,stroke:#019546,color:#282828
     style S2 fill:#c8e6c9,stroke:#019546,color:#282828
     style Sn fill:#c8e6c9,stroke:#019546,color:#282828
-``` Multiple servers delay the hockey stick — a 4-server system can sustain higher total utilization before response time explodes:
+```
+
+Multiple servers delay the hockey stick — a 4-server system can sustain higher total utilization before response time explodes:
 
 | Servers (c) | Total utilization at 3&times; service time |
 |-------------|-------------------------------------------|

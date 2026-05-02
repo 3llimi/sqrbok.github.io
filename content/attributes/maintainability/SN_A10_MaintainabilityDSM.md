@@ -843,36 +843,36 @@ ABB's Drives Interface Device (DID) had 30,000 lines of C++ code for controlling
 **Section 1: Economics and Evolution**
 
 1. A legacy banking system has not been updated for 5 years. Using Parnas's framework, which aging mechanism is at work, and what are the likely consequences?
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 This is "Lack of Movement" {% cite parnas1994aging %}. Consequences include: regulatory non-compliance (banking regulations change frequently), security vulnerabilities from unpatched dependencies, incompatibility with modern APIs and platforms, and eventual forced migration at much higher cost than incremental updates.
 </details>
 
 2. A team rapidly adds features without code reviews or documentation. Using both Lehman's Laws and Parnas's framework, explain what will happen.
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 This is "Ignorant Surgery" {% cite parnas1994aging %} — changes by developers who may not understand the original design. Lehman's Law II {% cite lehman1980programs %} predicts increasing complexity. Combined: the system's internal structure degrades with each change, making future changes progressively harder and riskier. Eventually, the cost of change will exceed the cost of rewrite.
 </details>
 
 **Section 2: Measurement**
 
 3. A system has MI = 85 ("good"). Should you trust this assessment? Why or why not?
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 No. MI uses averaging, which hides skewness — the system could have 95% clean methods and 5% catastrophic hotspots with CC > 100. MI also ignores module structure: a well-structured system and a spaghetti system with the same method-level metrics score identically. Use SIG quality profiles {% cite baggen2012standardized %} to reveal the distribution shape.
 </details>
 
 4. A method has Cyclomatic Complexity (CC) = 4 but Cognitive Complexity (CogC) = 12. What does this tell you about the code structure?
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 High CogC relative to CC indicates deep nesting {% cite campbell2018cognitive %}. CC counts paths (decision points) equally, while CogC adds penalties for each nesting level. A method with CC=4 but CogC=12 likely has deeply nested conditionals or loops — structurally complex even though it has few paths.
 </details>
 
 **Section 3: DSM and Propagation Cost**
 
 5. In a DSM, element X has marks in every cell of its column but no marks in its row. What pattern is this, and give a real-world example.
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 This is a vertical bus (library) pattern. Every other element depends on X, but X depends on nothing. Real-world examples: logging framework, string utility library, database connection pool. These are architecturally intentional — they are designed to be widely used.
 </details>
 
 6. System A has 5,000 dependencies and PC = 8%. System B has 3,000 dependencies and PC = 15%. Which has better modularity?
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 System A has better modularity despite having more dependencies. PC measures how dependencies are structured, not how many there are {% cite maccormack2006exploring %}. System A's dependencies are concentrated within modules (block-diagonal pattern), while System B's dependencies are scattered across the system. This mirrors the Mozilla/Linux comparison where Linux had more dependencies but lower PC.
 </details>
 

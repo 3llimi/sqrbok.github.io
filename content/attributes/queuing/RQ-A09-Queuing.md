@@ -16,7 +16,7 @@ layout: default
 ### Q1: Why does variability cause queuing?
 Two systems both have average arrival rate λ = 1 req/min and average service rate μ = 1 req/min. System A has deterministic (fixed) interarrival and service times. System B has stochastic (random) times. Which system queues, and why?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 System A never queues — arrivals and departures are perfectly synchronized, so there is always exactly 1 request in the system.
 
@@ -28,7 +28,7 @@ System B queues despite the same average rates. Random variation means some inte
 ### Q2: Identify the queues
 A food delivery app receives orders from users, dispatches them to restaurants, and assigns delivery drivers. Identify at least three queues in this system and classify each as open or closed.
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 1. **Order queue** (user → restaurant): orders arrive externally, get processed → **open network**
 2. **Kitchen queue** (orders waiting to be cooked): orders arrive, food departs → **open network**
@@ -40,7 +40,7 @@ Other valid answers: payment processing queue, notification queue, rating/review
 ### Q3: Economic inevitability
 Explain why "infinite capacity is infinitely expensive" makes queues unavoidable. Give an example where over-provisioning would be wasteful.
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 Provisioning for peak demand means resources sit idle during off-peak. Example: a university Moodle server sized for 5000 concurrent exam submissions would need massive hardware, but exams only happen a few times per semester. During normal usage, 99% of that capacity is wasted.
 
@@ -50,7 +50,7 @@ The economic optimum is to provision for typical load + some headroom, accept th
 ### Q4: When does queuing theory NOT help?
 Name a performance scenario where queuing theory models would be a poor choice and explain why.
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 Queuing theory is a poor fit when:
 - **Arrivals are highly correlated** (e.g., flash crowd from a viral tweet) — violates the homogeneity assumption
@@ -71,7 +71,7 @@ a) A web server with a single-threaded event loop processing requests with expon
 b) A toll booth with deterministic 15-second service time and random arrivals
 c) A call center with 8 agents taking calls from a queue
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 a) **M/M/1** — exponential arrivals (M), exponential service (M), 1 server
 b) **M/D/1** — exponential arrivals (M), deterministic service (D), 1 server
@@ -81,7 +81,7 @@ c) **M/M/8** — exponential arrivals (M), exponential service (M), 8 servers (a
 ### Q6: Open vs closed
 Your company runs an internal CI/CD system. 20 developers push commits throughout the day. Each push triggers a build that takes ~5 minutes. After seeing the build result, the developer works for ~30 minutes before pushing again. Is this an open or closed system? What is M and Z?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 This is a **closed system**:
 - M = 20 developers (fixed population that recirculates)
@@ -94,7 +94,7 @@ It's closed because the same 20 developers cycle through: push → wait for buil
 ### Q7: Kendall notation — advanced
 A Kubernetes cluster auto-scales between 2 and 10 pods. Requests arrive with general (non-exponential) interarrival times. The cluster has a buffer queue that holds at most 100 pending requests. What is the Kendall notation?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **G/M/m/m+r** where:
 - G = general interarrival distribution
@@ -108,7 +108,7 @@ In practice, this is modeled as M/G/m/m+r {% cite khazaei2012cloud %} because th
 ### Q8: Queue configurations
 A hospital emergency room has a triage nurse who assigns patients to one of three priority levels (critical, urgent, routine). Two doctors treat patients, always taking the highest-priority patient first. What queue configuration is this?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Multiple prioritized queues, multiple servers (MQMS)** — 3 priority queues feeding 2 servers (doctors) with preemptive priority discipline. In Kendall notation: roughly M/G/2 with priority scheduling.
 </details>
@@ -116,7 +116,7 @@ A hospital emergency room has a triage nurse who assigns patients to one of thre
 ### Q9: Method selection
 You're asked to predict response times for a new microservice that hasn't been built yet. You know the expected service demands from a prototype. The system will serve a fixed pool of 500 mobile app users. Which analysis method should you use?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Mean Value Analysis (MVA)** — you have a closed system (M = 500 users) with known service demands but no measurement data from production. Operational analysis requires real measurements, and simulation is overkill when MVA can solve the closed network analytically.
 
@@ -130,7 +130,7 @@ If the system had complex routing or priority queues, you'd use **simulation** i
 ### Q10: Derive metrics from counters
 You monitor a Redis cache server for T = 120 seconds. During this window: A = 6000 requests arrive, C = 6000 complete, and the server was busy for B = 48 seconds. Calculate all six derived metrics.
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 | Metric | Formula | Calculation | Result |
 |--------|---------|-------------|--------|
@@ -150,7 +150,7 @@ N = X × R = 50 × 0.0133 = **0.67 requests** in system
 ### Q11: Counter identification
 A DevOps engineer says: "Our API gateway processed 45,000 requests in the last 15 minutes. The p50 latency is 120ms and the server CPU was at 65% during that window." Map these to the five counters (T, A, C, W, B).
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 | Statement | Counter | Value |
 |-----------|---------|-------|
@@ -165,7 +165,7 @@ A DevOps engineer says: "Our API gateway processed 45,000 requests in the last 1
 ### Q12: Assumption violations
 You observe A = 10,000 and C = 9,200 over a 5-minute window. Which assumption is violated? What could cause this? How would you fix the analysis?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Flow balance** is violated: A − C = 800 requests were lost or are still in the system.
 
@@ -182,7 +182,7 @@ Rule of thumb: observation period should be 10–100× the average busy period.
 ### Q13: System vs resource level
 You have system-level measurements: X = 100 req/sec, R = 50ms. You also know the app server visits the database V = 3 times per request. Using the Forced Flow Law, what is the database throughput?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Forced Flow Law:** X_db = V_db × X = 3 × 100 = **300 queries/sec**
 
@@ -192,7 +192,7 @@ The database sees 3× more traffic than the front-end. This is why databases oft
 ### Q14: Worked example — full pipeline
 A Moodle API server is monitored for T = 60 sec during an exam. Counters: B = 36 sec, A = C = 1800. Derive S, U, X, and estimate R using M/M/1 formula. Perform a Little's Law sanity check.
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Step 1 — Derived metrics:**
 - S = B/C = 36/1800 = **0.02 sec = 20 ms/req**
@@ -215,7 +215,7 @@ At 60% utilization, the server is moderately loaded. Response time is 2.5× serv
 ### Q15: Little's Law — basic
 A coffee shop serves X = 2 customers/min with average visit time R = 10 min. How many customers are in the shop on average?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Little's Law:** N = X × R = 2 × 10 = **20 customers**
 
@@ -225,7 +225,7 @@ This holds regardless of how many baristas, the queue discipline, or whether arr
 ### Q16: Little's Law — reverse
 Your monitoring shows an average of N = 4.5 requests in the system and throughput X = 1.5 req/sec. What is the average response time?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Little's Law rearranged:** R = N/X = 4.5/1.5 = **3 seconds**
 </details>
@@ -233,7 +233,7 @@ Your monitoring shows an average of N = 4.5 requests in the system and throughpu
 ### Q17: Little's Law — consistency check
 You measure X = 200 req/sec, R = 25 ms, and N = 10 requests in system. Are these measurements consistent?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Check:** N = X × R = 200 × 0.025 = **5.0**
 
@@ -250,7 +250,7 @@ Little's Law is a tautology — if the numbers don't match, the measurements are
 ### Q18: Utilization Law
 A database server has service demand D = 40 ms/txn and the system throughput is X = 20 txn/sec. What is the database utilization? If there are 2 database replicas, what is the per-replica utilization?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Single server:** U = X × D = 20 × 0.04 = **0.80 = 80%** — dangerously close to the hockey stick!
 
@@ -270,7 +270,7 @@ A web application has three resources with the following per-transaction demands
 
 Find the service demand for each resource, identify the bottleneck, and calculate the maximum system throughput.
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Step 1 — Service demands (D = V × S):**
 - D_nginx = 1 × 2 = **2 ms**
@@ -288,7 +288,7 @@ No amount of Nginx or app server optimization can push throughput past 33.3 TPS.
 ### Q20: Forced Flow Law
 System throughput is X = 10 txn/sec. Each transaction visits the cache V_cache = 8 times and the database V_db = 2 times. What is the throughput at each resource?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Forced Flow Law:** X_k = V_k × X
 
@@ -301,7 +301,7 @@ The cache handles 4× more traffic than the database. This is the whole point of
 ### Q21: Utilization Law — what-if analysis
 Current state: X = 0.45 txn/sec, D_postgres = 32 ms, U_postgres = 1.44%. You add a caching layer that reduces PostgreSQL visits from V = 4 to V = 1 (cache handles the other 3). What is the new D_postgres and U_postgres?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **New service demand:**
 D_postgres = V × S = 1 × 8 ms = **8 ms** (was 32 ms)
@@ -315,7 +315,7 @@ Utilization dropped by 4× because the visit count dropped by 4×. The caching l
 ### Q22: Combined laws
 A system has X = 50 txn/sec. The app server has D_app = 15 ms and the DB has D_db = 25 ms. Calculate: (a) utilization of each, (b) the bottleneck, (c) max throughput, and (d) what happens if you double the DB service time.
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **(a) Utilization:**
 - U_app = X × D_app = 50 × 0.015 = **75%**
@@ -339,7 +339,7 @@ At 40 TPS: U_db = 40 × 0.025 = 100%, U_app = 40 × 0.015 = 60%.
 ### Q23: Hockey stick calculation
 A server has service time S = 10 ms. Calculate response time at utilization levels of 50%, 80%, 90%, and 95%.
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 Using R = S/(1−ρ):
 
@@ -356,7 +356,7 @@ Going from 80% to 95% utilization (a modest 19% increase in load) causes a 4× i
 ### Q24: Hockey stick — SLA compliance
 Your SLA requires response time R ≤ 100 ms. Service time S = 15 ms. What is the maximum utilization you can tolerate?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Rearrange:** R = S/(1−ρ) → 1−ρ = S/R → ρ = 1 − S/R
 
@@ -368,7 +368,7 @@ You must keep utilization below 85% to meet the SLA. In practice, you'd target 7
 ### Q25: Tail latency
 Your microservice architecture fans out each user request to 50 backend services in parallel. Each service has a 2% probability of being slow (>500ms). What is the probability that any given user request experiences a slow response?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Tail amplification formula:** P(any slow) = 1 − (1 − p)^N
 
@@ -384,7 +384,7 @@ Nearly two-thirds of user requests will experience a slow response, even though 
 ### Q26: Interactive system sizing
 An online IDE has think time Z = 45 sec (editing code), service time S = 2 sec (compile + run), target utilization ρ ≤ 70%, target response R ≤ 5 sec. How many concurrent developers can use it?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Step 1 — Max throughput:**
 X = ρ/S = 0.70/2 = **0.35 txn/sec**
@@ -401,7 +401,7 @@ N = X × R = 0.35 × 5 = 1.75 requests in system ✓ (reasonable for 17 users)
 ### Q27: Adding servers — cost analysis
 Continuing Q26: management wants to support 50 developers. How many servers are needed?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 With 1 server: 17 developers.
 
@@ -418,7 +418,7 @@ Three servers support ~52 developers.
 ### Q28: Response time decomposition
 A request goes through three resources in sequence: Nginx (D = 3 ms), App server (D = 20 ms), PostgreSQL (D = 15 ms). System throughput is X = 30 txn/sec. Calculate the response time at each resource and the total system response time.
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Step 1 — Utilization at each resource:**
 - U_nginx = X × D = 30 × 0.003 = 9%
@@ -443,7 +443,7 @@ The app server contributes 62% of the total response time despite having only 60
 ### Q29: Performance engineering workflow
 You're tasked with improving a slow checkout page. Using the 7-step performance engineering workflow, describe what you would do at each step.
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 1. **Build:** The checkout page already exists — instrument it with counters
 2. **Measure:** Collect T, A, C, B from HTTP logs and Prometheus for each component (web, API, payment gateway, DB) over a 10-minute peak window
@@ -457,7 +457,7 @@ You're tasked with improving a slow checkout page. Using the 7-step performance 
 ### Q30: When to simulate
 Your team is debating whether to use analytical models or simulation for a new message queue system with the following characteristics: 3 priority levels, finite buffer of 1000 messages, batch processing (consumer pulls 10 messages at a time), and variable consumer count (auto-scaling). Which approach would you recommend, and why?
 
-<details><summary>Answer</summary>
+<details markdown="1"><summary>Answer</summary>
 
 **Simulation** is the right choice here. The system has multiple features that violate standard analytical model assumptions:
 
