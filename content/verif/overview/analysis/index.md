@@ -232,7 +232,7 @@ Blindly following tool recommendations:
 
 - [Testing](../testing/) - Dynamic verification approach
 - [Coverage Criteria](../../coverage/) - Measuring testing thoroughness
-- [Quality Metrics](../../../define/metrics/) - Measuring code quality
+- [Quality Metrics](../../../define/measurement/) - Measuring code quality
 
 ---
 

@@ -17,7 +17,7 @@ The handbook is organized into major knowledge areas:
 3. **[Verification and Validation](content/verif/)** - Testing techniques, coverage criteria, and static analysis
 4. **[Quality Attributes](content/attributes/)** - Maintainability, reliability, security, and usability
 5. **[Materials](content/material/)** - Curated resources, books, and research papers
-6. **[Templates](content/template/)** - Contribution templates and guidelines
+6. **[Templates](templates/)** - Contribution templates and guidelines
 
 ## Technology Stack
 
